@@ -11,8 +11,16 @@
         "facebook": "4"
       },
       "experiece": [],
-      "projects": [],
-      "services": []
+      "projects": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "services": [
+        1,
+        2
+      ]
     },
     {
       "id": 2,
@@ -110,14 +118,50 @@
       "description": "description20"
     }
   ],
-  "projects": {
-    "1": {
-      "name": "project_name",
-      "description": "description example",
-      "chef": "1",
-      "presentation": "presentation example"
+  "projects": [
+    {
+      "id": 1,
+      "name": "Project 1",
+      "description": "Brief description of Project 1.",
+      "longDes": "Detailed description of Project 1."
+    },
+    {
+      "id": 2,
+      "name": "Project 2",
+      "description": "Brief description of Project 2.",
+      "longDes": "Detailed description of Project 2."
+    },
+    {
+      "id": 3,
+      "name": "Project 3",
+      "description": "Brief description of Project 3.",
+      "longDes": "Detailed description of Project 3."
+    },
+    {
+      "id": 4,
+      "name": "Project 4",
+      "description": "Brief description of Project 4.",
+      "longDes": "Detailed description of Project 4."
+    },
+    {
+      "id": 5,
+      "name": "Project 5",
+      "description": "Brief description of Project 5.",
+      "longDes": "Detailed description of Project 5."
     }
-  },
-  "services": {
-  }
+  ],
+  "services": [
+    {
+      "id": 1,
+      "name": "Service One",
+      "description": "Short description of service one.",
+      "longDes": "Long description of service one."
+    },
+    {
+      "id": 2,
+      "name": "Service Two",
+      "description": "Short description of service two.",
+      "longDes": "Long description of service two."
+    }
+  ]
 }

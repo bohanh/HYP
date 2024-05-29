@@ -15,7 +15,7 @@ export function socials() {
         return "https://www.facebook.com/" + str;
     };
 
-    const getSocial = (str: string, social: string) => {
+    const getSocial = (str: string, social: any) => {
         if (social === "linkedin") {
             return getLinkedIn(str);
         } else if (social === "twitter") {

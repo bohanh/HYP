@@ -57,6 +57,7 @@ const people = await useFetch("http://localhost:3000/data.json").data.value?.peo
 }
 
 .person-card {
+  width: 25%;
   margin: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
