@@ -31,7 +31,7 @@ const socialLinks = ref({
         <a v-for="(l, n) in socialLinks" class="logo-socials" :href="l" target="_blank">
           <img
               class="logo-socials"
-              :src="'/socials/' + n + '.svg'"
+              :src="'/socials/white/' + n + '.svg'"
               :alt="n"
           >
         </a>

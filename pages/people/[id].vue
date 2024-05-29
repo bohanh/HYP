@@ -1,10 +1,20 @@
 <script setup lang="ts">
-import Header from '~/components/header.vue';
 import {useRoute} from 'nuxt/app';
 import {breadcrumbs} from "~/composables/breadcrumbs";
+import {socials} from "~/composables/socials";
+
+const id = useRoute().params.id;
+const person = {
+  "name": await useFetch("http://localhost:3000/data.json").data.value?.people[parseInt(id, 10) - 1].name,
+  "description": await useFetch("http://localhost:3000/data.json").data.value?.people[parseInt(id, 10) - 1].description,
+  "socials": await useFetch("http://localhost:3000/data.json").data.value?.people[parseInt(id, 10) - 1].socials
+};
 
 const crumbs = breadcrumbs();
-crumbs.value.push("/people/" + useRoute().params.id);
+crumbs.value.push("/people/" + id);
+
+const {getSocial} = socials();
+
 </script>
 
 <template>
@@ -21,8 +31,20 @@ crumbs.value.push("/people/" + useRoute().params.id);
     <div id="person">
       <img
           id="person-photo"
-          src=""
+          :src="'/people/' + useRoute().params.id + '.jpg'"
       >
+      <div id="person-info">
+        <h2>{{ person.name }}</h2>
+        <div id="person-socials">
+          <NuxtLink v-for="(value, key) in person.socials" :key="key" :to="getSocial(value, key)">
+            <img
+                class="person-socials-icon"
+                :src="'/socials/colored/' + key + '.svg'"
+            >
+          </NuxtLink>
+        </div>
+        <p>{{ person.description }}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -45,7 +67,7 @@ crumbs.value.push("/people/" + useRoute().params.id);
   justify-content: flex-start;
   background-color: var(--background-color);
   padding-left: 60px;
-  padding-block: 10px;
+  padding-block: 20px;
   font-size: 80%;
   color: #999999
 }
@@ -57,11 +79,40 @@ crumbs.value.push("/people/" + useRoute().params.id);
 }
 
 #person {
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: 50px;
 }
 
+#person-photo {
+  width: 500px;
+  height: 500px;
+}
+
+#person-info {
+  width: 60%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+
+#person-socials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+
+}
+
+.person-socials-icon {
+  width: 25px;
+  height: 25px;
+  fill: var(--header-button-color);
+}
 
 </style>

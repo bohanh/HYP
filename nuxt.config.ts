@@ -10,12 +10,9 @@ const config: NuxtConfig = {
             ],
         }
     },
-    plugins: [
-        {src: '~/plugins/breadcrumbs.js'}
-    ],
     css: [
         '~/assets/css/global.css',
-    ],
+    ]
 }
 
 export default config

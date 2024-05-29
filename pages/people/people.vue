@@ -1,19 +1,5 @@
 <script setup lang="ts">
-import Header from "~/components/header.vue"
-import Footer from "~/components/footer.vue";
-
-const people = [
-  {"id": 1, "name": "name1", "description": "description1"},
-  {"id": 2, "name": "name2", "description": "description2"},
-  {"id": 3, "name": "name3", "description": "description3"},
-  {"id": 4, "name": "name4", "description": "description4"},
-  {"id": 5, "name": "name5", "description": "description5"},
-  {"id": 6, "name": "name6", "description": "description6"},
-  {"id": 7, "name": "name7", "description": "description7"},
-  {"id": 8, "name": "name8", "description": "description8"},
-  {"id": 9, "name": "name9", "description": "description9"},
-  {"id": 10, "name": "name10", "description": "description10"}
-];
+const people = await useFetch("http://localhost:3000/data.json").data.value?.people;
 </script>
 
 <template>
@@ -23,8 +9,7 @@ const people = [
       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
       Bibendum amet at molestie mattis.
     </div>
-    <div v-if="people.length === 0" class="person-card">No people found</div>
-    <div v-else class="person-cards">
+    <div class="person-cards">
       <NuxtLink v-for="person in people" :key=person.id class="person-card" :to="'/people/' + person.id">
         <img
             class="person-thumb"
@@ -79,6 +64,7 @@ const people = [
 .person-thumb {
   height: 300px;
   width: 300px;
+  object-fit: cover;
 }
 
 </style>
