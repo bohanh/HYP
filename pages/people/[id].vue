@@ -4,23 +4,50 @@ import {breadcrumbs} from "~/composables/breadcrumbs";
 import {socials} from "~/composables/socials";
 
 const id = useRoute().params.id;
-const person = {
-  "name": await useFetch("http://localhost:3000/data.json").data.value?.people[parseInt(id, 10) - 1].name,
-  "description": await useFetch("http://localhost:3000/data.json").data.value?.people[parseInt(id, 10) - 1].description,
-  "socials": await useFetch("http://localhost:3000/data.json").data.value?.people[parseInt(id, 10) - 1].socials,
-  "projects": await useFetch("http://localhost:3000/data.json").data.value?.people[parseInt(id, 10) - 1].projects,
-  "services": await useFetch("http://localhost:3000/data.json").data.value?.people[parseInt(id, 10) - 1].services
-};
-
-const projects = await useFetch("http://localhost:3000/data.json").data.value?.projects;
-const services = await useFetch("http://localhost:3000/data.json").data.value?.services;
-
-console.log(person.projects);
-
 const crumbs = breadcrumbs();
 crumbs.value.push("/people/" + id);
-
 const {getSocial} = socials();
+
+const file = await useFetch("http://localhost:3000/data.json");
+const people = file.data.value?.people;
+const projects = file.data.value?.projects;
+const services = file.data.value?.services;
+let person: any;
+for (let p of people) {
+  if (p.id.toString() === id) {
+    person = p;
+  }
+}
+
+function crumb(bread: string): string {
+  let breads: string [] = bread.split(' ');
+  if (breads.length > 1) {
+    switch (breads[0]) {
+      case 'people':
+        for (let person of people) {
+          if (person.id.toString() === breads[1]) {
+            return person.name;
+          }
+        }
+        break;
+      case 'projects':
+        for (let project of projects) {
+          if (project.id.toString() === breads[1]) {
+            return project.name;
+          }
+        }
+        break;
+      case 'services':
+        for (let service of services) {
+          if (service.id.toString() === breads[1]) {
+            return service.name;
+          }
+        }
+    }
+  }
+  return bread;
+}
+
 </script>
 
 <template>
@@ -28,11 +55,11 @@ const {getSocial} = socials();
     <div class="breadcrumbs">
       <div class="breadcrumb" v-for="breadcrumb of crumbs.slice(0, -1)">
         <NuxtLink :to="breadcrumb" style="margin:0; text-decoration: underline;color: #999999;">
-          {{ breadcrumb.replace(/^\/|\/$/g, '').replace(/\//g, ' ') }}
+          {{ crumb(breadcrumb.replace(/^\/|\/$/g, '').replace(/\//g, ' ')) }}
         </NuxtLink>
         <p style="margin: 0;margin-inline: 5px"> > </p>
       </div>
-      <p style="margin: 0">{{ crumbs.at(-1)!.replace(/^\/|\/$/g, '').replace(/\//g, ' ') }}</p>
+      <p style="margin: 0">{{ crumb(crumbs.at(-1)!.replace(/^\/|\/$/g, '').replace(/\//g, ' ')) }}</p>
     </div>
     <div id="person">
       <img
@@ -76,6 +103,7 @@ const {getSocial} = socials();
   justify-content: flex-start;
   font-family: Futura;
   font-size: 15pt;
+  overflow-x: hidden;
 }
 
 .breadcrumbs {

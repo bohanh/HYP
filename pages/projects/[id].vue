@@ -2,16 +2,249 @@
 import Header from "~/components/header.vue"
 import {breadcrumbs} from "~/composables/breadcrumbs";
 import {useRoute} from "nuxt/app";
+import {socials} from "~/composables/socials";
 
+const id = useRoute().params.id;
 const crumbs = breadcrumbs();
-crumbs.value.push("/projects/" + useRoute().params.id);
+crumbs.value.push("/projects/" + id);
+
+const file = await useFetch("http://localhost:3000/data.json");
+const people = file.data.value?.people;
+const projects = file.data.value?.projects;
+const services = file.data.value?.services;
+let project: any;
+for (let p of projects) {
+  if (p.id.toString() === id) {
+    project = p;
+  }
+}
+const bgImageStyle = `background-image: url('/projects/${id}.jpg');')`;
+
+function crumb(bread: string): string {
+  let breads: string [] = bread.split(' ');
+  if (breads.length > 1) {
+    switch (breads[0]) {
+      case 'people':
+        for (let person of people) {
+          if (person.id.toString() === breads[1]) {
+            return person.name;
+          }
+        }
+        break;
+      case 'projects':
+        for (let project of projects) {
+          if (project.id.toString() === breads[1]) {
+            return project.name;
+          }
+        }
+        break;
+      case 'services':
+        for (let service of services) {
+          if (service.id.toString() === breads[1]) {
+            return service.name;
+          }
+        }
+    }
+  }
+  return bread;
+}
+
+function getLeader(): string {
+  for (let person of people) {
+    if (person.id === project.id) {
+      return person.name;
+    }
+  }
+  return "";
+}
+
+function shuffle(): any[] {
+  if (projects.length < 3) {
+    return projects;
+  }
+  let index = Array.from({length: projects.length}, (_, index) => index);
+  for (let i = index.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [index[i], index[j]] = [index[j], index[i]];
+  }
+  return [projects[index[0]], projects[index[1]], projects[index[2]]];
+}
+
 </script>
 
 <template>
   <Header/>
-  <div>Project {{$route.params.id}}</div>
+  <div class="project-container">
+    <div class="breadcrumbs">
+      <div class="breadcrumb" v-for="breadcrumb of crumbs.slice(0, -1)">
+        <NuxtLink :to="breadcrumb" style="margin:0; text-decoration: underline;color: #999999;">
+          {{ crumb(breadcrumb.replace(/^\/|\/$/g, '').replace(/\//g, ' ')) }}
+        </NuxtLink>
+        <p style="margin: 0;margin-inline: 5px"> > </p>
+      </div>
+      <p style="margin: 0">{{ crumb(crumbs.at(-1)!.replace(/^\/|\/$/g, '').replace(/\//g, ' ')) }}</p>
+    </div>
+    <div id="project" :style="bgImageStyle">
+      <div id="project-texts">
+        <h2 style="color: var(--header-button-color)">{{ project.name }}</h2>
+        <p style="font-size: 80%">{{ project.description }}</p>
+      </div>
+    </div>
+    <div id="leader">
+      <div id="leader-left">
+        <img
+            id="leader-image"
+            :src="'/people/' + project.id + '.jpg'"
+        >
+        <h2>{{ getLeader() }}</h2>
+        <h>{{ project.role }}</h>
+        <NuxtLink :to="'/people/' + project.leader" class="read-more">Read more</NuxtLink>
+      </div>
+      <p style="width: 70%">{{ project.longDes.repeat(50) }}</p>
+    </div>
+    <div id="more">
+      <h2 style="color: var(--header-button-color)">OTHER PROJECTS</h2>
+      <div id="projects">
+        <NuxtLink v-for="project in shuffle()" :key="project.id" class="project-card" :to="'/projects/' + project.id">
+          <h2 class="violet-text">
+            <NuxtLink :to="'/projects/' + project.id">{{ project.name }}</NuxtLink>
+          </h2>
+          <p>{{ project.description }}</p>
+          <img
+              class="project-thumb"
+              :src="'/projects/' + project.id + '.jpg'"
+              :alt="'Photo of ' + project.name"
+          />
+        </NuxtLink>
+      </div>
+    </div>
+  </div>
 </template>
 
 <style scoped>
+.project-container {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  font-family: Futura;
+  font-size: 15pt;
+  overflow-x: hidden;
+}
 
+.breadcrumbs {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 60px;
+  padding-block: 20px;
+  font-size: 80%;
+  color: #999999
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#project {
+  width: 100%;
+  aspect-ratio: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  background-size: cover;
+  padding-right: 5%;
+}
+
+#project-texts {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 25pt;
+  font-weight: bold;
+  color: white;
+}
+
+#leader {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-block: 50px;
+}
+
+#leader-left {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#leader-image {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.read-more {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #8e44ad;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+  border: 2px solid #8e44ad; /* Viola */
+}
+
+#more {
+  width: 100%;
+  padding-top: 25px;
+  padding-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--accent-color);
+}
+
+#projects {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-card {
+  margin: 20px;
+  padding: 20px;
+  width: calc(33.333% - 40px);
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
+  cursor: pointer; /* Aggiunto stile cursore */
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
+}
+
+.project-thumb {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
 </style>
