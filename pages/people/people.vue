@@ -1,5 +1,9 @@
 <script setup lang="ts">
-const people = await useFetch("http://localhost:3000/data.json").data.value?.people;
+import {Person} from "~/model/Person";
+import {assignPeople} from "~/utils";
+
+let { data: data_people } = await useFetch("/api/people");
+const people: Person[] = assignPeople(JSON.parse(data_people.value!.people));
 </script>
 
 <template>

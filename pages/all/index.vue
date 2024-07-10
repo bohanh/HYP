@@ -1,62 +1,17 @@
 <script setup lang="ts">
 import {breadcrumbs} from "~/composables/breadcrumbs";
+import {assignProjects, assignServices} from "~/utils";
+import type {Project} from "~/model/Project";
+import type {Service} from "~/model/Service";
 
 const crumbs = breadcrumbs();
 crumbs.value = ["/all"];
 
-interface Project {
-  id: number;
-  name: string;
-  description: string;
-  longDes: string;
-}
+let { data: data_projects } = await useFetch("/api/projects");
+let { data: data_services } = await useFetch("/api/services");
 
-const projects: Project[] = [
-  {
-    id: 1,
-    name: "Project 1",
-    description: "Brief description of Project 1.",
-    longDes: "Detailed description of Project 1.",
-  },
-  {
-    id: 2,
-    name: "Project 2",
-    description: "Brief description of Project 2.",
-    longDes: "Detailed description of Project 2.",
-  },
-];
-
-const goToProject = (projectId: number) => {
-  // Redirect to the project page based on projectId
-};
-
-
-interface Service {
-  id: number;
-  name: string;
-  description: string;
-  longDes: string;
-}
-
-const services: Service[] = [
-  {
-    id: 1,
-    name: "Service 1",
-    description: "Brief description of Service 1.",
-    longDes: "Detailed description of Service 1.",
-  },
-  {
-    id: 2,
-    name: "Service 2",
-    description: "Brief description of Service 2.",
-    longDes: "Detailed description of Service 2.",
-  },
-];
-
-const goToService = (serviceId: number) => {
-  // Redirect to the project page based on projectId
-};
-
+const projects: Project[] = assignProjects(JSON.parse(data_projects.value!.projects));
+const services: Service[] = assignServices(JSON.parse(data_services.value!.services));
 </script>
 
 <template>
@@ -68,7 +23,7 @@ const goToService = (serviceId: number) => {
       <!-- Preview of first two projects -->
       <div v-if="projects.length === 0" class="project-card">No projects found</div>
       <div v-else class="project-cards">
-        <div v-for="project in projects.slice(0, 2)" :key="project.id" class="project-card" @click="goToProject(project.id)">
+        <div v-for="project in projects.slice(0, 2)" :key="project.id" class="project-card">
           <h2 class="violet-text"><NuxtLink :to="'/projects/' + project.id">{{ project.name }}</NuxtLink></h2>
           <p>{{ project.description }}</p>
           <img
@@ -88,7 +43,7 @@ const goToService = (serviceId: number) => {
       <!-- Preview of first two services -->
       <div v-if="services.length === 0" class="service-card">No services found</div>
       <div v-else class="service-cards">
-        <div v-for="service in services.slice(0, 2)" :key="service.id" class="service-card" @click="goToService(service.id)">
+        <div v-for="service in services.slice(0, 2)" :key="service.id" class="service-card">
           <h2 class="violet-text"><NuxtLink :to="'/services/' + service.id">{{ service.name }}</NuxtLink></h2>
           <p>{{ service.description }}</p>
           <img
@@ -105,18 +60,6 @@ const goToService = (serviceId: number) => {
 
 
 <style scoped>
-.content-section {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  gap: 5px; /* Add some gap between the two sections */
-  padding: 50px 20px; /* Adjust padding as necessary */
-}
-
-.half {
-  width: 45%; /* Adjust the width as needed to ensure they fit nicely side by side */
-}
-
 .container {
   display: flex;
   flex-direction: column;

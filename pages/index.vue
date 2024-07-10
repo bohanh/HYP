@@ -1,25 +1,21 @@
 <script setup lang="ts">
 import {breadcrumbs} from "~/composables/breadcrumbs";
+import {assignProjects} from "~/utils";
+import type {Project} from "~/model/Project";
 
 const crumbs = breadcrumbs();
 crumbs.value.length = 0;
 
-const latestProject = {
-  "id": 1,
-  "name": "Latest project",
-  "description": "Rhoncus morbi et augue nec, in id ullamcorper at sit. Condimentum sit nunc in eros scelerisque sed. Commodo in viverra nunc, ullamcorper ut. Non, amet, aliquet scelerisque nullam sagittis, pulvinar. Fermentum scelerisque sit consectetur hac mi. Mollis leo eleifend ultricies purus iaculis.",
-  "url": "/center/vonecia-carswell-0aMMMUjiiEQ-unsplash-1536x1024.jpg",
-}
+let { data: data_projects } = await useFetch("/api/projects");
+const latestProject: Project = assignProjects(JSON.parse(data_projects.value!.projects))[0];
 
+const bgImageStyle = `background-image: url('/projects/${latestProject.id}.jpg')`;
 const missions = [
   {"icon": "sentiment_satisfied", "number": "250+", "name": "Women Helped"},
   {"icon": "content_copy", "number": "20+", "name": "Completed Projects"},
   {"icon": "local_pizza", "number": "1.8K+", "name": "Available Resources"},
   {"icon": "group", "number": "11K+", "name": "Donors"},
 ]
-
-const bgImageStyle = `background-image: url('${latestProject.url}')`;
-
 const history = [
   {
     "title": "point 1",

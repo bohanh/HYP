@@ -1,34 +1,16 @@
 <script setup lang="ts">
 import {breadcrumbs} from "~/composables/breadcrumbs";
+import {Person} from "~/model/Person";
+import {assignPeople} from "~/utils";
 
 const crumbs = breadcrumbs();
 crumbs.value = ["/people"];
 
-const people = [
-  {"id": 1, "name": "name1", "description": "description1"},
-  {"id": 2, "name": "name2", "description": "description2"},
-  {"id": 3, "name": "name3", "description": "description3"},
-  {"id": 4, "name": "name4", "description": "description4"},
-  {"id": 5, "name": "name5", "description": "description5"},
-  {"id": 6, "name": "name6", "description": "description6"},
-  {"id": 7, "name": "name7", "description": "description7"},
-  {"id": 8, "name": "name8", "description": "description8"},
-  {"id": 9, "name": "name9", "description": "description9"},
-  {"id": 10, "name": "name10", "description": "description10"},
-  {"id": 11, "name": "name11", "description": "description11"},
-  {"id": 12, "name": "name12", "description": "description12"},
-  {"id": 13, "name": "name13", "description": "description13"},
-  {"id": 14, "name": "name14", "description": "description14"},
-  {"id": 15, "name": "name15", "description": "description15"},
-  {"id": 16, "name": "name16", "description": "description16"},
-  {"id": 17, "name": "name17", "description": "description17"},
-  {"id": 18, "name": "name18", "description": "description18"},
-  {"id": 19, "name": "name19", "description": "description19"},
-  {"id": 20, "name": "name20", "description": "description20"}
-];
+let {data: data_people} = await useFetch("/api/people");
+const people: Person[] = assignPeople(JSON.parse(data_people.value!.people));
 
 // Suddividi l'array delle persone in gruppi di 4 per riga
-let peopleRows = [];
+let peopleRows: Person[][] = [];
 for (let i = 0; i < people.length; i += 4) {
   peopleRows.push(people.slice(i, i + 4));
 }
@@ -98,7 +80,7 @@ for (let i = 0; i < people.length; i += 4) {
 }
 
 .person-card {
-  width: 23%; /* Regola la larghezza per mostrare 4 persone per riga */
+  width: 23%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   position: relative;
   overflow: hidden;
@@ -111,28 +93,28 @@ for (let i = 0; i < people.length; i += 4) {
 }
 
 .person-name, .person-description {
-  color: #000000; /* Nero */
-  font-weight: normal; /* Rimuove il grassetto */
+  color: #000000;
+  font-weight: normal;
 }
 
 .see-cv {
   position: absolute;
   bottom: 0;
   left: 0;
-  width: calc(100% - 20px); /* Riduce la larghezza */
-  background-color: #ffffff; /* Bianco */
-  color: #8e44ad; /* Viola */
-  padding: 6px 0; /* Riduce il padding */
-  border: 2px solid #8e44ad; /* Viola */
+  width: calc(100% - 20px);
+  background-color: #ffffff;
+  color: #8e44ad;
+  padding: 6px 0;
+  border: 2px solid #8e44ad;
   text-decoration: none;
   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
   cursor: pointer;
 }
 
 .see-cv:hover {
-  background-color: #8e44ad; /* Viola */
-  color: #ffffff; /* Bianco */
-  border-color: #8e44ad; /* Viola */
+  background-color: #8e44ad;
+  color: #ffffff;
+  border-color: #8e44ad;
 }
 
 </style>

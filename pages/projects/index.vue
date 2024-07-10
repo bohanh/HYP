@@ -1,52 +1,13 @@
 <script setup lang="ts">
 import {breadcrumbs} from "~/composables/breadcrumbs";
+import {assignProjects} from "~/utils";
+import type {Project} from "~/model/Project";
 
 const crumbs = breadcrumbs();
 crumbs.value = ["/projects"];
 
-interface Project {
-  id: number;
-  name: string;
-  description: string;
-  longDes: string;
-}
-
-const projects: Project[] = [
-  {
-    id: 1,
-    name: "Project 1",
-    description: "Brief description of Project 1.",
-    longDes: "Detailed description of Project 1.",
-  },
-  {
-    id: 2,
-    name: "Project 2",
-    description: "Brief description of Project 2.",
-    longDes: "Detailed description of Project 2.",
-  },
-  {
-    id: 3,
-    name: "Project 3",
-    description: "Brief description of Project 3.",
-    longDes: "Detailed description of Project 3.",
-  },
-  {
-    id: 4,
-    name: "Project 4",
-    description: "Brief description of Project 4.",
-    longDes: "Detailed description of Project 4.",
-  },
-  {
-    id: 5,
-    name: "Project 5",
-    description: "Brief description of Project 5.",
-    longDes: "Detailed description of Project 5.",
-  },
-];
-
-const goToProject = (projectId: number) => {
-  // Redirect to the project page based on projectId
-};
+let { data: data_projects } = await useFetch("/api/projects");
+const projects: Project[] = assignProjects(JSON.parse(data_projects.value!.projects));
 </script>
 <template>
   <div class="container">
@@ -56,7 +17,7 @@ const goToProject = (projectId: number) => {
     </div>
     <div v-if="projects.length === 0" class="project-card">No projects found</div>
     <div v-else class="project-cards">
-      <div v-for="project in projects" :key="project.id" class="project-card" @click="goToProject(project.id)">
+      <div v-for="project in projects" :key="project.id" class="project-card">
         <h2 class="violet-text"><NuxtLink :to="'/projects/' + project.id">{{ project.name }}</NuxtLink></h2>
         <p>{{ project.description }}</p>
         <img
@@ -114,7 +75,7 @@ const goToProject = (projectId: number) => {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
   text-align: center;
-  cursor: pointer; /* Aggiunto stile cursore */
+  cursor: pointer;
 }
 
 .project-card:hover {
@@ -151,7 +112,7 @@ p {
   border-radius: 5px;
   text-decoration: none;
   transition: background-color 0.3s, color 0.3s;
-  border: 2px solid #8e44ad; /* Viola */
+  border: 2px solid #8e44ad;
 }
 
 .read-more:hover {

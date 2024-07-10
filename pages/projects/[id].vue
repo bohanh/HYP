@@ -2,22 +2,38 @@
 import Header from "~/components/header.vue"
 import {breadcrumbs} from "~/composables/breadcrumbs";
 import {useRoute} from "nuxt/app";
-import {socials} from "~/composables/socials";
+import {Person} from "~/model/Person";
+import {assignPeople, assignProjects, assignServices} from "~/utils";
+import type {Project} from "~/model/Project";
+import type {Service} from "~/model/Service";
 
 const id = useRoute().params.id;
 const crumbs = breadcrumbs();
-crumbs.value.push("/projects/" + id);
+const crumb0 = "/projects/" + id;
+if (crumb0 !== crumbs.value[crumbs.value.length - 1]) {
+  crumbs.value.push(crumb0);
+}
 
-const file = await useFetch("http://localhost:3000/data.json");
-const people = file.data.value?.people;
-const projects = file.data.value?.projects;
-const services = file.data.value?.services;
-let project: any;
+let { data: data_people } = await useFetch("/api/people");
+let { data: data_projects } = await useFetch("/api/projects");
+let { data: data_services } = await useFetch("/api/services");
+
+const people: Person[] = assignPeople(JSON.parse(data_people.value!.people));
+const projects: Project[] = assignProjects(JSON.parse(data_projects.value!.projects));
+const services: Service[] = assignServices(JSON.parse(data_services.value!.services));
+let project: Project;
 for (let p of projects) {
   if (p.id.toString() === id) {
     project = p;
   }
 }
+let leader: Person;
+for (let p of people) {
+  if (p.id === project!.leader) {
+    leader = p;
+  }
+}
+
 const bgImageStyle = `background-image: url('/projects/${id}.jpg');')`;
 
 function crumb(bread: string): string {
@@ -49,25 +65,24 @@ function crumb(bread: string): string {
   return bread;
 }
 
-function getLeader(): string {
-  for (let person of people) {
-    if (person.id === project.id) {
-      return person.name;
+function shuffle(): any[] {
+  let project3;
+  if (projects.length < 4) {
+    project3 = projects;
+  } else {
+    let index = Array.from({length: projects.length}, (_, index) => index);
+    for (let i = index.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [index[i], index[j]] = [index[j], index[i]];
+    }
+    project3 = [projects[index[0]], projects[index[1]], projects[index[2]], projects[index[3]]];
+  }
+  for (let index in project3) {
+    if (project3[index].id.toString() === project.id.toString()) {
+      project3.splice(parseInt(index, 10), 1);
     }
   }
-  return "";
-}
-
-function shuffle(): any[] {
-  if (projects.length < 3) {
-    return projects;
-  }
-  let index = Array.from({length: projects.length}, (_, index) => index);
-  for (let i = index.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [index[i], index[j]] = [index[j], index[i]];
-  }
-  return [projects[index[0]], projects[index[1]], projects[index[2]]];
+  return project3.slice(0, 3);
 }
 
 </script>
@@ -95,9 +110,10 @@ function shuffle(): any[] {
         <img
             id="leader-image"
             :src="'/people/' + project.id + '.jpg'"
+            :alt="'photo of the leader of project ' + project.name + ', ' + leader.name"
         >
-        <h2>{{ getLeader() }}</h2>
-        <h>{{ project.role }}</h>
+        <h2>{{ leader.name }}</h2>
+        <p>{{ project.role }}</p>
         <NuxtLink :to="'/people/' + project.leader" class="read-more">Read more</NuxtLink>
       </div>
       <p style="width: 70%">{{ project.longDes.repeat(50) }}</p>
@@ -203,7 +219,7 @@ function shuffle(): any[] {
   border-radius: 5px;
   text-decoration: none;
   transition: background-color 0.3s, color 0.3s;
-  border: 2px solid #8e44ad; /* Viola */
+  border: 2px solid #8e44ad;
 }
 
 #more {
@@ -233,7 +249,7 @@ function shuffle(): any[] {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
   text-align: center;
-  cursor: pointer; /* Aggiunto stile cursore */
+  cursor: pointer;
 }
 
 .project-card:hover {

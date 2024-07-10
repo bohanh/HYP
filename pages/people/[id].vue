@@ -1,18 +1,26 @@
 <script setup lang="ts">
 import {useRoute} from 'nuxt/app';
 import {breadcrumbs} from "~/composables/breadcrumbs";
-import {socials} from "~/composables/socials";
+import {Person} from "~/model/Person"
+import type {Project} from "~/model/Project";
+import type {Service} from "~/model/Service";
+import {assignPeople, assignProjects, assignServices} from "~/utils";
 
 const id = useRoute().params.id;
 const crumbs = breadcrumbs();
-crumbs.value.push("/people/" + id);
-const {getSocial} = socials();
+const crumb0 = "/people/" + id;
+if (crumb0 !== crumbs.value[crumbs.value.length - 1]) {
+  crumbs.value.push(crumb0);
+}
 
-const file = await useFetch("http://localhost:3000/data.json");
-const people = file.data.value?.people;
-const projects = file.data.value?.projects;
-const services = file.data.value?.services;
-let person: any;
+let { data: data_people } = await useFetch("/api/people");
+let { data: data_projects } = await useFetch("/api/projects");
+let { data: data_services } = await useFetch("/api/services");
+
+const people: Person[] = assignPeople(JSON.parse(data_people.value!.people));
+const projects: Project[] = assignProjects(JSON.parse(data_projects.value!.projects));
+const services: Service[] = assignServices(JSON.parse(data_services.value!.services));
+let person: Person;
 for (let p of people) {
   if (p.id.toString() === id) {
     person = p;
@@ -65,14 +73,16 @@ function crumb(bread: string): string {
       <img
           id="person-photo"
           :src="'/people/' + useRoute().params.id + '.jpg'"
+          :alt="'photo of ' + person.name"
       >
       <div id="person-info">
         <h2>{{ person.name }}</h2>
         <div id="person-socials">
-          <NuxtLink v-for="(value, key) in person.socials" :to="getSocial(value, key)">
+          <NuxtLink v-for="key in Object.keys(person.socials)" :to="person.socials.getSocial(key)" external target="_blank">
             <img
                 class="person-socials-icon"
                 :src="'/socials/colored/' + key + '.svg'"
+                :alt="'link to ' + key + ' of ' + person.name"
             >
           </NuxtLink>
         </div>
@@ -87,6 +97,7 @@ function crumb(bread: string): string {
           <img
               class="project-img"
               :src="'/projects/' + project.id + '.jpg'"
+              :alt="'photo of ' + project.name"
           >
         </NuxtLink>
       </div>

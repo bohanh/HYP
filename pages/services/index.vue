@@ -1,3 +1,15 @@
+<script setup lang="ts">
+import {breadcrumbs} from "~/composables/breadcrumbs";
+import {assignServices} from "~/utils";
+import type {Service} from "~/model/Service";
+
+const crumbs = breadcrumbs();
+crumbs.value = ["/services"];
+
+let { data: data_services } = await useFetch("/api/services");
+const services: Service[] = assignServices(JSON.parse(data_services.value!.services));
+</script>
+
 <template>
   <div class="container">
     <div class="header">SERVICES</div>
@@ -16,7 +28,6 @@
           <div class="service-info" :class="{ 'text-right': index % 2 === 0 }">
             <h2 class="service-name">{{ service.name }}</h2>
             <p class="service-description">{{ service.description }}</p>
-            <!-- Rimozione del link di collegamento -->
             <div class="see-more">See more</div>
           </div>
         </div>
@@ -24,46 +35,6 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import {breadcrumbs} from "~/composables/breadcrumbs";
-
-const crumbs = breadcrumbs();
-crumbs.value = ["/services"];
-
-const services = [
-  {
-    id: 1,
-    name: "Service One",
-    description: "Short description of service one.",
-    longDes: "Long description of service one.",
-  },
-  {
-    id: 2,
-    name: "Service Two",
-    description: "Short description of service two.",
-    longDes: "Long description of service two.",
-  },
-  {
-    id: 3,
-    name: "Service Three",
-    description: "Short description of service three.",
-    longDes: "Long description of service three.",
-  },
-  {
-    id: 4,
-    name: "Service Four",
-    description: "Short description of service four.",
-    longDes: "Long description of service four.",
-  },
-  {
-    id: 5,
-    name: "Service Five",
-    description: "Short description of service five.",
-    longDes: "Long description of service five.",
-  }
-];
-</script>
 
 <style scoped>
 .container {

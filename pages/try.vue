@@ -1,11 +1,14 @@
 <script setup lang="ts">
-const people: JSON = await useFetch("http://localhost:3000/data.json").data.value?.people;
+import type {Person} from "~/model/Person";
+
+let { data } = await useFetch("/api/people");
+const people: Person[] = JSON.parse(data.value!.people);
 </script>
 
 <template>
 
   <div>
-    {{ people}}
+    {{ people }}
   </div>
 
 </template>

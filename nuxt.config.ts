@@ -1,6 +1,6 @@
 import type {NuxtConfig} from '@nuxt/types'
 
-const config: NuxtConfig = {
+export default defineNuxtConfig({
     app: {
         head: {
             title: 'Women Center',
@@ -13,6 +13,4 @@ const config: NuxtConfig = {
     css: [
         '~/assets/css/global.css',
     ]
-}
-
-export default config
+});

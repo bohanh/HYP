@@ -60,27 +60,27 @@ const submitForm = () => {
 };
 
 // Function to validate Name input
-function validateName(newValue) {
+function validateName(newValue: string) {
   nameError.value = /\d/.test(newValue) ? "You can't write numbers here" : '';
 }
 
 // Function to validate Surname input
-function validateSurname(newValue) {
+function validateSurname(newValue: string) {
   surnameError.value = /\d/.test(newValue) ? "You can't write numbers here" : '';
 }
 
 // Function to validate Label Name input
-function validateLabelName(newValue) {
+function validateLabelName(newValue: string) {
   labelNameError.value = /\d/.test(newValue) ? "You can't write numbers here" : '';
 }
 
 // Function to validate Card Number input
-function validateCardNumber(newValue) {
+function validateCardNumber(newValue: string) {
   cardNumberError.value = /[a-zA-Z]/.test(newValue) ? "You can't write letters here" : '';
 }
 
 // Function to validate Expiry Date input
-function validateExpiryDate(newValue) {
+function validateExpiryDate(newValue: string) {
   expiryDateError.value = !/^\d{2}\/\d{4}$/.test(newValue) ? "Expiry date must be in the format MM/YYYY" : '';
 }
 </script>
