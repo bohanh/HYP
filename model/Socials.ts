@@ -4,11 +4,11 @@ export class Socials {
     instagram: string;
     facebook: string;
 
-    constructor(s1: string = "", s2: string = "", s3: string = "", s4: string = "") {
-        this.linkedin = s1;
-        this.twitter = s2;
-        this.instagram = s3;
-        this.facebook = s4;
+    constructor(linkedin: string = "", twitter: string = "", instagram: string = "", facebook: string = "") {
+        this.linkedin = linkedin;
+        this.twitter = twitter;
+        this.instagram = instagram;
+        this.facebook = facebook;
     }
 
     getSocial(type: string): string {

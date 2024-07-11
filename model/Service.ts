@@ -9,7 +9,6 @@ export class Service {
     words: string;
     testimonials: Testimonial[];
 
-
     constructor(id: number, name: string, description: string = "", longDes: string = "", sections: string[] = [], words: string = "", testimonials: Testimonial[] = []) {
         this.id = id;
         this.name = name;

@@ -2,6 +2,7 @@
 import {breadcrumbs} from "~/composables/breadcrumbs";
 import {Person} from "~/model/Person";
 import {assignPeople} from "~/utils";
+import {PersonService} from "~/server/database/person-service";
 
 const crumbs = breadcrumbs();
 crumbs.value = ["/people"];
@@ -36,7 +37,7 @@ for (let i = 0; i < people.length; i += 4) {
             <h2 class="person-name">{{ person.name }}</h2>
             <p class="person-description">{{ person.description }}</p>
           </NuxtLink>
-          <router-link :to="'/cv/' + person.id" class="see-cv">See CV</router-link>
+<!--          <router-link :to="'/cv/' + person.id" class="see-cv">See CV</router-link>-->
         </div>
       </div>
     </div>
