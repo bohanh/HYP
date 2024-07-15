@@ -17,16 +17,15 @@ const projects: Project[] = assignProjects(JSON.parse(data_projects.value!.proje
     </div>
     <div v-if="projects.length === 0" class="project-card">No project found</div>
     <div v-else class="project-cards">
-      <div v-for="project in projects" :key="project.id" class="project-card">
-        <h2 class="violet-text"><NuxtLink :to="'/projects/' + project.id">{{ project.name }}</NuxtLink></h2>
+      <NuxtLink v-for="project in projects" :key="project.id" class="project-card" :to="'/projects/' + project.id" tabindex="0">
+        <h2 class="violet-text">{{ project.name }}</h2>
         <p>{{ project.description }}</p>
         <img
           class="project-thumb"
           :src="'/projects/' + project.id + '.jpg'"
           :alt="'Photo of ' + project.name"
         />
-        <NuxtLink :to="'/projects/' + project.id" class="read-more">Read more</NuxtLink>
-      </div>
+      </NuxtLink>
     </div>
   </div>
 </template>
@@ -70,12 +69,17 @@ const projects: Project[] = assignProjects(JSON.parse(data_projects.value!.proje
   margin: 20px;
   padding: 20px;
   width: calc(33.333% - 40px);
-  background-color: #ffffff;
-  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 20px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
   text-align: center;
   cursor: pointer;
+  gap: 10px;
+  text-decoration: none;
+  color: black;
 }
 
 .project-card:hover {
@@ -91,16 +95,15 @@ const projects: Project[] = assignProjects(JSON.parse(data_projects.value!.proje
 }
 
 .violet-text {
-  color: #8e44ad;
-}
-
-h2 {
+  font-size: 200%;
+  color: var(--header-color);
   margin: 0 0 10px;
 }
 
+
 p {
   margin: 0;
-  font-size: 0.875rem;
+  font-size: 100%;
 }
 
 .read-more {

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import "assets/css/global.css"
+import {useRoute} from "#vue-router";
 
 const landmarks = ["About us", "People", "Projects", "Services", "All activities", "Contact"];
 
@@ -7,12 +8,18 @@ const generateUrl = (name: string) => {
   return '/' + name.toLowerCase().split(" ")[0];
 };
 
+const route = useRoute();
+const currentPath = route.path;
+const isLandmarkActive = (name: string) => {
+  return generateUrl(name) === currentPath;
+};
+
 const socialLinks = ref({
-  "Youtube": "https://www.youtube.com/",
-  "Facebook": "https://www.facebook.com/",
-  "Twitter": "https://twitter.com/",
-  "Instagram": "https://www.instagram.com/",
-  "LinkedIn": "https://www.linkedin.com/"
+  "youtube": "https://www.youtube.com/",
+  "facebook": "https://www.facebook.com/",
+  "twitter": "https://twitter.com/",
+  "instagram": "https://www.instagram.com/",
+  "linkedIn": "https://www.linkedin.com/"
 })
 </script>
 
@@ -25,16 +32,27 @@ const socialLinks = ref({
           alt="Logo"
       >
       <div id="landmarks">
-        <NuxtLink v-for="l in landmarks" class="landmark" :to="generateUrl(l)">{{ l }}</NuxtLink>
+        <NuxtLink
+            v-for="l in landmarks"
+            :key="l"
+            :to="generateUrl(l)"
+            class="landmark"
+            :class="{ 'active': isLandmarkActive(l) }"
+            tabindex="0"
+        >
+          {{ l }}
+        </NuxtLink>
       </div>
       <div id="socials">
-        <a v-for="(l, n) in socialLinks" class="logo-socials" :href="l" target="_blank">
-          <img
-              class="logo-socials"
-              :src="'/socials/white/' + n + '.svg'"
-              :alt="n"
-          >
-        </a>
+        <div v-for="(l, n) in socialLinks" class="logo-socials-container">
+          <a class="logo-socials" :href="l" target="_blank" tabindex="0">
+            <img
+                class="logo-socials"
+                :src="'/socials/white/' + n + '.svg'"
+                :alt="n"
+            >
+          </a>
+        </div>
       </div>
     </div>
     <div id="copyrights">
@@ -79,8 +97,14 @@ const socialLinks = ref({
 
 .landmark {
   font-size: 100%;
-  color: inherit;
+  color: black;
   text-decoration: none;
+  transition: color 0.3s;
+  cursor: pointer;
+}
+
+.landmark:hover {
+  color: white;
 }
 
 #socials {
@@ -88,11 +112,18 @@ const socialLinks = ref({
   align-items: center;
   justify-content: space-between;
   gap: 20px;
+  cursor: pointer;
 }
 
 #logo {
   height: 40px;
   margin: 10px;
+}
+
+.logo-socials-container {
+  color: transparent;
+  border: none;
+  background-color: transparent;
 }
 
 .logo-socials {

@@ -92,7 +92,7 @@ function shuffle(): any[] {
   <div class="project-container">
     <div class="breadcrumbs">
       <div class="breadcrumb" v-for="breadcrumb of crumbs.slice(0, -1)">
-        <NuxtLink :to="breadcrumb" style="margin:0; text-decoration: underline;color: #999999;">
+        <NuxtLink :to="breadcrumb" style="margin:0; text-decoration: underline;color: #999999;" tabindex="0">
           {{ crumb(breadcrumb.replace(/^\/|\/$/g, '').replace(/\//g, ' ')) }}
         </NuxtLink>
         <p style="margin: 0;margin-inline: 5px"> > </p>
@@ -113,16 +113,16 @@ function shuffle(): any[] {
             :alt="'photo of the leader of project ' + project.name + ', ' + leader.name"
         >
         <h2>{{ leader.name }}</h2>
-        <NuxtLink :to="'/people/' + project.leader" class="read-more">Read more</NuxtLink>
+        <NuxtLink :to="'/people/' + project.leader" class="read-more" tabindex="0">Read more</NuxtLink>
       </div>
       <p style="width: 70%">{{ project.longDes }}</p>
     </div>
     <div id="more">
-      <h2 style="color: var(--header-button-color)">OTHER PROJECTS</h2>
+      <h2 style="color: var(--header-button-color); text-decoration: none">OTHER PROJECTS</h2>
       <div id="projects">
-        <NuxtLink v-for="project in shuffle()" :key="project.id" class="project-card" :to="'/projects/' + project.id">
+        <NuxtLink v-for="project in shuffle()" :key="project.id" class="project-card" :to="'/projects/' + project.id" tabindex="0">
           <h2 class="violet-text">
-            <NuxtLink :to="'/projects/' + project.id">{{ project.name }}</NuxtLink>
+            {{ project.name }}
           </h2>
           <p>{{ project.description }}</p>
           <img
@@ -243,17 +243,26 @@ function shuffle(): any[] {
   margin: 20px;
   padding: 20px;
   width: calc(33.333% - 40px);
-  background-color: #ffffff;
-  border-radius: 10px;
+  background-color: white;
+  border-radius: 20px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
   text-align: center;
   cursor: pointer;
+  text-decoration: none;
+  color: black;
 }
 
 .project-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
+}
+
+.violet-text {
+  font-size: 180%;
+  color: var(--header-color);
+  margin: 0 0 10px;
+  text-decoration: none;
 }
 
 .project-thumb {

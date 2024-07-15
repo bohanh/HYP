@@ -62,7 +62,7 @@ function crumb(bread: string): string {
   <div class="person-container">
     <div class="breadcrumbs">
       <div class="breadcrumb" v-for="breadcrumb of crumbs.slice(0, -1)">
-        <NuxtLink :to="breadcrumb" style="margin:0; text-decoration: underline;color: #999999;">
+        <NuxtLink :to="breadcrumb" style="margin:0; text-decoration: underline;color: #999999;" tabindex="0">
           {{ crumb(breadcrumb.replace(/^\/|\/$/g, '').replace(/\//g, ' ')) }}
         </NuxtLink>
         <p style="margin: 0;margin-inline: 5px"> > </p>
@@ -78,19 +78,34 @@ function crumb(bread: string): string {
       <div id="person-info">
         <h2>{{ person.name }}</h2>
         <div id="person-socials">
-          <NuxtLink v-for="key in Object.keys(person.socials)" :to="person.socials.getSocial(key)" external target="_blank">
+          <NuxtLink v-for="key in Object.keys(person.socials)" :to="person.socials.getSocial(key)" external target="_blank" tabindex="0">
             <img
                 class="person-socials-icon"
                 :src="'/socials/colored/' + key + '.svg'"
                 :alt="'link to ' + key + ' of ' + person.name"
             >
-          </NuxtLink>
+          </NuxtLink  >
         </div>
         <p>{{ person.description }}</p>
       </div>
     </div>
     <div id="experiences">
-
+      <div v-for="experience in person.experiences" class="experience">
+        <div class="experience-title">
+          <span style="font-size: 150%; font-weight: bold">
+            {{experience.title}}
+          </span>
+          <span style="font-style: italic; color: gray">
+            {{experience.time}}
+          </span>
+        </div>
+        <span style="font-weight: bold">
+          {{experience.location}}
+        </span>
+        <span>
+          {{experience.description}}
+        </span>
+      </div>
     </div>
     <div id="projects">
       <div v-for="project in projects" class="project-container">
@@ -157,7 +172,7 @@ function crumb(bread: string): string {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: flex-start;
+  justify-content: flex-end;
 }
 
 #person-socials {
@@ -175,7 +190,30 @@ function crumb(bread: string): string {
 }
 
 #experiences {
-  
+  font-size: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 60%;
+  margin-right: 30%;
+  margin-block: 50px;
+  gap: 25px;
+}
+
+.experience {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.experience-title {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
 }
 
 #projects {

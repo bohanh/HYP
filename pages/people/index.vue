@@ -8,11 +8,6 @@ crumbs.value = ["/people"];
 
 let {data: data_people} = await useFetch("/api/people");
 const people: Person[] = assignPeople(JSON.parse(data_people.value!.people));
-
-let peopleRows: Person[][] = [];
-for (let i = 0; i < people.length; i += 4) {
-  peopleRows.push(people.slice(i, i + 4));
-}
 </script>
 
 <template>
@@ -22,22 +17,21 @@ for (let i = 0; i < people.length; i += 4) {
       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
       Bibendum amet at molestie mattis.
     </div>
-    <div v-if="peopleRows.length === 0" class="person-card">No people found</div>
+    <div v-if="people.length === 0" class="person-card">No people found</div>
     <div v-else class="person-cards">
-      <div v-for="(row, rowIndex) in peopleRows" :key="rowIndex" class="person-row">
-        <div v-for="person in row" :key="person.id" class="person-card">
-          <NuxtLink :to="'/people/' + person.id">
-            <img
-                class="person-thumb"
-                :src="'/people/' + person.id + '.jpg'"
-                :alt="'Photo of ' + person.name"
-            >
-            <h2 class="person-name">{{ person.name }}</h2>
-            <p class="person-description">{{ person.description }}</p>
-          </NuxtLink>
-<!--          <router-link :to="'/cv/' + person.id" class="see-cv">See CV</router-link>-->
+      <NuxtLink v-for="person in people" :key="person.id" class="person-card-container" :to="'/people/' + person.id"
+                tabindex="0">
+        <div class="person-card">
+          <img
+              class="person-thumb"
+              :src="'/people/' + person.id + '.jpg'"
+              :alt="'Photo of ' + person.name"
+          >
+          <span class="person-name">{{ person.name }}</span>
+          <span class="person-description">{{ person.description.substring(0, 120) + "..." }}</span>
         </div>
-      </div>
+        <!--          <router-link :to="'/cv/' + person.id" class="see-cv">See CV</router-link>-->
+      </NuxtLink>
     </div>
   </div>
 </template>
@@ -70,30 +64,62 @@ for (let i = 0; i < people.length; i += 4) {
 
 .person-cards {
   width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
 }
 
-.person-row {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
+.person-card-container {
+  width: 23%;
+  min-width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
 }
 
 .person-card {
-  width: 23%;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  aspect-ratio: 2/3;
   overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
+  text-decoration: none;
+  border-radius: 20px;
+  color: transparent;
+  background-color: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  border: none;
+  padding: 0;
+  gap: 10px;
 }
 
 .person-thumb {
-  height: 200px;
+  aspect-ratio: 1;
   width: 100%;
   object-fit: cover;
 }
 
-.person-name, .person-description {
-  color: #000000;
+.person-name {
+  color: black;
+  font-size: 120%;
+  font-weight: bold;
+  text-decoration: none;
+  padding-inline: 5%;
+  text-overflow: ellipsis;
+}
+
+.person-description {
+  display: block;
+  color: black;
   font-weight: normal;
+  text-decoration: none;
+  padding-inline: 5%;
 }
 
 .see-cv {
