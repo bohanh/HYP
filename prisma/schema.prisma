@@ -11,23 +11,25 @@ datasource db {
 }
 
 model Person {
-  id           Int           @id @default(autoincrement())
-  name         String
-  description  String
-  linkedin     String
-  twitter      String
-  instagram    String
-  facebook     String
-  experiences  Experience[]
-  projects     Project[]
-  testimonials Testimonial[]
+  id          Int          @id @default(autoincrement())
+  name        String
+  description String
+  linkedin    String
+  twitter     String
+  instagram   String
+  facebook    String
+  experiences Experience[]
+  projects    Project[]
 }
 
 model Experience {
-  id         Int    @id @default(autoincrement())
-  person     Person @relation(fields: [personId], references: [id])
-  personId   Int
-  experience String
+  id          Int    @id @default(autoincrement())
+  person      Person @relation(fields: [personId], references: [id])
+  personId    Int
+  title       String
+  location    String
+  time        String
+  description String
 }
 
 model Project {
@@ -37,14 +39,12 @@ model Project {
   longDes     String
   leader      Person @relation(fields: [leaderId], references: [id])
   leaderId    Int
-  role        String
 }
 
 model Service {
   id           Int           @id @default(autoincrement())
   name         String
   description  String
-  longDes      String
   sections     Section[]
   words        String
   testimonials Testimonial[]
@@ -58,7 +58,6 @@ model Section {
 }
 
 model Testimonial {
-  person    Person  @relation(fields: [personId], references: [id])
   personId  Int
   service   Service @relation(fields: [serviceId], references: [id])
   serviceId Int
@@ -66,4 +65,9 @@ model Testimonial {
   words     String
 
   @@id([personId, serviceId])
+}
+
+model TestimonialPerson {
+  id   Int    @id @default(autoincrement())
+  name String
 }

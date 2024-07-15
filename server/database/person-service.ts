@@ -1,6 +1,7 @@
 import {PrismaClient} from "@prisma/client";
 import {Person} from "~/model/Person"
 import {Socials} from "~/model/Socials";
+import {Experience} from "~/model/Experience";
 
 export class PersonService {
     prisma = new PrismaClient();
@@ -21,10 +22,22 @@ export class PersonService {
             await this.prisma.experience.create({
                 data: {
                     personId: person.id,
-                    experience: experience,
+                    title: experience.title,
+                    location: experience.location,
+                    time: experience.time,
+                    description: experience.description,
                 }
             })
         }
+    }
+
+    async addTestimonialPerson(id: number, name: string): Promise<void> {
+        await this.prisma.testimonialPerson.create({
+            data: {
+                id: id,
+                name: name,
+            }
+        })
     }
 
     async getPerson(id: number): Promise<Person> {
@@ -32,10 +45,10 @@ export class PersonService {
             where: {id: {equals: id}}
         }))!;
 
-        const experiences: string[] = (await this.prisma.experience.findMany({
+        const experiences: Experience[] = (await this.prisma.experience.findMany({
             where: {personId: {equals: id}},
-            select: {experience: true}
-        })).map(dict => dict['experience']);
+            select: {title: true, location: true, time: true, description: true}
+        })).map(dict => new Experience(dict['title'], dict['location'], dict['time'], dict['description']));
 
         const projects: number[] = (await this.prisma.project.findMany({
             where: {leaderId: {equals: id}},
@@ -51,6 +64,13 @@ export class PersonService {
         })).map(dict => dict['serviceId']);
 
         return this.assignPeople(person, experiences, projects, services);
+    }
+
+    async getTestimonialPerson(id: number): Promise<string> {
+        const person = await this.prisma.testimonialPerson.findFirst({
+            where: {id: {equals: id}}
+        });
+        return person!.name;
     }
 
     async getPeople(): Promise<Person[]> {
@@ -72,7 +92,7 @@ export class PersonService {
         twitter: string,
         instagram: string,
         facebook: string
-    }, experiences: string[], projects: number[], services: number[]): Person {
+    }, experiences: Experience[], projects: number[], services: number[]): Person {
         const socials: Socials = new Socials(person.linkedin, person.twitter, person.instagram, person.facebook);
         return new Person(person.id, person.name, person.description, socials, experiences, projects, services);
     }

@@ -56,11 +56,16 @@ function crumb(bread: string): string {
   return bread;
 }
 
-function getPersonName(id: number) {
-  for (let person of people) {
-    if (person.id.toString() === id.toString()) {
-      return person.name;
+async function getPersonName(id: number) {
+  if (id < 100) {
+    for (let person of people) {
+      if (person.id.toString() === id.toString()) {
+        return person.name;
+      }
     }
+  } else {
+    const { data: person_testimonial } = await useFetch("/api/people/" + id.toString());
+    return person_testimonial.value!.person;
   }
   return "----";
 }
@@ -109,7 +114,7 @@ function getPersonName(id: number) {
       <div id="testimonials">
         <div class="testimonial" v-for="testimonial of service.testimonials">
           <p>{{ testimonial.words }}</p>
-          <NuxtLink class="testimonial-person" :to="'/people/'+testimonial.id">
+          <NuxtLink v-if="testimonial.id < 100" class="testimonial-person" :to="'/people/'+testimonial.id">
             <img
                 class="testimonial-person-img"
                 :src="'/people/' + testimonial.id + '.jpg'"
@@ -120,6 +125,17 @@ function getPersonName(id: number) {
               <p>{{ testimonial.role }}</p>
             </div>
           </NuxtLink>
+          <div v-if="testimonial.id >= 100" class="testimonial-person">
+            <img
+                class="testimonial-person-img"
+                :src="'/people/' + testimonial.id + '.jpg'"
+                :alt="'photo of ' + getPersonName(testimonial.id)"
+            />
+            <div class="testimonial-person-info">
+              <p style="font-size: 120%">{{ getPersonName(testimonial.id) }}</p>
+              <p>{{ testimonial.role }}</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

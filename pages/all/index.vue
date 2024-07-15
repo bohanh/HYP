@@ -61,11 +61,13 @@ const services: Service[] = assignServices(JSON.parse(data_services.value!.servi
 
 <style scoped>
 .container {
+  width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   font-family: 'Futura', sans-serif;
+  padding: 25px;
   background-color: #f9f9f9;
 }
 

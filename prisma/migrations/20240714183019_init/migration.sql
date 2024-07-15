@@ -13,7 +13,10 @@ CREATE TABLE "Person" (
 CREATE TABLE "Experience" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "personId" INTEGER NOT NULL,
-    "experience" TEXT NOT NULL,
+    "title" TEXT NOT NULL,
+    "location" TEXT NOT NULL,
+    "time" TEXT NOT NULL,
+    "description" TEXT NOT NULL,
     CONSTRAINT "Experience_personId_fkey" FOREIGN KEY ("personId") REFERENCES "Person" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
@@ -24,7 +27,6 @@ CREATE TABLE "Project" (
     "description" TEXT NOT NULL,
     "longDes" TEXT NOT NULL,
     "leaderId" INTEGER NOT NULL,
-    "role" TEXT NOT NULL,
     CONSTRAINT "Project_leaderId_fkey" FOREIGN KEY ("leaderId") REFERENCES "Person" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
@@ -53,6 +55,5 @@ CREATE TABLE "Testimonial" (
     "words" TEXT NOT NULL,
 
     PRIMARY KEY ("personId", "serviceId"),
-    CONSTRAINT "Testimonial_personId_fkey" FOREIGN KEY ("personId") REFERENCES "Person" ("id") ON DELETE RESTRICT ON UPDATE CASCADE,
     CONSTRAINT "Testimonial_serviceId_fkey" FOREIGN KEY ("serviceId") REFERENCES "Service" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );

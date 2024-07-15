@@ -7,6 +7,7 @@ const crumbs = breadcrumbs();
 crumbs.value.length = 0;
 
 let { data: data_projects } = await useFetch("/api/projects");
+console.log(data_projects.value!.projects);
 const latestProject: Project = assignProjects(JSON.parse(data_projects.value!.projects))[0];
 
 const bgImageStyle = `background-image: url('/projects/${latestProject.id}.jpg')`;

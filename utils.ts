@@ -26,7 +26,7 @@ export function assignProjects(projects: Project[]): Project[] {
 }
 
 export function assignProject(project: Project): Project {
-    return new Project(project.id, project.name, project.description, project.longDes, project.leader, project.role);
+    return new Project(project.id, project.name, project.description, project.longDes, project.leader);
 }
 
 export function assignServices(services: Service[]) {
@@ -39,7 +39,7 @@ export function assignServices(services: Service[]) {
 
 export function assignService(service: Service) {
     let newTestimonials: Testimonial[] = assignTestimonials(service.testimonials);
-    return new Service(service.id, service.name, service.description, service.longDes, service.sections, service.words, newTestimonials);
+    return new Service(service.id, service.name, service.description, service.sections, service.words, newTestimonials);
 }
 
 export function assignTestimonials(testimonials: Testimonial[]): Testimonial[] {

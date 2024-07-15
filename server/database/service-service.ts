@@ -11,7 +11,6 @@ export class ServiceService {
                 id: service.id,
                 name: service.name,
                 description: service.description,
-                longDes: service.longDes,
                 words: service.words,
             }
         });
@@ -36,9 +35,9 @@ export class ServiceService {
     }
 
     async getService(id: number): Promise<Service> {
-        const service = await this.prisma.service.findFirst({
+        const service = (await this.prisma.service.findFirst({
             where: {id: {equals: id}}
-        });
+        }))!;
         const sections: string[] = (await this.prisma.section.findMany({
             where: {serviceId: {equals: id}},
             select: {section: true}
@@ -69,7 +68,6 @@ export class ServiceService {
         id: number,
         name: string,
         description: string,
-        longDes: string,
         words: string
     }, sections: string[], testimonials: { personId: number, role: string, words: string }[]): Service {
         let retTestimonials: Testimonial[] = [];
@@ -77,6 +75,6 @@ export class ServiceService {
             const retTestimonial: Testimonial = new Testimonial(testimonial.personId, testimonial.role, testimonial.words);
             retTestimonials.push(retTestimonial);
         }
-        return new Service(service.id, service.name, service.description, service.longDes, sections, service.words, retTestimonials);
+        return new Service(service.id, service.name, service.description, sections, service.words, retTestimonials);
     }
 }

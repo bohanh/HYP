@@ -11,8 +11,7 @@ export class ProjectService {
                 name: project.name,
                 description: project.description,
                 longDes: project.longDes,
-                leaderId: project.leader,
-                role: project.role,
+                leaderId: project.leader
             }
         });
     }
@@ -35,7 +34,13 @@ export class ProjectService {
         return retProjects;
     }
 
-    assignProject(project: {id: number, name: string, description: string, longDes: string, leaderId: number, role: string}): Project {
-        return new Project(project.id, project.name, project.description, project.longDes, project.leaderId, project.role);
+    assignProject(project: {
+        id: number,
+        name: string,
+        description: string,
+        longDes: string,
+        leaderId: number
+    }): Project {
+        return new Project(project.id, project.name, project.description, project.longDes, project.leaderId);
     }
 }

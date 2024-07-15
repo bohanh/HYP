@@ -1,15 +1,16 @@
 import {Socials} from "~/model/Socials";
+import type {Experience} from "~/model/Experience";
 
 export class Person {
     id: number;
     name: string;
     description: string;
     socials: Socials;
-    experiences: string[];
+    experiences: Experience[];
     projects: number[];
     services: number[];
 
-    constructor(id: number, name: string, description: string="", socials: Socials=new Socials(), experiences: string[] = [], projects: number[] = [], services: number[] = []) {
+    constructor(id: number, name: string, description: string="", socials: Socials=new Socials(), experiences: Experience[] = [], projects: number[] = [], services: number[] = []) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -19,7 +20,7 @@ export class Person {
         this.services = services;
     }
 
-    addExperience(exp: string): void {
+    addExperience(exp: Experience): void {
         this.experiences.push(exp);
     }
 

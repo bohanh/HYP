@@ -15,7 +15,7 @@ const projects: Project[] = assignProjects(JSON.parse(data_projects.value!.proje
     <div class="title">
       This section outlines our various projects aimed at addressing gender-based violence, trafficking, and empowering marginalized groups.
     </div>
-    <div v-if="projects.length === 0" class="project-card">No projects found</div>
+    <div v-if="projects.length === 0" class="project-card">No project found</div>
     <div v-else class="project-cards">
       <div v-for="project in projects" :key="project.id" class="project-card">
         <h2 class="violet-text"><NuxtLink :to="'/projects/' + project.id">{{ project.name }}</NuxtLink></h2>

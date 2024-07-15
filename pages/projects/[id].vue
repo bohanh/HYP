@@ -113,10 +113,9 @@ function shuffle(): any[] {
             :alt="'photo of the leader of project ' + project.name + ', ' + leader.name"
         >
         <h2>{{ leader.name }}</h2>
-        <p>{{ project.role }}</p>
         <NuxtLink :to="'/people/' + project.leader" class="read-more">Read more</NuxtLink>
       </div>
-      <p style="width: 70%">{{ project.longDes.repeat(50) }}</p>
+      <p style="width: 70%">{{ project.longDes }}</p>
     </div>
     <div id="more">
       <h2 style="color: var(--header-button-color)">OTHER PROJECTS</h2>

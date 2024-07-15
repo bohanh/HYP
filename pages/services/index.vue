@@ -70,17 +70,20 @@ const services: Service[] = assignServices(JSON.parse(data_services.value!.servi
 }
 
 .service-card {
-  margin: 20px 0;
-  width: 100%;
+  margin: 20px;
+  padding: 20px;
+  width: calc(33.333% - 40px);
+  background-color: #ffffff;
+  border-radius: 10px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  overflow: hidden;
-  transition: transform 0.3s;
-  text-align: left;
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
+  cursor: pointer;
 }
 
 .service-card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-5px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
 }
 
 .service-content {

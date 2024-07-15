@@ -89,6 +89,9 @@ function crumb(bread: string): string {
         <p>{{ person.description }}</p>
       </div>
     </div>
+    <div id="experiences">
+
+    </div>
     <div id="projects">
       <div v-for="project in projects" class="project-container">
         <NuxtLink v-if="project.id in person.projects" class="project-card" :to="'/projects/' + project.id">
@@ -169,6 +172,10 @@ function crumb(bread: string): string {
   width: 25px;
   height: 25px;
   fill: var(--header-button-color);
+}
+
+#experiences {
+  
 }
 
 #projects {
