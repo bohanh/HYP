@@ -118,7 +118,7 @@ function shuffle(): any[] {
       <p style="width: 70%">{{ project.longDes }}</p>
     </div>
     <div id="more">
-      <h2 style="color: var(--header-button-color); text-decoration: none">OTHER PROJECTS</h2>
+      <h2 style="color: var(--header-button-color); text-decoration: none">MORE PROJECTS</h2>
       <div id="projects">
         <NuxtLink v-for="project in shuffle()" :key="project.id" class="project-card" :to="'/projects/' + project.id" tabindex="0">
           <h2 class="violet-text">

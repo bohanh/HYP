@@ -8,6 +8,9 @@ export default defineNuxtConfig({
                 {rel: 'icon', type: 'svg', href: '/HYP/image/public/logo.svg'},
                 {rel: 'stylesheet', href: 'https://fonts.googleapis.com/icon?family=Material+Icons'},
             ],
+            htmlAttrs: {
+                lang: 'en',
+            }
         }
     },
     css: [

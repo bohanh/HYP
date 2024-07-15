@@ -6,20 +6,20 @@ crumbs.value.length = 0;
 
 const history = [
   {
-    "title": "point 1",
-    "description": "et augue nec, in id ullamcorper at sit. Condimentum sit nunc in eros scelerisque sed. Commodo in viverra nunc, ullamcorper ut. Non, amet, aliquet scelerisque nullam."
+    title: "Foundation",
+    description: "Founded in 2010, our organization started with the goal of supporting women in need, offering resources and a safe space for growth and empowerment."
   },
   {
-    "title": "point 2",
-    "description": "et augue nec, in id ullamcorper at sit. Condimentum sit nunc in eros scelerisque sed. Commodo in viverra nunc, ullamcorper ut. Non, amet, aliquet scelerisque nullam."
+    title: "Expansion",
+    description: "Over the years, we have expanded our services to include educational programs, career development workshops, and community outreach initiatives"
   },
   {
-    "title": "point 3",
-    "description": "et augue nec, in id ullamcorper at sit. Condimentum sit nunc in eros scelerisque sed. Commodo in viverra nunc, ullamcorper ut. Non, amet, aliquet scelerisque nullam."
+    title: "Recognition",
+    description: "We have been recognized nationally for our impactful work, receiving numerous awards and grants to further our mission."
   },
   {
-    "title": "point 4",
-    "description": "et augue nec, in id ullamcorper at sit. Condimentum sit nunc in eros scelerisque sed. Commodo in viverra nunc, ullamcorper ut. Non, amet, aliquet scelerisque nullam."
+    title: "Future Vision",
+    description: "Looking ahead, we aim to broaden our reach, touching the lives of more women and communities across the nation."
   },
 ]
 const successes = [
@@ -34,13 +34,15 @@ const successes = [
   <div class="about-container">
     <div id="about">
       <div id="about-text">
-        <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bibendum amet at molestie mattis.</h2>
-        <p>Rhoncus morbi et augue nec, in id ullamcorper at sit. Condimentum sit nunc in eros scelerisque sed. Commodo
-          in viverra nunc, ullamcorper ut. Non, amet, aliquet scelerisque nullam sagittis, pulvinar.</p>
+        <h1>Empowering Women, Transforming Communities</h1>
+        <p>Our organization is dedicated to empowering women through comprehensive support, advocacy, and educational
+          programs. We believe in creating a world where every woman has the opportunity to reach her full potential and
+          contribute to her community.</p>
       </div>
       <img
           id="about-image"
-          src="/HYP/image/projects/1.jpg"
+          :src="'/HYP/image/projects/1.jpg'"
+          alt="Photo of project 1"
       >
     </div>
     <div class="separator"/>
@@ -50,8 +52,8 @@ const successes = [
         <div/>
         <div class="timeline">
           <div style="width: 5pt; height: 20pt; background-color: rgba(0,0,0,0)"/>
-          <div style="width: 20pt; height: 20pt; border-radius: 50%;background-color: var(--header-button-color)"/>
-          <div style="width: 5pt; height: 100pt; background-color: var(--header-button-color)"/>
+          <div style="width: 30pt; height: 30pt; border-radius: 50%;background-color: var(--header-button-color)"/>
+          <div style="width: 5pt; height: 150pt; background-color: var(--header-button-color)"/>
         </div>
         <div class="history-item-right">
           <h2>{{ history[0].title }}</h2>
@@ -62,16 +64,16 @@ const successes = [
           <p>{{ history[1].description }}</p>
         </div>
         <div class="timeline">
-          <div style="width: 5pt; height: 20pt; background-color: var(--header-button-color)"/>
-          <div style="width: 20pt; height: 20pt; border-radius: 50%;background-color: var(--header-button-color)"/>
-          <div style="width: 5pt; height: 100pt; background-color: var(--header-button-color)"/>
+          <div style="width: 5pt; height: 20pt;background-color: var(--header-button-color)"/>
+          <div style="width: 30pt; height: 30pt; border-radius: 50%;background-color: var(--header-button-color)"/>
+          <div style="width: 5pt; height: 150pt; background-color: var(--header-button-color)"/>
         </div>
         <div/>
         <div/>
         <div class="timeline">
-          <div style="width: 5pt; height: 20pt; background-color: var(--header-button-color)"/>
-          <div style="width: 20pt; height: 20pt; border-radius: 50%;background-color: var(--header-button-color)"/>
-          <div style="width: 5pt; height: 100pt; background-color: var(--header-button-color)"/>
+          <div style="width: 5pt; height: 20pt;background-color: var(--header-button-color)"/>
+          <div style="width: 30pt; height: 30pt; border-radius: 50%;background-color: var(--header-button-color)"/>
+          <div style="width: 5pt; height: 150pt; background-color: var(--header-button-color)"/>
         </div>
         <div class="history-item-right">
           <h2>{{ history[2].title }}</h2>
@@ -82,8 +84,8 @@ const successes = [
           <p>{{ history[3].description }}</p>
         </div>
         <div class="timeline">
-          <div style="width: 5pt; height: 20pt; background-color: var(--header-button-color)"/>
-          <div style="width: 20pt; height: 20pt; border-radius: 50%;background-color: var(--header-button-color)"/>
+          <div style="width: 5pt; height: 20pt;background-color: var(--header-button-color)"/>
+          <div style="width: 30pt; height: 30pt; border-radius: 50%;background-color: var(--header-button-color)"/>
         </div>
         <div/>
       </div>
@@ -92,9 +94,9 @@ const successes = [
     <div id="successes">
       <h2>SUCCESSES SO FAR</h2>
       <p>
-        Rhoncus morbi et augue nec, in id ullamcorper at sit. Condimentum sit nunc in eros scelerisque sed. Commodo in
-        viverra nunc, ullamcorper ut. Non, amet, aliquet scelerisque nullam sagittis, pulvinar. Fermentum scelerisque
-        sit consectetur hac mi. Mollis leo eleifend ultricies purus iaculis.
+        Since our inception, we have provided critical support to over 250 women, completed 20+ projects, and garnered
+        the support of more than 11,000 donors. Our resources have been accessed by over 1.8K individuals, making a
+        tangible impact in our community.
       </p>
       <div id="successes-list">
         <div v-for="success in successes" class="successes-item">
@@ -108,24 +110,14 @@ const successes = [
     <div id="bottom">
       <img
           id="bottom-image"
-          src="/HYP/image/projects/1.jpg"
+          :src="'/HYP/image/projects/1.jpg'"
           alt="image of project 1"
       >
       <div id="bottom-text">
-        <p>Body Medium. Most fonts have a particular weight which corresponds to one of the numbers in Common weight
-          name
-          mapping. However some fonts, called variable fonts, can support a range of weights with a more or less fine
-          granularity, and this can give the designer a much closer degree of control over the chosen weight.
-          Pellentesque
-          auctor adipiscing lacus viverra. Neque, nulla in amet eget. Arcu, nibh purus urna amet sagittis quis tellus
-          etiam eget. Ultrices egestas a tristique aliquet odio varius.</p>
-        <p>Body Medium. Most fonts have a particular weight which corresponds to one of the numbers in Common weight
-          name
-          mapping. However some fonts, called variable fonts, can support a range of weights with a more or less fine
-          granularity, and this can give the designer a much closer degree of control over the chosen weight.
-          Pellentesque
-          auctor adipiscing lacus viverra. Neque, nulla in amet eget. Arcu, nibh purus urna amet sagittis quis tellus
-          etiam eget. Ultrices egestas a tristique aliquet odio varius.</p>
+        <p>Our journey is fueled by the passion and commitment of individuals and organizations dedicated to gender
+          equality. We continue to advocate for women's rights and provide essential services to those in need.</p>
+        <p>Join us in our mission to create a supportive and inclusive environment for all women. Together, we can make
+          a lasting impact and empower future generations.</p>
       </div>
     </div>
   </div>
@@ -184,7 +176,7 @@ const successes = [
 }
 
 #history-grid {
-  width: 80vw;
+  width: 75vw;
   display: grid;
   grid-template-columns: 5fr 1fr 5fr;
   grid-template-rows: repeat(4, 1fr);
@@ -212,6 +204,7 @@ const successes = [
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  overflow-y: hidden;
 }
 
 #successes {
@@ -261,5 +254,13 @@ const successes = [
   aspect-ratio: 1;
   overflow: hidden;
   object-fit: cover;
+}
+
+h2 {
+  font-size: 180%;
+}
+
+p {
+  font-size: 120%;
 }
 </style>

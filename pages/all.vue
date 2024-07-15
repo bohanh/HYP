@@ -7,55 +7,52 @@ import type {Service} from "~/model/Service";
 const crumbs = breadcrumbs();
 crumbs.value = ["/all"];
 
-let { data: data_projects } = await useFetch("/api/projects");
-let { data: data_services } = await useFetch("/api/services");
+let {data: data_projects} = await useFetch("/api/projects");
+let {data: data_services} = await useFetch("/api/services");
 
 const projects: Project[] = assignProjects(JSON.parse(data_projects.value!.projects));
 const services: Service[] = assignServices(JSON.parse(data_services.value!.services));
 </script>
 
 <template>
-  <div class="main-container">
     <!-- Section for Projects -->
-    <section class="container">
+    <div class="container">
       <h2 class="section-title">Projects</h2>
-      <NuxtLink to="/projects">View All Projects</NuxtLink>
-      <!-- Preview of first two projects -->
       <div v-if="projects.length === 0" class="project-card">No projects found</div>
       <div v-else class="project-cards">
-        <div v-for="project in projects.slice(0, 2)" :key="project.id" class="project-card">
-          <h2 class="violet-text"><NuxtLink :to="'/projects/' + project.id">{{ project.name }}</NuxtLink></h2>
+        <div v-for="project in projects" :key="project.id" class="project-card">
+          <h2 class="violet-text">
+            {{ project.name }}
+          </h2>
           <p>{{ project.description }}</p>
           <img
               class="project-thumb"
               :src="'/HYP/image/projects/' + project.id + '.jpg'"
               :alt="'Photo of ' + project.name"
           />
-          <NuxtLink :to="'/projects/' + project.id" class="read-more">Read more</NuxtLink>
+          <NuxtLink :to="'/projects/' + project.id" class="read-more" tabindex="0">Read more</NuxtLink>
         </div>
       </div>
-    </section>
-
+    </div>
     <!-- Section for Services -->
-    <section class="container">
+    <div class="container">
       <h2 class="section-title">Services</h2>
-      <NuxtLink to="/services">View All Services</NuxtLink>
-      <!-- Preview of first two services -->
       <div v-if="services.length === 0" class="service-card">No services found</div>
       <div v-else class="service-cards">
-        <div v-for="service in services.slice(0, 2)" :key="service.id" class="service-card">
-          <h2 class="violet-text"><NuxtLink :to="'/services/' + service.id">{{ service.name }}</NuxtLink></h2>
+        <div v-for="service in services" :key="service.id" class="service-card">
+          <h2 class="violet-text">
+            {{ service.name }}
+          </h2>
           <p>{{ service.description }}</p>
           <img
               class="service-thumb"
               :src="'/HYP/image/services/' + service.id + '.jpg'"
               :alt="'Photo of ' + service.name"
           />
-          <NuxtLink :to="'/services/' + service.id" class="read-more">Read more</NuxtLink>
+          <NuxtLink :to="'/services/' + service.id" class="read-more" tabindex="0">Read more</NuxtLink>
         </div>
       </div>
-    </section>
-  </div>
+    </div>
 </template>
 
 
@@ -67,8 +64,8 @@ const services: Service[] = assignServices(JSON.parse(data_services.value!.servi
   align-items: center;
   text-align: center;
   font-family: 'Futura', sans-serif;
-  padding: 25px;
   background-color: #f9f9f9;
+  padding-block: 50px;
 }
 
 .section-title {
@@ -78,21 +75,34 @@ const services: Service[] = assignServices(JSON.parse(data_services.value!.servi
 }
 
 .project-cards, .service-cards {
-  width: 100%;
+  width: 80%;
   display: flex;
-  justify-content: center; /* Center the cards horizontally */
+  justify-content: flex-start;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  padding: 25px;
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+.project-cards::-webkit-scrollbar, .service-cards::-webkit-scrollbar { /* For WebKit browsers */
+  display: none;
 }
 
 .project-card, .service-card {
   margin: 20px;
   padding: 20px;
-  width: calc(40% - 40px); /* Adjust the width to fit two cards per row */
-  background-color: #ffffff;
-  border-radius: 10px;
+  width: calc(40% - 40px);
+  min-width: 400px;
+  background-color: white;
+  border-radius: 20px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
   text-align: center;
   cursor: pointer;
+  gap: 10px;
 }
 
 .project-card:hover, .service-card:hover {
@@ -108,7 +118,8 @@ const services: Service[] = assignServices(JSON.parse(data_services.value!.servi
 }
 
 .violet-text {
-  color: #8e44ad;
+  font-size: 180%;
+  color: var(--header-button-color);
 }
 
 h2 {
@@ -124,16 +135,18 @@ p {
   display: inline-block;
   margin-top: 10px;
   padding: 5px 10px;
-  background-color: #8e44ad;
-  color: #fff;
+  background-color: var(--header-color);
+  color: white;
   border-radius: 5px;
   text-decoration: none;
   transition: background-color 0.3s, color 0.3s;
-  border: 2px solid #8e44ad;
+  border: 2px solid var(--header-color);
+  text-decoration: none;
 }
 
 .read-more:hover {
-  background-color: #6c3483;
+  background-color: var(--header-button-color);
+  border: 2px solid var(--header-button-color);;
 }
 
 </style>

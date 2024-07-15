@@ -11,29 +11,29 @@ let {data: data_projects} = await useFetch("/api/projects");
 const latestProject: Project | undefined = data_projects.value!.projects.length > 0 ? assignProjects(JSON.parse(data_projects.value!.projects))[0] : undefined;
 const bgImageStyle = !!latestProject ? `background-image: url('/HYP/image/projects/${latestProject.id}.jpg')` : '';
 
+const history = [
+  {
+    title: "Foundation",
+    description: "Founded in 2010, our organization started with the goal of supporting women in need, offering resources and a safe space for growth and empowerment."
+  },
+  {
+    title: "Expansion",
+    description: "Over the years, we have expanded our services to include educational programs, career development workshops, and community outreach initiatives"
+  },
+  {
+    title: "Recognition",
+    description: "We have been recognized nationally for our impactful work, receiving numerous awards and grants to further our mission."
+  },
+  {
+    title: "Future Vision",
+    description: "Looking ahead, we aim to broaden our reach, touching the lives of more women and communities across the nation."
+  },
+]
 const missions = [
   {"icon": "sentiment_satisfied", "number": "250+", "name": "Women Helped"},
   {"icon": "content_copy", "number": "20+", "name": "Completed Projects"},
   {"icon": "local_pizza", "number": "1.8K+", "name": "Available Resources"},
   {"icon": "group", "number": "11K+", "name": "Donors"},
-]
-const history = [
-  {
-    "title": "point 1",
-    "description": "et augue nec, in id ullamcorper at sit. Condimentum sit nunc in eros scelerisque sed. Commodo in viverra nunc, ullamcorper ut. Non, amet, aliquet scelerisque nullam."
-  },
-  {
-    "title": "point 2",
-    "description": "et augue nec, in id ullamcorper at sit. Condimentum sit nunc in eros scelerisque sed. Commodo in viverra nunc, ullamcorper ut. Non, amet, aliquet scelerisque nullam."
-  },
-  {
-    "title": "point 3",
-    "description": "et augue nec, in id ullamcorper at sit. Condimentum sit nunc in eros scelerisque sed. Commodo in viverra nunc, ullamcorper ut. Non, amet, aliquet scelerisque nullam."
-  },
-  {
-    "title": "point 4",
-    "description": "et augue nec, in id ullamcorper at sit. Condimentum sit nunc in eros scelerisque sed. Commodo in viverra nunc, ullamcorper ut. Non, amet, aliquet scelerisque nullam."
-  },
 ]
 </script>
 
@@ -49,9 +49,8 @@ const history = [
     <div id="mission">
       <h2>MISSION</h2>
       <p>
-        Rhoncus morbi et augue nec, in id ullamcorper at sit. Condimentum sit nunc in eros scelerisque sed. Commodo in
-        viverra nunc, ullamcorper ut. Non, amet, aliquet scelerisque nullam sagittis, pulvinar. Fermentum scelerisque
-        sit consectetur hac mi. Mollis leo eleifend ultricies purus iaculis.
+        Our mission is to empower women through comprehensive support, education, and advocacy. We strive to create a
+        safe and inclusive environment where women can thrive and reach their full potential.
       </p>
       <div id="mission-list">
         <div v-for="mission in missions" class="mission-item">

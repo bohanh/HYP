@@ -13,9 +13,9 @@ if (crumb0 !== crumbs.value[crumbs.value.length - 1]) {
   crumbs.value.push(crumb0);
 }
 
-let { data: data_people } = await useFetch("/api/people");
-let { data: data_projects } = await useFetch("/api/projects");
-let { data: data_services } = await useFetch("/api/services");
+let {data: data_people} = await useFetch("/api/people");
+let {data: data_projects} = await useFetch("/api/projects");
+let {data: data_services} = await useFetch("/api/services");
 
 const people: Person[] = assignPeople(JSON.parse(data_people.value!.people));
 const projects: Project[] = assignProjects(JSON.parse(data_projects.value!.projects));
@@ -56,7 +56,7 @@ function crumb(bread: string): string {
   return bread;
 }
 
-async function getPersonName(id: number) {
+function getPersonName(id: number) {
   if (id < 100) {
     for (let person of people) {
       if (person.id.toString() === id.toString()) {
@@ -64,8 +64,11 @@ async function getPersonName(id: number) {
       }
     }
   } else {
-    const { data: person_testimonial } = await useFetch("/api/people/" + id.toString());
-    return person_testimonial.value!.person;
+    let name: string = "???";
+    useFetch("/api/people/" + id.toString()).then(response => {
+      name =  (response.data.value! as { person: string }).person;
+    });
+    return name;
   }
   return "----";
 }
@@ -76,7 +79,7 @@ async function getPersonName(id: number) {
   <div class="service-container">
     <div class="breadcrumbs">
       <div class="breadcrumb" v-for="breadcrumb of crumbs.slice(0, -1)">
-        <NuxtLink :to="breadcrumb" style="margin:0; text-decoration: underline;color: #999999;">
+        <NuxtLink :to="breadcrumb" style="margin:0; text-decoration: underline;color: #999999;" tabindex="0">
           {{ crumb(breadcrumb.replace(/^\/|\/$/g, '').replace(/\//g, ' ')) }}
         </NuxtLink>
         <p style="margin: 0;margin-inline: 5px"> > </p>
@@ -114,7 +117,7 @@ async function getPersonName(id: number) {
       <div id="testimonials">
         <div class="testimonial" v-for="testimonial of service.testimonials">
           <p>{{ testimonial.words }}</p>
-          <NuxtLink v-if="testimonial.id < 100" class="testimonial-person" :to="'/people/'+testimonial.id">
+          <NuxtLink v-if="testimonial.id < 100" class="testimonial-person" :to="'/people/'+testimonial.id" tabindex="0">
             <img
                 class="testimonial-person-img"
                 :src="'/HYP/image/people/' + testimonial.id + '.jpg'"
@@ -186,11 +189,13 @@ async function getPersonName(id: number) {
 }
 
 #parts {
+  width: 80%;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 25px;
+  gap: 50px;
   align-items: center;
   justify-content: center;
+  margin-block: 50px;
 }
 
 #words {
@@ -228,8 +233,9 @@ async function getPersonName(id: number) {
   overflow-x: scroll;
   padding-bottom: 1px;
   scrollbar-width: none; /* For Firefox */
-  -ms-overflow-style: none;  /* For Internet Explorer and Edge */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
 }
+
 #testimonials::-webkit-scrollbar { /* For WebKit browsers */
   display: none;
 }
@@ -254,6 +260,8 @@ async function getPersonName(id: number) {
   gap: 50px;
   color: inherit;
   text-decoration: none;
+  padding: 20px;
+  border-radius: 20px;
 }
 
 .testimonial-person-img {

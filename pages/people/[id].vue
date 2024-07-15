@@ -27,6 +27,9 @@ for (let p of people) {
   }
 }
 
+const chefProjects: Project[] = projects.filter(project => person.projects.includes(project.id));
+const chefServices: Service[] = services.filter(service => person.services.includes(service.id));
+
 function crumb(bread: string): string {
   let breads: string [] = bread.split(' ');
   if (breads.length > 1) {
@@ -109,13 +112,24 @@ function crumb(bread: string): string {
     </div>
     <div id="projects">
       <div v-for="project in projects" class="project-container">
-        <NuxtLink v-if="project.id in person.projects" class="project-card" :to="'/projects/' + project.id">
+        <NuxtLink class="project-card" :to="'/projects/' + project.id" tabindex="0">
           <h2>{{ project.name }}</h2>
           <p>{{ project.description }}</p>
           <img
               class="project-img"
               :src="'/HYP/image/projects/' + project.id + '.jpg'"
               :alt="'photo of ' + project.name"
+          >
+        </NuxtLink>
+      </div>
+      <div v-for="service in chefServices" class="project-container">
+        <NuxtLink class="project-card" :to="'/projects/' + service.id" tabindex="0">
+          <h2>{{ service.name }}</h2>
+          <p>{{ service.description }}</p>
+          <img
+              class="project-img"
+              :src="'/HYP/image/services/' + service.id + '.jpg'"
+              :alt="'photo of ' + service.name"
           >
         </NuxtLink>
       </div>
@@ -218,34 +232,44 @@ function crumb(bread: string): string {
 
 #projects {
   width: 80%;
+  min-height: 500px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   margin-block: 50px;
+  gap: 50px;
+  overflow-x: scroll;
+  overflow-y: hidden;
 }
 
 .project-container {
-  max-width: 30%;
+  width: 30%;
+  min-width: 400px;
   aspect-ratio: 1;
 }
 
 .project-card {
-  width: 100%;
-  aspect-ratio: 1;
+  margin: 20px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-right: 50px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  cursor: pointer;
+  gap: 10px;
   text-decoration: none;
-  color: inherit;
+  color: black;
 }
 
 .project-img {
-  width: 80%;
+  width: 100%;
   aspect-ratio: 5/3;
   object-fit: cover;
+  border-radius: 10px;
 }
 
 </style>

@@ -105,22 +105,6 @@ p {
   margin: 0;
   font-size: 100%;
 }
-
-.read-more {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 5px 10px;
-  background-color: #8e44ad;
-  color: #fff;
-  border-radius: 5px;
-  text-decoration: none;
-  transition: background-color 0.3s, color 0.3s;
-  border: 2px solid #8e44ad;
-}
-
-.read-more:hover {
-  background-color: #6c3483;
-}
 </style>
 
 
