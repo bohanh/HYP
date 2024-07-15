@@ -85,7 +85,7 @@ async function getPersonName(id: number) {
     </div>
     <img
         id="hero"
-        :src="'/HYP/services/' + useRoute().params.id + '.jpg'"
+        :src="'/HYP/image/services/' + useRoute().params.id + '.jpg'"
         :alt="'photo of the service ' + service.name"
     >
     <div id="title">
@@ -102,7 +102,7 @@ async function getPersonName(id: number) {
     <div id="words">
       <img
           id="words-image"
-          :src="'/HYP/services/' + useRoute().params.id + '+.jpg'"
+          :src="'/HYP/image/services/' + useRoute().params.id + '+.jpg'"
           :alt="'photo of the service ' + service.name"
       />
       <p style="width: 60%; margin-right: 50px">{{ service.words }}</p>
@@ -117,7 +117,7 @@ async function getPersonName(id: number) {
           <NuxtLink v-if="testimonial.id < 100" class="testimonial-person" :to="'/people/'+testimonial.id">
             <img
                 class="testimonial-person-img"
-                :src="'/HYP/people/' + testimonial.id + '.jpg'"
+                :src="'/HYP/image/people/' + testimonial.id + '.jpg'"
                 :alt="'photo of ' + getPersonName(testimonial.id)"
             />
             <div class="testimonial-person-info">
@@ -128,7 +128,7 @@ async function getPersonName(id: number) {
           <div v-if="testimonial.id >= 100" class="testimonial-person">
             <img
                 class="testimonial-person-img"
-                :src="'/HYP/people/' + testimonial.id + '.jpg'"
+                :src="'/HYP/image/people/' + testimonial.id + '.jpg'"
                 :alt="'photo of ' + getPersonName(testimonial.id)"
             />
             <div class="testimonial-person-info">

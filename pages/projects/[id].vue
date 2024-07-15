@@ -34,7 +34,7 @@ for (let p of people) {
   }
 }
 
-const bgImageStyle = `background-image: url('/projects/${id}.jpg');')`;
+const bgImageStyle = `background-image: url('/HYP/image/projects/${id}.jpg');')`;
 
 function crumb(bread: string): string {
   let breads: string [] = bread.split(' ');
@@ -109,7 +109,7 @@ function shuffle(): any[] {
       <div id="leader-left">
         <img
             id="leader-image"
-            :src="'/HYP/people/' + project.id + '.jpg'"
+            :src="'/HYP/image/people/' + project.id + '.jpg'"
             :alt="'photo of the leader of project ' + project.name + ', ' + leader.name"
         >
         <h2>{{ leader.name }}</h2>
@@ -127,7 +127,7 @@ function shuffle(): any[] {
           <p>{{ project.description }}</p>
           <img
               class="project-thumb"
-              :src="'/HYP/projects/' + project.id + '.jpg'"
+              :src="'/HYP/image/projects/' + project.id + '.jpg'"
               :alt="'Photo of ' + project.name"
           />
         </NuxtLink>

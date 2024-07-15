@@ -9,7 +9,7 @@ crumbs.value.length = 0;
 let {data: data_projects} = await useFetch("/api/projects");
 
 const latestProject: Project | undefined = data_projects.value!.projects.length > 0 ? assignProjects(JSON.parse(data_projects.value!.projects))[0] : undefined;
-const bgImageStyle = !!latestProject ? `background-image: url('/projects/${latestProject.id}.jpg')` : '';
+const bgImageStyle = !!latestProject ? `background-image: url('/HYP/image/projects/${latestProject.id}.jpg')` : '';
 
 const missions = [
   {"icon": "sentiment_satisfied", "number": "250+", "name": "Women Helped"},

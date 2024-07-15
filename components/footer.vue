@@ -28,7 +28,7 @@ const socialLinks = ref({
     <div id="footer">
       <img
           id="logo"
-          src="/HYP/logo.svg"
+          src="/HYP/image/logo.svg"
           alt="Logo"
       >
       <div id="landmarks">
@@ -48,7 +48,7 @@ const socialLinks = ref({
           <a class="logo-socials" :href="l" target="_blank" tabindex="0">
             <img
                 class="logo-socials"
-                :src="'/HYP/socials/white/' + n.toLowerCase() + '.svg'"
+                :src="'/HYP/image/socials/white/' + n.toLowerCase() + '.svg'"
                 :alt="n"
             >
           </a>

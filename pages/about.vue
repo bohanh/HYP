@@ -40,7 +40,7 @@ const successes = [
       </div>
       <img
           id="about-image"
-          src="/HYP/projects/1.jpg"
+          src="/HYP/image/projects/1.jpg"
       >
     </div>
     <div class="separator"/>
@@ -108,7 +108,7 @@ const successes = [
     <div id="bottom">
       <img
           id="bottom-image"
-          src="/HYP/projects/1.jpg"
+          src="/HYP/image/projects/1.jpg"
           alt="image of project 1"
       >
       <div id="bottom-text">
