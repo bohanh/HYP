@@ -2,7 +2,6 @@
 import {breadcrumbs} from "~/composables/breadcrumbs";
 import {Person} from "~/model/Person";
 import {assignPeople} from "~/utils";
-import {PersonService} from "~/server/database/person-service";
 
 const crumbs = breadcrumbs();
 crumbs.value = ["/people"];
@@ -10,7 +9,6 @@ crumbs.value = ["/people"];
 let {data: data_people} = await useFetch("/api/people");
 const people: Person[] = assignPeople(JSON.parse(data_people.value!.people));
 
-// Suddividi l'array delle persone in gruppi di 4 per riga
 let peopleRows: Person[][] = [];
 for (let i = 0; i < people.length; i += 4) {
   peopleRows.push(people.slice(i, i + 4));

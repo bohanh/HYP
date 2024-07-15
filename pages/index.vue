@@ -6,11 +6,11 @@ import type {Project} from "~/model/Project";
 const crumbs = breadcrumbs();
 crumbs.value.length = 0;
 
-let { data: data_projects } = await useFetch("/api/projects");
-console.log(data_projects.value!.projects);
-const latestProject: Project = assignProjects(JSON.parse(data_projects.value!.projects))[0];
+let {data: data_projects} = await useFetch("/api/projects");
 
-const bgImageStyle = `background-image: url('/projects/${latestProject.id}.jpg')`;
+const latestProject: Project | undefined = data_projects.value!.projects.length > 0 ? assignProjects(JSON.parse(data_projects.value!.projects))[0] : undefined;
+const bgImageStyle = !!latestProject ? `background-image: url('/projects/${latestProject.id}.jpg')` : '';
+
 const missions = [
   {"icon": "sentiment_satisfied", "number": "250+", "name": "Women Helped"},
   {"icon": "content_copy", "number": "20+", "name": "Completed Projects"},
@@ -39,7 +39,7 @@ const history = [
 
 <template>
   <div class="page-container">
-    <div id="latest-project" :style="bgImageStyle">
+    <div v-if="!!latestProject" id="latest-project" :style="bgImageStyle">
       <div id="latest-project-texts">
         <h2 style="color: var(--header-button-color)">{{ latestProject.name }}</h2>
         <p style="font-size: 80%">{{ latestProject.description }}</p>
