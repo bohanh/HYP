@@ -28,7 +28,7 @@ const services: Service[] = assignServices(JSON.parse(data_services.value!.servi
           <p>{{ project.description }}</p>
           <img
               class="project-thumb"
-              :src="'/projects/' + project.id + '.jpg'"
+              :src="'projects/' + project.id + '.jpg'"
               :alt="'Photo of ' + project.name"
           />
           <NuxtLink :to="'/projects/' + project.id" class="read-more">Read more</NuxtLink>
@@ -48,7 +48,7 @@ const services: Service[] = assignServices(JSON.parse(data_services.value!.servi
           <p>{{ service.description }}</p>
           <img
               class="service-thumb"
-              :src="'/services/' + service.id + '.jpg'"
+              :src="'services/' + service.id + '.jpg'"
               :alt="'Photo of ' + service.name"
           />
           <NuxtLink :to="'/services/' + service.id" class="read-more">Read more</NuxtLink>

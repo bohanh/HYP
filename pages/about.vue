@@ -40,7 +40,7 @@ const successes = [
       </div>
       <img
           id="about-image"
-          src="/projects/1.jpg"
+          src="projects/1.jpg"
       >
     </div>
     <div class="separator"/>
@@ -108,7 +108,7 @@ const successes = [
     <div id="bottom">
       <img
           id="bottom-image"
-          src="/projects/1.jpg"
+          src="projects/1.jpg"
       >
       <div id="bottom-text">
         <p>Body Medium. Most fonts have a particular weight which corresponds to one of the numbers in Common weight
