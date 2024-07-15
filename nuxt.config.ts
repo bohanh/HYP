@@ -1,6 +1,6 @@
 import type {NuxtConfig} from '@nuxt/types'
 
-export default({
+export default defineNuxtConfig({
     app: {
         head: {
             title: 'Women Center',
@@ -14,8 +14,7 @@ export default({
         '~/assets/css/global.css',
     ],
     ssr: true,
-    target: "static",
-    router: {
-        base: "/HYP/"
-    }
+    // modules: [
+    //     '@prisma/nuxt'
+    // ]
 });
