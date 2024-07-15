@@ -109,7 +109,7 @@ function shuffle(): any[] {
       <div id="leader-left">
         <img
             id="leader-image"
-            :src="'people/' + project.id + '.jpg'"
+            :src="'/HYP/people/' + project.id + '.jpg'"
             :alt="'photo of the leader of project ' + project.name + ', ' + leader.name"
         >
         <h2>{{ leader.name }}</h2>
@@ -127,7 +127,7 @@ function shuffle(): any[] {
           <p>{{ project.description }}</p>
           <img
               class="project-thumb"
-              :src="'projects/' + project.id + '.jpg'"
+              :src="'/HYP/projects/' + project.id + '.jpg'"
               :alt="'Photo of ' + project.name"
           />
         </NuxtLink>

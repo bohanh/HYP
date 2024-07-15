@@ -22,7 +22,7 @@ const services: Service[] = assignServices(JSON.parse(data_services.value!.servi
         <div class="service-content">
           <img
             class="service-thumb"
-            :src="'services/' + service.id + '.jpg'"
+            :src="'/HYP/services/' + service.id + '.jpg'"
             :alt="'Photo of ' + service.name"
           />
           <div class="service-info" :class="{ 'text-right': index % 2 === 0 }">

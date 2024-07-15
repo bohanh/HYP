@@ -72,7 +72,7 @@ function crumb(bread: string): string {
     <div id="person">
       <img
           id="person-photo"
-          :src="'people/' + useRoute().params.id + '.jpg'"
+          :src="'/HYP/people/' + useRoute().params.id + '.jpg'"
           :alt="'photo of ' + person.name"
       >
       <div id="person-info">
@@ -81,7 +81,7 @@ function crumb(bread: string): string {
           <NuxtLink v-for="key in Object.keys(person.socials)" :to="person.socials.getSocial(key)" external target="_blank" tabindex="0">
             <img
                 class="person-socials-icon"
-                :src="'socials/colored/' + key + '.svg'"
+                :src="'/HYP/socials/colored/' + key + '.svg'"
                 :alt="'link to ' + key + ' of ' + person.name"
             >
           </NuxtLink  >
@@ -114,7 +114,7 @@ function crumb(bread: string): string {
           <p>{{ project.description }}</p>
           <img
               class="project-img"
-              :src="'projects/' + project.id + '.jpg'"
+              :src="'/HYP/projects/' + project.id + '.jpg'"
               :alt="'photo of ' + project.name"
           >
         </NuxtLink>

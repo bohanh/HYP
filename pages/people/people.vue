@@ -17,7 +17,7 @@ const people: Person[] = assignPeople(JSON.parse(data_people.value!.people));
       <NuxtLink v-for="person in people" :key=person.id class="person-card" :to="'/people/' + person.id">
         <img
             class="person-thumb"
-            :src="'people/' + person.id + '.jpg'"
+            :src="'/HYP/people/' + person.id + '.jpg'"
             :alt="'Photo of ' + person.name"
         >
         <h2>{{ person.name }}</h2>

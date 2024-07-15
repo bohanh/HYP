@@ -5,7 +5,7 @@ export default defineNuxtConfig({
         head: {
             title: 'Women Center',
             link: [
-                {rel: 'icon', type: 'image/svg', href: '~/public/logo.svg'},
+                {rel: 'icon', type: 'HYP/svg', href: '~/public/logo.svg'},
                 {rel: 'stylesheet', href: 'https://fonts.googleapis.com/icon?family=Material+Icons'},
             ],
         }

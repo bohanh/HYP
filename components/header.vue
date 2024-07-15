@@ -20,7 +20,7 @@ const isLandmarkActive = (name: string) => {
     <NuxtLink to="/" id="logo-link" class="landmark" tabindex="0">
       <img
           id="logo"
-          src="/logo.svg"
+          src="/HYP/logo.svg"
           alt="Logo"
       />
     </NuxtLink>

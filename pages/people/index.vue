@@ -24,7 +24,7 @@ const people: Person[] = assignPeople(JSON.parse(data_people.value!.people));
         <div class="person-card">
           <img
               class="person-thumb"
-              :src="'people/' + person.id + '.jpg'"
+              :src="'/HYP/people/' + person.id + '.jpg'"
               :alt="'Photo of ' + person.name"
           >
           <span class="person-name">{{ person.name }}</span>

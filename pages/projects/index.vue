@@ -22,7 +22,7 @@ const projects: Project[] = assignProjects(JSON.parse(data_projects.value!.proje
         <p>{{ project.description }}</p>
         <img
           class="project-thumb"
-          :src="'projects/' + project.id + '.jpg'"
+          :src="'/HYP/projects/' + project.id + '.jpg'"
           :alt="'Photo of ' + project.name"
         />
       </NuxtLink>
