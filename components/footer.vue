@@ -48,7 +48,7 @@ const socialLinks = ref({
           <a class="logo-socials" :href="l" target="_blank" tabindex="0">
             <img
                 class="logo-socials"
-                :src="'/socials/white/' + n + '.svg'"
+                :src="'/socials/white/' + n.toLowerCase() + '.svg'"
                 :alt="n"
             >
           </a>
