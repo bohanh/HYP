@@ -76,6 +76,8 @@ const people: Person[] = assignPeople(JSON.parse(data_people.value!.people));
   min-width: 300px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
+  text-decoration: none;
+
 }
 
 .person-card {

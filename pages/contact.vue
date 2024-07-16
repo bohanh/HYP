@@ -47,9 +47,9 @@
     <div class="right-column">
       <div class="contact-details">
         <h2>Contact Details</h2>
-        <p><strong class="lilla-text">OUR LOCATION:</strong><br>58 Middle Point Rd<br>San Francisco, 94124</p>
-        <p><strong class="lilla-text">CALL US:</strong><br>(123) 456-678</p>
-        <p><strong class="lilla-text">EMAIL US:</strong><br>contact@company.com</p>
+        <p><strong class="lilla-text">OUR LOCATION:</strong><br> Via della Speranza, 123 <br>00184 Rome, Italy</p>
+        <p><strong class="lilla-text">CALL US:</strong><br>+39 012 345 6789</p>
+        <p><strong class="lilla-text">EMAIL US:</strong><br>contact@centerhelpwomen.com </p>
       </div>
     </div>
   </div>

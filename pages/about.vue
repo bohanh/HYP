@@ -29,15 +29,14 @@ const successes = [
   { "icon": "group", "number": "11K+", "name": "Donors" },
 ]
 </script>
-
 <template>
   <div class="about-container">
     <div id="about">
       <div id="about-text">
         <h1>Empowering Women, Transforming Communities</h1>
-        <p>Our organization is dedicated to empowering women through comprehensive support, advocacy, and educational
+        <p2>Our organization is dedicated to empowering women through comprehensive support, advocacy, and educational
           programs. We believe in creating a world where every woman has the opportunity to reach her full potential and
-          contribute to her community.</p>
+          contribute to her community.</p2>
       </div>
       <img
         id="about-image"
@@ -93,37 +92,39 @@ const successes = [
     <div class="separator" />
     <div id="successes">
       <h2>SUCCESSES SO FAR</h2>
-      <p>
+      <p2>
         Since our inception, we have provided critical support to over 250 women, completed 20+ projects, and garnered
         the support of more than 11,000 donors. Our resources have been accessed by over 1.8K individuals, making a
         tangible impact in our community.
-      </p>
+      </p2>
       <div id="successes-list">
         <div v-for="success in successes" class="successes-item">
           <i class="material-icons" style="font-size: 200%">{{ success.icon }}</i>
           <h3>{{ success.number }}</h3>
-          <p>{{ success.name }}</p>
+          <p2>{{ success.name }}</p2>
         </div>
       </div>
     </div>
     <div class="separator" />
     <div id="opening-hours-location">
-      <h2>OPENING HOURS AND LOCATION</h2>
+      <h2 class="large-font">OPENING HOURS AND LOCATION</h2>
       <div id="opening-hours">
-        <h3>Opening Hours</h3>
-        <ul>
+        <h3 class="medium-font">Opening Hours</h3>
+        <ul class="large-list">
           <li><strong>Monday to Friday:</strong> 9:00 AM – 6:00 PM</li>
           <li><strong>Saturday:</strong> 10:00 AM – 4:00 PM</li>
           <li><strong>Sunday:</strong> Closed</li>
         </ul>
-        <p>Note: Some of our services, such as the Emergency Shelter and 24-hour hotline, are available 24/7 to provide immediate assistance.</p>
+        <p class="small-font">
+          Note: Some of our services, such as the Emergency Shelter and 24-hour hotline, are available 24/7 to provide immediate assistance.
+        </p>
       </div>
       <div id="location">
-        <h3>Location</h3>
-        <p><strong>Address:</strong> Via della Speranza, 123, 00184 Rome, Italy</p>
-        <p>We welcome you to visit us during our opening hours or contact us via phone or email for any inquiries or to schedule an appointment. Our dedicated team is here to support you.</p>
-        <p><strong>Phone:</strong> +39 012 345 6789</p>
-        <p><strong>Email:</strong> contact@centerhelpwomen.com</p>
+        <h3 class="medium-font">Location</h3>
+        <p class="small-font"><strong>Address:</strong> Via della Speranza, 123, 00184 Rome, Italy</p>
+        <p class="small-font">We welcome you to visit us during our opening hours or contact us via phone or email for any inquiries or to schedule an appointment. Our dedicated team is here to support you.</p>
+        <p class="small-font"><strong>Phone:</strong> +39 012 345 6789</p>
+        <p class="small-font"><strong>Email:</strong> contact@centerhelpwomen.com</p>
       </div>
     </div>
     <div class="separator" />
@@ -135,14 +136,15 @@ const successes = [
       >
       <div id="bottom-text">
         <p>Our journey is fueled by the passion and commitment of individuals and organizations dedicated to gender
-          equality. We continue to advocate for women's rights and provide essential services to those in need.</p>
+          equality. We continue to advocate for women's rights and provide essential services to those in need. </p>
+          <p></p>
+          <p></p>
         <p>Join us in our mission to create a supportive and inclusive environment for all women. Together, we can make
-          a lasting impact and empower future generations.</p>
+          a lasting impact and empower future generations. </p>
       </div>
     </div>
   </div>
 </template>
-
 <style scoped>
 .about-container {
   display: flex;
@@ -153,6 +155,7 @@ const successes = [
   overflow-x: hidden;
   font-family: Futura;
   font-size: 15pt;
+
 }
 
 #about {
@@ -242,6 +245,7 @@ const successes = [
   align-items: center;
   justify-content: center;
   gap: 20px;
+  margin-top: 40px;
 }
 
 .successes-item {
@@ -258,10 +262,11 @@ const successes = [
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  padding: 50px;
+  padding: 50px; 
 }
 
 #opening-hours, #location {
+  width: 80vw;
   margin-bottom: 20px;
 }
 
@@ -289,11 +294,31 @@ const successes = [
   object-fit: cover;
 }
 
+.large-font {
+  font-size: 180%;
+}
+
+.medium-font {
+  font-size: 150%;
+}
+
+.large-list li {
+  font-size: 100%; /* Adjust size as needed */
+}
+
+.small-font {
+  font-size: 100%;
+}
+
 h2 {
   font-size: 180%;
 }
 
 p {
-  font-size: 120%;
+  font-size: 125%;
+}
+
+p2 {
+  font-size: 100%;
 }
 </style>

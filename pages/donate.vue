@@ -1,6 +1,55 @@
+<template>
+  <div class="donation-container">
+    <h1>Donation</h1>
+    <form @submit.prevent="submitForm" class="form">
+      <div class="columns">
+        <div class="column">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input id="name" v-model="name" type="text" required />
+            <span class="error-message" v-if="nameError">{{ nameError }}</span>
+          </div>
+          <div class="form-group">
+            <label for="surname">Surname</label>
+            <input id="surname" v-model="surname" type="text" required />
+            <span class="error-message" v-if="surnameError">{{ surnameError }}</span>
+          </div>
+          <div class="form-group">
+            <label for="labelName">Label Name</label>
+            <input id="labelName" v-model="labelName" type="text" required />
+            <span class="error-message" v-if="labelNameError">{{ labelNameError }}</span>
+          </div>
+        </div>
+        <div class="column">
+          <div class="form-group">
+            <label for="cardNumber">Card Number</label>
+            <input id="cardNumber" v-model="cardNumber" type="text" required />
+            <span class="error-message" v-if="cardNumberError">{{ cardNumberError }}</span>
+          </div>
+          <div class="form-group">
+            <label for="expiryDate">Expiry Date</label>
+            <input id="expiryDate" v-model="expiryDate" type="month" required />
+            <span class="error-message" v-if="expiryDateError">{{ expiryDateError }}</span>
+          </div>
+          <div class="form-group">
+            <label for="cvv">CVV</label>
+            <input id="cvv" v-model="cvv" type="text" required />
+            <span class="error-message" v-if="cvvError">{{ cvvError }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="terms-group">
+        <input id="acceptTerms" v-model="acceptTerms" type="checkbox" />
+        <label for="acceptTerms">I accept the informativity</label>
+      </div>
+      <button type="submit">Donate</button>
+    </form>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref, watch } from 'vue';
-import {breadcrumbs} from "~/composables/breadcrumbs";
+import { breadcrumbs } from '~/composables/breadcrumbs';
 
 const crumbs = breadcrumbs();
 crumbs.value.length = 0;
@@ -85,74 +134,43 @@ function validateExpiryDate(newValue: string) {
 }
 </script>
 
-<template>
-  <div class="donation-container">
-    <h1>Donation</h1>
-    <form @submit.prevent="submitForm">
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input id="name" v-model="name" type="text" required />
-        <span class="error-message" v-if="nameError">{{ nameError }}</span>
-      </div>
-      <div class="form-group">
-        <label for="surname">Surname</label>
-        <input id="surname" v-model="surname" type="text" required />
-        <span class="error-message" v-if="surnameError">{{ surnameError }}</span>
-      </div>
-      <div class="form-group">
-        <label for="labelName">Label Name</label>
-        <input id="labelName" v-model="labelName" type="text" required />
-        <span class="error-message" v-if="labelNameError">{{ labelNameError }}</span>
-      </div>
-      <div class="form-group">
-        <label for="cardNumber">Card Number</label>
-        <input id="cardNumber" v-model="cardNumber" type="text" required />
-        <span class="error-message" v-if="cardNumberError">{{ cardNumberError }}</span>
-      </div>
-      <div class="form-group">
-        <label for="expiryDate">Expiry Date</label>
-        <input id="expiryDate" v-model="expiryDate" type="month" required />
-        <span class="error-message" v-if="expiryDateError">{{ expiryDateError }}</span>
-      </div>
-      <div class="form-group">
-        <label for="cvv">CVV</label>
-        <input id="cvv" v-model="cvv" type="text" required />
-        <span class="error-message" v-if="cvvError">{{ cvvError }}</span>
-      </div>
-      <div class="form-group">
-        <label for="donationAmount">Donation Amount (€)</label>
-        <input id="donationAmount" v-model.number="donationAmount" type="number" required />
-      </div>
-      <div class="form-group terms">
-        <input id="acceptTerms" v-model="acceptTerms" type="checkbox" />
-        <label for="acceptTerms">I accept the informativity</label>
-      </div>
-      <button type="submit">Donate</button>
-    </form>
-  </div>
-</template>
-
-
 <style scoped>
 .donation-container {
-  padding: 20px;
+  padding: 50px;
   border: 2px solid #ccc;
   border-radius: 8px;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
-  margin: 20px auto;  /* Add margin to separate from header and footer */
-  font-family: Futura, sans-serif; /* Imposta lo stesso font come nell'header */
+  max-width: 600px;
+  margin: 20px auto; /* Spacing from header and footer */
+  font-family: Futura, sans-serif; /* Use the same font as in the header */
 }
 
 h1 {
   text-align: center;
   margin-bottom: 20px;
-  font-family: Futura, sans-serif; /* Imposta lo stesso font come nell'header */
+  font-family: Futura, sans-serif; /* Use the same font as in the header */
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.columns {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.column {
+  flex: 1;
+  padding: 0 10px;
 }
 
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 label {
@@ -164,7 +182,7 @@ input[type="text"],
 input[type="month"],
 input[type="number"] {
   width: 100%;
-  padding: 8px;
+  padding: 12px; /* Increase padding for larger input fields */
   box-sizing: border-box;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -178,29 +196,31 @@ input[type="number"] {
   display: block;
 }
 
-.terms {
+.terms-group {
   display: flex;
   align-items: center;
+  justify-content: center;
+  margin: 20px 0; /* Adjust margin to better center the terms */
 }
 
-.terms label {
+.terms-group label {
   margin-left: 8px;
 }
 
 button {
   display: block;
   width: 100%;
-  padding: 10px;
+  padding: 12px; /* Increase padding for larger button */
   background-color: #8A2BE2; /* Violet color */
   color: white;
   border: none;
   border-radius: 4px;
   font-size: 16px;
   cursor: pointer;
+  margin-top: 20px;
 }
 
 button:hover {
   background-color: #7A1DC2;
 }
 </style>
-
