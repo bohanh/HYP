@@ -138,7 +138,7 @@ const missions = [
 }
 
 #latest-project-button {
-  font-size: 80%;
+  font-size: 60%;
   font-weight: bold;
   color: white;
   background-color: var(--header-button-color);
@@ -147,6 +147,7 @@ const missions = [
   text-decoration: none;
   padding-inline: 25px;
   padding-block: 15px;
+  margin-bottom: 20px;
 }
 
 #mission {
