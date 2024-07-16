@@ -1,47 +1,3 @@
-<script setup lang="ts">
-import {useRoute} from 'vue-router';
-
-const landmarks = ["About us", "People", "Projects", "Services", "All activities", "Contact us"];
-
-const generateUrl = (name: string) => {
-  return '/' + name.toLowerCase().split(" ")[0];
-};
-
-const route = useRoute();
-const currentPath = route.path;
-
-const isLandmarkActive = (name: string) => {
-  return generateUrl(name) === currentPath;
-};
-</script>
-
-<template>
-  <div class="container-header">
-    <NuxtLink to="/" id="logo-link" class="landmark" tabindex="0">
-      <img
-          id="logo"
-          src="/HYP/image/logo.svg"
-          alt="Logo"
-      />
-    </NuxtLink>
-    <div id="landmarks">
-      <NuxtLink
-          v-for="l in landmarks"
-          :key="l"
-          :to="generateUrl(l)"
-          class="landmark"
-          :class="{ 'active': isLandmarkActive(l) }"
-          tabindex="0"
-      >
-        {{ l }}
-      </NuxtLink>
-      <NuxtLink id="donation" to="/donate" class="donate-button" tabindex="0">
-        DONATE
-      </NuxtLink>
-    </div>
-  </div>
-</template>
-
 <style scoped>
 .container-header {
   width: 100vw;
@@ -105,5 +61,31 @@ const isLandmarkActive = (name: string) => {
 .donate-button:hover {
   background-color: white;
   color: var(--header-button-color);
+}
+
+@media (max-width: 768px) {
+  .container-header {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+  }
+
+  #logo {
+    height: 30px;
+    margin: 5px;
+  }
+
+  #landmarks {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-inline: 0;
+    gap: 10px;
+    font-size: 12pt;
+  }
+
+  .donate-button {
+    font-size: 80%;
+    padding: 5px 10px;
+  }
 }
 </style>
