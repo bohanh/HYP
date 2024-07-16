@@ -43,7 +43,7 @@ const isLandmarkActive = (name: string) => {
 </template>
 <style scoped>
 .container-header {
-  width: 100vw;
+  width: 100%;
   height: 10vh;
   display: flex;
   align-items: center;
@@ -120,7 +120,7 @@ const isLandmarkActive = (name: string) => {
 
   #landmarks {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     padding-inline: 0;
     gap: 10px;
     font-size: 12pt;

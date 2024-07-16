@@ -63,7 +63,7 @@ const socialLinks = ref({
 
 <style scoped>
 .container-footer {
-  width: 100vw;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -157,6 +157,8 @@ const socialLinks = ref({
   }
 
   #socials {
+    flex-direction: column;
+    align-items: center;
     gap: 10px;
   }
 
