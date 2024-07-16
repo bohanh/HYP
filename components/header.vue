@@ -41,7 +41,6 @@ const isLandmarkActive = (name: string) => {
     </div>
   </div>
 </template>
-
 <style scoped>
 .container-header {
   width: 100vw;
@@ -105,5 +104,31 @@ const isLandmarkActive = (name: string) => {
 .donate-button:hover {
   background-color: white;
   color: var(--header-button-color);
+}
+
+@media (max-width: 768px) {
+  .container-header {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+  }
+
+  #logo {
+    height: 30px;
+    margin: 5px;
+  }
+
+  #landmarks {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-inline: 0;
+    gap: 10px;
+    font-size: 12pt;
+  }
+
+  .donate-button {
+    font-size: 80%;
+    padding: 5px 10px;
+  }
 }
 </style>

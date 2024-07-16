@@ -137,4 +137,36 @@ const socialLinks = ref({
 #copyrights {
   font-size: 50%;
 }
+
+@media (max-width: 768px) {
+  .container-footer {
+    padding: 10px;
+    font-size: 12pt;
+  }
+
+  #footer {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  #landmarks {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  #socials {
+    gap: 10px;
+  }
+
+  #logo {
+    height: 30px;
+    margin: 5px;
+  }
+
+  #copyrights {
+    font-size: 40%;
+  }
+}
 </style>
