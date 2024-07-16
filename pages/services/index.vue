@@ -82,6 +82,7 @@ const services: Service[] = assignServices(JSON.parse(data_services.value!.servi
   transition: transform 0.3s, box-shadow 0.3s;
   text-align: center;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .service-card:hover {
