@@ -14,7 +14,7 @@ const people: Person[] = assignPeople(JSON.parse(data_people.value!.people));
   <div class="container">
     <div class="header">THE TEAM</div>
     <div class="title">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      Our dedicated team is here for you.
       Bibendum amet at molestie mattis.
     </div>
     <div v-if="people.length === 0" class="person-card">No people found</div>
