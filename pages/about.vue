@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {breadcrumbs} from "~/composables/breadcrumbs";
+import { breadcrumbs } from "~/composables/breadcrumbs";
 
 const crumbs = breadcrumbs();
 crumbs.value.length = 0;
@@ -23,10 +23,10 @@ const history = [
   },
 ]
 const successes = [
-  {"icon": "sentiment_satisfied", "number": "250+", "name": "Women Helped"},
-  {"icon": "content_copy", "number": "20+", "name": "Completed Projects"},
-  {"icon": "local_pizza", "number": "1.8K+", "name": "Available Resources"},
-  {"icon": "group", "number": "11K+", "name": "Donors"},
+  { "icon": "sentiment_satisfied", "number": "250+", "name": "Women Helped" },
+  { "icon": "content_copy", "number": "20+", "name": "Completed Projects" },
+  { "icon": "local_pizza", "number": "1.8K+", "name": "Available Resources" },
+  { "icon": "group", "number": "11K+", "name": "Donors" },
 ]
 </script>
 
@@ -40,20 +40,20 @@ const successes = [
           contribute to her community.</p>
       </div>
       <img
-          id="about-image"
-          :src="'/HYP/image/projects/1.jpg'"
-          alt="Photo of project 1"
+        id="about-image"
+        :src="'/HYP/image/projects/1.jpg'"
+        alt="Photo of project 1"
       >
     </div>
-    <div class="separator"/>
+    <div class="separator" />
     <div id="history">
       <h1>HISTORY</h1>
       <div id="history-grid">
-        <div/>
+        <div />
         <div class="timeline">
-          <div style="width: 5pt; height: 20pt; background-color: rgba(0,0,0,0)"/>
-          <div style="width: 30pt; height: 30pt; border-radius: 50%;background-color: var(--header-button-color)"/>
-          <div style="width: 5pt; height: 150pt; background-color: var(--header-button-color)"/>
+          <div style="width: 5pt; height: 20pt; background-color: rgba(0,0,0,0)" />
+          <div style="width: 30pt; height: 30pt; border-radius: 50%;background-color: var(--header-button-color)" />
+          <div style="width: 5pt; height: 150pt; background-color: var(--header-button-color)" />
         </div>
         <div class="history-item-right">
           <h2>{{ history[0].title }}</h2>
@@ -64,16 +64,16 @@ const successes = [
           <p>{{ history[1].description }}</p>
         </div>
         <div class="timeline">
-          <div style="width: 5pt; height: 20pt;background-color: var(--header-button-color)"/>
-          <div style="width: 30pt; height: 30pt; border-radius: 50%;background-color: var(--header-button-color)"/>
-          <div style="width: 5pt; height: 150pt; background-color: var(--header-button-color)"/>
+          <div style="width: 5pt; height: 20pt;background-color: var(--header-button-color)" />
+          <div style="width: 30pt; height: 30pt; border-radius: 50%;background-color: var(--header-button-color)" />
+          <div style="width: 5pt; height: 150pt; background-color: var(--header-button-color)" />
         </div>
-        <div/>
-        <div/>
+        <div />
+        <div />
         <div class="timeline">
-          <div style="width: 5pt; height: 20pt;background-color: var(--header-button-color)"/>
-          <div style="width: 30pt; height: 30pt; border-radius: 50%;background-color: var(--header-button-color)"/>
-          <div style="width: 5pt; height: 150pt; background-color: var(--header-button-color)"/>
+          <div style="width: 5pt; height: 20pt;background-color: var(--header-button-color)" />
+          <div style="width: 30pt; height: 30pt; border-radius: 50%;background-color: var(--header-button-color)" />
+          <div style="width: 5pt; height: 150pt; background-color: var(--header-button-color)" />
         </div>
         <div class="history-item-right">
           <h2>{{ history[2].title }}</h2>
@@ -84,13 +84,13 @@ const successes = [
           <p>{{ history[3].description }}</p>
         </div>
         <div class="timeline">
-          <div style="width: 5pt; height: 20pt;background-color: var(--header-button-color)"/>
-          <div style="width: 30pt; height: 30pt; border-radius: 50%;background-color: var(--header-button-color)"/>
+          <div style="width: 5pt; height: 20pt;background-color: var(--header-button-color)" />
+          <div style="width: 30pt; height: 30pt; border-radius: 50%;background-color: var(--header-button-color)" />
         </div>
-        <div/>
+        <div />
       </div>
     </div>
-    <div class="separator"/>
+    <div class="separator" />
     <div id="successes">
       <h2>SUCCESSES SO FAR</h2>
       <p>
@@ -106,12 +106,32 @@ const successes = [
         </div>
       </div>
     </div>
-    <div class="separator"/>
+    <div class="separator" />
+    <div id="opening-hours-location">
+      <h2>OPENING HOURS AND LOCATION</h2>
+      <div id="opening-hours">
+        <h3>Opening Hours</h3>
+        <ul>
+          <li><strong>Monday to Friday:</strong> 9:00 AM – 6:00 PM</li>
+          <li><strong>Saturday:</strong> 10:00 AM – 4:00 PM</li>
+          <li><strong>Sunday:</strong> Closed</li>
+        </ul>
+        <p>Note: Some of our services, such as the Emergency Shelter and 24-hour hotline, are available 24/7 to provide immediate assistance.</p>
+      </div>
+      <div id="location">
+        <h3>Location</h3>
+        <p><strong>Address:</strong> Via della Speranza, 123, 00184 Rome, Italy</p>
+        <p>We welcome you to visit us during our opening hours or contact us via phone or email for any inquiries or to schedule an appointment. Our dedicated team is here to support you.</p>
+        <p><strong>Phone:</strong> +39 012 345 6789</p>
+        <p><strong>Email:</strong> contact@centerhelpwomen.com</p>
+      </div>
+    </div>
+    <div class="separator" />
     <div id="bottom">
       <img
-          id="bottom-image"
-          :src="'/HYP/image/projects/1.jpg'"
-          alt="image of project 1"
+        id="bottom-image"
+        :src="'/HYP/image/projects/1.jpg'"
+        alt="image of project 1"
       >
       <div id="bottom-text">
         <p>Our journey is fueled by the passion and commitment of individuals and organizations dedicated to gender
@@ -230,6 +250,19 @@ const successes = [
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+#opening-hours-location {
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 50px;
+}
+
+#opening-hours, #location {
+  margin-bottom: 20px;
 }
 
 #bottom {
