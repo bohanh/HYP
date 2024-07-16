@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import {breadcrumbs} from "~/composables/breadcrumbs";
-import {assignServices} from "~/utils";
-import type {Service} from "~/model/Service";
+import { breadcrumbs } from "~/composables/breadcrumbs";
+import { assignServices } from "~/utils";
+import type { Service } from "~/model/Service";
 
 const crumbs = breadcrumbs();
 crumbs.value = ["/services"];
 
-let {data: data_services} = await useFetch("/api/services");
+let { data: data_services } = await useFetch("/api/services");
 const services: Service[] = assignServices(JSON.parse(data_services.value!.services));
 </script>
 
@@ -14,22 +14,25 @@ const services: Service[] = assignServices(JSON.parse(data_services.value!.servi
   <div class="container">
     <div class="header">SERVICES</div>
     <div class="title">
-      This section outlines our various services aimed at addressing gender-based violence, trafficking, and empowering
-      marginalized groups.
+      This section outlines our various services aimed at addressing gender-based violence, trafficking, and empowering marginalized groups.
     </div>
     <div v-if="services.length === 0" class="service-card">No service found</div>
     <div v-else class="service-cards">
-      <NuxtLink v-for="(service, index) in services" :key="service.id" class="service-card"
-                :class="{ 'bg-lavender': index % 2 === 0, 'bg-white': index % 2 !== 0, 'reverse': index % 2 !== 0 }"
-                :to="'/services/' + service.id"
-                tabindex="0">
+      <NuxtLink
+        v-for="(service, index) in services"
+        :key="service.id"
+        class="service-card"
+        :class="{ 'bg-lavender': index % 2 === 0, 'bg-white': index % 2 !== 0, 'reverse': index % 2 !== 0 }"
+        :to="'/services/' + service.id"
+        tabindex="0"
+      >
         <div class="service-content">
           <img
-              class="service-thumb"
-              :src="'/HYP/image/services/' + service.id + '.jpg'"
-              :alt="'Photo of ' + service.name"
+            class="service-thumb"
+            :src="'/HYP/image/services/' + service.id + '.jpg'"
+            :alt="'Photo of ' + service.name"
           />
-          <div class="service-info" :style="'text-align: ' + (index % 2 === 0 ? 'right' : 'left')">
+          <div class="service-info" :class="{ 'align-right': index % 2 !== 0 }">
             <h2 class="service-name">{{ service.name }}</h2>
             <p class="service-description">{{ service.description }}</p>
           </div>
@@ -41,7 +44,7 @@ const services: Service[] = assignServices(JSON.parse(data_services.value!.servi
 
 <style scoped>
 .container {
-  width: 100vw;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -49,6 +52,7 @@ const services: Service[] = assignServices(JSON.parse(data_services.value!.servi
   text-align: center;
   padding-block: 50px;
   font-family: Futura, sans-serif;
+  box-sizing: border-box;
 }
 
 .header {
@@ -75,14 +79,16 @@ const services: Service[] = assignServices(JSON.parse(data_services.value!.servi
 .service-card {
   margin: 20px;
   padding: 20px;
-  width: calc(80% - 40px);
+  width: 100%;
+  max-width: 1200px;
   background-color: #ffffff;
   border-radius: 30px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
-  text-align: center;
+  text-align: left;
   cursor: pointer;
-  text-decoration: none;
+  box-sizing: border-box;
+  text-decoration : none; 
 }
 
 .service-card:hover {
@@ -97,8 +103,9 @@ const services: Service[] = assignServices(JSON.parse(data_services.value!.servi
 }
 
 .service-thumb {
-  height: 400px;
-  width: 600px;
+  flex: 0 0 250px; /* Aumenta leggermente le dimensioni delle immagini */
+  height: 200px; /* Aumenta leggermente le dimensioni delle immagini */
+  width: 250px; /* Aumenta leggermente le dimensioni delle immagini */
   object-fit: cover;
   margin-right: 20px;
   border-radius: 10px;
@@ -117,16 +124,19 @@ const services: Service[] = assignServices(JSON.parse(data_services.value!.servi
   flex: 1;
 }
 
+.service-info.align-right {
+  text-align: right;
+}
+
 .service-name {
-  font-size: 180%;
+  font-size: 1.8rem;
   color: black;
-  text-decoration: none;
+  margin: 10px 0;
 }
 
 .service-description {
-  font-size: 100%;
+  font-size: 1rem;
   color: black;
-  text-decoration: none;
 }
 
 .bg-lavender {
