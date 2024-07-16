@@ -108,7 +108,7 @@ function shuffle(): any[] {
       <div id="leader-left">
         <img
             id="leader-image"
-            :src="'/HYP/contents/people/' + project.id + '.jpg'"
+            :src="'/HYP/contents/people/' + project.leader + '.jpg'"
             :alt="'photo of the leader of project ' + project.name + ', ' + leader.name"
         >
         <h2 style="text-align: center">{{ leader.name }}</h2>
