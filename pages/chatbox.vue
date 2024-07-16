@@ -6,7 +6,7 @@
   <div class="chatbox-container">
     <div class="chat-header">
       <div class="chat-header-left">
-        <img class="avatar" src="/HYP/contents/chatbox/openai-logomark.svg" alt="logomark of openai">
+        <img class="avatar" :src="'/HYP/contents/chatbox/openai-logomark.svg'" alt="logomark of openai">
         <div class="chat-header-left-text">
           <span style="font-weight: bold">AI CHATBOT</span>
           <span>online</span>

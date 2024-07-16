@@ -28,7 +28,7 @@ const socialLinks = ref({
     <div id="footer">
       <img
           id="logo"
-          src="/HYP/contents/logo.svg"
+          :src="'/HYP/contents/logo.svg'"
           alt="Logo"
       >
       <div id="landmarks">
