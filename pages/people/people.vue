@@ -10,8 +10,8 @@ const people: Person[] = assignPeople(JSON.parse(data_people.value!.people));
   <div class="container">
     <div class="header">THE TEAM</div>
     <div class="title">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      Bibendum amet at molestie mattis.
+      Our dedicated team is here for anything you might need.
+      Here you can see who they are.
     </div>
     <div class="person-cards">
       <NuxtLink v-for="person in people" :key=person.id class="person-card" :to="'/people/' + person.id">
