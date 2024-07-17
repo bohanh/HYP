@@ -15,21 +15,21 @@ html,body,#__nuxt{
 
 @font-face {
     font-family: "Futura";
-    src: url('/public/HYP/contents/fonts/Futura-Bold.ttf') format('truetype');
+    src: url('/public/fonts/Futura-Bold.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
 }
 
 @font-face {
     font-family: "Futura";
-    src: url('/public/HYP/contents/fonts/Futura-Medium.ttf') format('truetype');
+    src: url('/public/fonts/Futura-Medium.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: "Futura";
-    src: url('/public/HYP/contents/fonts/Futura-MediumItalic.ttf') format('truetype');
+    src: url('/public/fonts/Futura-MediumItalic.ttf') format('truetype');
     font-weight: normal;
     font-style: italic;
 }
