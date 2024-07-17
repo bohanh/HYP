@@ -8,7 +8,7 @@ const generateUrl = (name: string) => {
 };
 
 const route = useRoute();
-const currentPath = route.path;
+const currentPath = route.path.split("/")[1];
 
 const isLandmarkActive = (name: string) => {
   return generateUrl(name) === currentPath;
