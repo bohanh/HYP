@@ -20,7 +20,7 @@ const isLandmarkActive = (name: string) => {
     <NuxtLink to="/" id="logo-link" class="landmark" tabindex="0">
       <img
           id="logo"
-          src="/HYP/image/logo.svg"
+          :src="'/HYP/contents/logo.svg'"
           alt="Logo"
       />
     </NuxtLink>
@@ -41,9 +41,10 @@ const isLandmarkActive = (name: string) => {
     </div>
   </div>
 </template>
+
 <style scoped>
 .container-header {
-  width: 100%;
+  width: 100vw;
   height: 10vh;
   display: flex;
   align-items: center;
@@ -62,6 +63,12 @@ const isLandmarkActive = (name: string) => {
 #logo {
   height: 40px;
   margin: 10px;
+  transition: filter 0.3s;
+}
+
+#logo-link:hover #logo,
+#logo-link.active #logo {
+  filter: brightness(0) invert(1);
 }
 
 #landmarks {
@@ -104,31 +111,5 @@ const isLandmarkActive = (name: string) => {
 .donate-button:hover {
   background-color: white;
   color: var(--header-button-color);
-}
-
-@media (max-width: 768px) {
-  .container-header {
-    flex-direction: column;
-    height: auto;
-    padding: 10px;
-  }
-
-  #logo {
-    height: 30px;
-    margin: 5px;
-  }
-
-  #landmarks {
-    flex-direction: column;
-    align-items: center;
-    padding-inline: 0;
-    gap: 10px;
-    font-size: 12pt;
-  }
-
-  .donate-button {
-    font-size: 80%;
-    padding: 5px 10px;
-  }
 }
 </style>

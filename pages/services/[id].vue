@@ -16,10 +16,12 @@ if (crumb0 !== crumbs.value[crumbs.value.length - 1]) {
 let {data: data_people} = await useFetch("/api/people");
 let {data: data_projects} = await useFetch("/api/projects");
 let {data: data_services} = await useFetch("/api/services");
+let {data: data_testimonials} = await useFetch("/api/testimonials");
 
 const people: Person[] = assignPeople(JSON.parse(data_people.value!.people));
 const projects: Project[] = assignProjects(JSON.parse(data_projects.value!.projects));
 const services: Service[] = assignServices(JSON.parse(data_services.value!.services));
+const testimonials: {[key: number]: string} = JSON.parse(data_testimonials.value!.people);
 let service: Service;
 for (let s of services) {
   if (s.id.toString() === id) {
@@ -65,9 +67,9 @@ function getPersonName(id: number) {
     }
   } else {
     let name: string = "???";
-    useFetch("/api/people/" + id.toString()).then(response => {
-      name =  (response.data.value! as { person: string }).person;
-    });
+    if (id in testimonials) {
+      return testimonials[id];
+    }
     return name;
   }
   return "----";
@@ -88,14 +90,13 @@ function getPersonName(id: number) {
     </div>
     <img
         id="hero"
-        :src="'/HYP/image/services/' + useRoute().params.id + '.jpg'"
+        :src="'/HYP/contents/services/' + useRoute().params.id + '.jpg'"
         :alt="'photo of the service ' + service.name"
     >
     <div id="title">
       <p style="color: var(--header-button-color); font-size: 150%;font-weight: bold;font-variant: all-petite-caps">
-        {{ service.name }}
-      </p>
-      <h2>{{ service.description }}</h2>
+        {{ service.name }}</p>
+      <h2 tabindex="0">{{ service.description }}</h2>
     </div>
     <div id="parts">
       <div class="part" v-for="section of service.sections">
@@ -105,22 +106,20 @@ function getPersonName(id: number) {
     <div id="words">
       <img
           id="words-image"
-          :src="'/HYP/image/services/' + useRoute().params.id + '+.jpg'"
+          :src="'/HYP/contents/services/' + useRoute().params.id + '+.jpg'"
           :alt="'photo of the service ' + service.name"
       />
       <p style="width: 60%; margin-right: 50px">{{ service.words }}</p>
     </div>
     <div id="testimonials-container">
-      <p style="color: var(--header-button-color); font-size: 150%;font-weight: bold;font-variant: all-petite-caps">
-        TESTIMONIALS
-      </p>
+      <p style="color: var(--header-button-color); font-size: 150%;font-weight: bold;font-variant: all-petite-caps" tabindex="0">TESTIMONIALS</p>
       <div id="testimonials">
         <div class="testimonial" v-for="testimonial of service.testimonials">
           <p>{{ testimonial.words }}</p>
           <NuxtLink v-if="testimonial.id < 100" class="testimonial-person" :to="'/people/'+testimonial.id" tabindex="0">
             <img
                 class="testimonial-person-img"
-                :src="'/HYP/image/people/' + testimonial.id + '.jpg'"
+                :src="'/HYP/contents/people/' + testimonial.id + '.jpg'"
                 :alt="'photo of ' + getPersonName(testimonial.id)"
             />
             <div class="testimonial-person-info">
@@ -131,7 +130,7 @@ function getPersonName(id: number) {
           <div v-if="testimonial.id >= 100" class="testimonial-person">
             <img
                 class="testimonial-person-img"
-                :src="'/HYP/image/people/' + testimonial.id + '.jpg'"
+                :src="'/HYP/contents/people/0.png'"
                 :alt="'photo of ' + getPersonName(testimonial.id)"
             />
             <div class="testimonial-person-info">
@@ -154,7 +153,6 @@ function getPersonName(id: number) {
   justify-content: flex-start;
   font-family: Futura;
   font-size: 15pt;
-  overflow-x: hidden;
 }
 
 .breadcrumbs {
@@ -231,13 +229,8 @@ function getPersonName(id: number) {
   justify-content: flex-start;
   gap: 50px;
   overflow-x: scroll;
-  padding-bottom: 1px;
-  scrollbar-width: none; /* For Firefox */
-  -ms-overflow-style: none; /* For Internet Explorer and Edge */
-}
-
-#testimonials::-webkit-scrollbar { /* For WebKit browsers */
-  display: none;
+  padding: 25px;
+  margin: 25px;
 }
 
 .testimonial {

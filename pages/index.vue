@@ -9,7 +9,7 @@ crumbs.value.length = 0;
 let {data: data_projects} = await useFetch("/api/projects");
 
 const latestProject: Project | undefined = data_projects.value!.projects.length > 0 ? assignProjects(JSON.parse(data_projects.value!.projects))[0] : undefined;
-const bgImageStyle = !!latestProject ? `background-image: url('/HYP/image/projects/${latestProject.id}.jpg')` : '';
+const bgImageStyle = !!latestProject ? `background-image: url('/HYP/contents/projects/${latestProject.id}.jpg')` : '';
 
 const history = [
   {
@@ -41,13 +41,13 @@ const missions = [
   <div class="page-container">
     <div v-if="!!latestProject" id="latest-project" :style="bgImageStyle">
       <div id="latest-project-texts">
-        <h2 style="color: var(--header-button-color)">{{ latestProject.name }}</h2>
+        <h2 style="color: var(--header-button-color); margin: 0;">{{ latestProject.name }}</h2>
         <p style="font-size: 80%">{{ latestProject.description }}</p>
-        <NuxtLink id="latest-project-button" :to="'/projects/'+latestProject.id">Learn more</NuxtLink>
+        <NuxtLink id="latest-project-button" :to="'/projects/'+latestProject.id" tabindex="0">Learn more</NuxtLink>
       </div>
     </div>
     <div id="mission">
-      <h2>MISSION</h2>
+      <h2 tabindex="0">MISSION</h2>
       <p>
         Our mission is to empower women through comprehensive support, education, and advocacy. We strive to create a
         safe and inclusive environment where women can thrive and reach their full potential.
@@ -61,46 +61,49 @@ const missions = [
       </div>
     </div>
     <div class="separator"/>
-    <div id="history-grid">
-      <div/>
-      <div class="timeline">
-        <div style="width: 5pt; height: 20pt; background-color: rgba(0,0,0,0)"/>
-        <div style="width: 20pt; height: 20pt; border-radius: 50%;background-color: var(--header-button-color)"/>
-        <div style="width: 5pt; height: 100pt; background-color: var(--header-button-color)"/>
+    <div id="history">
+      <h2 tabindex="0">OUR HISTORY</h2>
+      <div id="history-grid">
+        <div/>
+        <div class="timeline">
+          <div style="width: 5pt; height: 20pt; background-color: rgba(0,0,0,0)"/>
+          <div style="width: 20pt; height: 20pt; border-radius: 50%;background-color: var(--header-button-color)"/>
+          <div style="width: 5pt; height: 250pt; background-color: var(--header-button-color)"/>
+        </div>
+        <div class="history-item-right">
+          <h2>{{ history[0].title }}</h2>
+          <p>{{ history[0].description }}</p>
+        </div>
+        <div class="history-item-left">
+          <h2>{{ history[1].title }}</h2>
+          <p>{{ history[1].description }}</p>
+        </div>
+        <div class="timeline">
+          <div style="width: 5pt; height: 20pt; background-color: var(--header-button-color)"/>
+          <div style="width: 20pt; height: 20pt; border-radius: 50%;background-color: var(--header-button-color)"/>
+          <div style="width: 5pt; height: 250pt; background-color: var(--header-button-color)"/>
+        </div>
+        <div/>
+        <div/>
+        <div class="timeline">
+          <div style="width: 5pt; height: 20pt; background-color: var(--header-button-color)"/>
+          <div style="width: 20pt; height: 20pt; border-radius: 50%;background-color: var(--header-button-color)"/>
+          <div style="width: 5pt; height: 250pt; background-color: var(--header-button-color)"/>
+        </div>
+        <div class="history-item-right">
+          <h2>{{ history[2].title }}</h2>
+          <p>{{ history[2].description }}</p>
+        </div>
+        <div class="history-item-left">
+          <h2>{{ history[3].title }}</h2>
+          <p>{{ history[3].description }}</p>
+        </div>
+        <div class="timeline">
+          <div style="width: 5pt; height: 20pt; background-color: var(--header-button-color)"/>
+          <div style="width: 20pt; height: 20pt; border-radius: 50%;background-color: var(--header-button-color)"/>
+        </div>
+        <div/>
       </div>
-      <div class="history-item-right">
-        <h2>{{ history[0].title }}</h2>
-        <p>{{ history[0].description }}</p>
-      </div>
-      <div class="history-item-left">
-        <h2>{{ history[1].title }}</h2>
-        <p>{{ history[1].description }}</p>
-      </div>
-      <div class="timeline">
-        <div style="width: 5pt; height: 20pt; background-color: var(--header-button-color)"/>
-        <div style="width: 20pt; height: 20pt; border-radius: 50%;background-color: var(--header-button-color)"/>
-        <div style="width: 5pt; height: 100pt; background-color: var(--header-button-color)"/>
-      </div>
-      <div/>
-      <div/>
-      <div class="timeline">
-        <div style="width: 5pt; height: 20pt; background-color: var(--header-button-color)"/>
-        <div style="width: 20pt; height: 20pt; border-radius: 50%;background-color: var(--header-button-color)"/>
-        <div style="width: 5pt; height: 100pt; background-color: var(--header-button-color)"/>
-      </div>
-      <div class="history-item-right">
-        <h2>{{ history[2].title }}</h2>
-        <p>{{ history[2].description }}</p>
-      </div>
-      <div class="history-item-left">
-        <h2>{{ history[3].title }}</h2>
-        <p>{{ history[3].description }}</p>
-      </div>
-      <div class="timeline">
-        <div style="width: 5pt; height: 20pt; background-color: var(--header-button-color)"/>
-        <div style="width: 20pt; height: 20pt; border-radius: 50%;background-color: var(--header-button-color)"/>
-      </div>
-      <div/>
     </div>
   </div>
 </template>
@@ -111,20 +114,19 @@ const missions = [
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  overflow-y: auto;
-  overflow-x: hidden;
   font-family: Futura;
+  font-size: 25px;
 }
 
 #latest-project {
   width: 100%;
-  aspect-ratio: 2;
+  aspect-ratio: 5/2; /* Adjust the aspect ratio to reduce the height */
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
   background-size: cover;
-  padding-left: 5%;
+  padding-left: 10%;
 }
 
 #latest-project-texts {
@@ -132,7 +134,7 @@ const missions = [
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  font-size: 25pt;
+  font-size: 100%;
   font-weight: bold;
   color: white;
 }
@@ -157,12 +159,13 @@ const missions = [
   align-items: center;
   justify-content: center;
   padding: 50px;
+  font-size: 80%;
 }
 
 #mission-list {
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   gap: 20px;
 }
@@ -173,6 +176,7 @@ const missions = [
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
 .separator {
@@ -182,13 +186,23 @@ const missions = [
   background-color: var(--header-button-color);
 }
 
+#history {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 50px;
+}
+
 #history-grid {
   width: 80vw;
   display: grid;
-  grid-template-columns: 5fr 1fr 5fr;
+  grid-template-columns: 4fr 1fr 4fr;
   grid-template-rows: repeat(4, 1fr);
   gap: 0 10px;
-  padding: 50px;
+  font-size: 80%;
 }
 
 .history-item-left {

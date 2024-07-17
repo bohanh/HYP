@@ -28,7 +28,7 @@ const socialLinks = ref({
     <div id="footer">
       <img
           id="logo"
-          src="/HYP/image/logo.svg"
+          :src="'/HYP/contents/logo.svg'"
           alt="Logo"
       >
       <div id="landmarks">
@@ -48,7 +48,7 @@ const socialLinks = ref({
           <a class="logo-socials" :href="l" target="_blank" tabindex="0">
             <img
                 class="logo-socials"
-                :src="'/HYP/image/socials/white/' + n.toLowerCase() + '.svg'"
+                :src="'/HYP/contents/socials/white/' + n.toLowerCase() + '.svg'"
                 :alt="n"
             >
           </a>
@@ -63,7 +63,7 @@ const socialLinks = ref({
 
 <style scoped>
 .container-footer {
-  width: 100%;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -136,39 +136,5 @@ const socialLinks = ref({
 
 #copyrights {
   font-size: 50%;
-}
-
-@media (max-width: 768px) {
-  .container-footer {
-    padding: 10px;
-    font-size: 12pt;
-  }
-
-  #footer {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-
-  #landmarks {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-
-  #socials {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-
-  #logo {
-    height: 30px;
-    margin: 5px;
-  }
-
-  #copyrights {
-    font-size: 40%;
-  }
 }
 </style>

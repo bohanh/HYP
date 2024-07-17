@@ -33,26 +33,26 @@ const successes = [
   <div class="about-container">
     <div id="about">
       <div id="about-text">
-        <h1>Empowering Women, Transforming Communities</h1>
-        <p2>Our organization is dedicated to empowering women through comprehensive support, advocacy, and educational
+        <h1 tabindex="0">Empowering Women, Transforming Communities</h1>
+        <p>Our organization is dedicated to empowering women through comprehensive support, advocacy, and educational
           programs. We believe in creating a world where every woman has the opportunity to reach her full potential and
-          contribute to her community.</p2>
+          contribute to her community.</p>
       </div>
       <img
         id="about-image"
-        :src="'/HYP/image/projects/1.jpg'"
-        alt="Photo of project 1"
+        :src="'/HYP/contents/projects/3.jpg'"
+        alt="Photo of project 3"
       >
     </div>
     <div class="separator" />
     <div id="history">
-      <h1>HISTORY</h1>
+      <h2 tabindex="0">HISTORY</h2>
       <div id="history-grid">
         <div />
         <div class="timeline">
-          <div style="width: 5pt; height: 20pt; background-color: rgba(0,0,0,0)" />
+          <div style="width: 5pt; height: 10pt; background-color: rgba(0,0,0,0)" />
           <div style="width: 30pt; height: 30pt; border-radius: 50%;background-color: var(--header-button-color)" />
-          <div style="width: 5pt; height: 150pt; background-color: var(--header-button-color)" />
+          <div style="width: 5pt; height: 160pt; background-color: var(--header-button-color)" />
         </div>
         <div class="history-item-right">
           <h2>{{ history[0].title }}</h2>
@@ -63,16 +63,16 @@ const successes = [
           <p>{{ history[1].description }}</p>
         </div>
         <div class="timeline">
-          <div style="width: 5pt; height: 20pt;background-color: var(--header-button-color)" />
+          <div style="width: 5pt; height: 10pt;background-color: var(--header-button-color)" />
           <div style="width: 30pt; height: 30pt; border-radius: 50%;background-color: var(--header-button-color)" />
-          <div style="width: 5pt; height: 150pt; background-color: var(--header-button-color)" />
+          <div style="width: 5pt; height: 160pt; background-color: var(--header-button-color)" />
         </div>
         <div />
         <div />
         <div class="timeline">
-          <div style="width: 5pt; height: 20pt;background-color: var(--header-button-color)" />
+          <div style="width: 5pt; height: 10pt;background-color: var(--header-button-color)" />
           <div style="width: 30pt; height: 30pt; border-radius: 50%;background-color: var(--header-button-color)" />
-          <div style="width: 5pt; height: 150pt; background-color: var(--header-button-color)" />
+          <div style="width: 5pt; height: 160pt; background-color: var(--header-button-color)" />
         </div>
         <div class="history-item-right">
           <h2>{{ history[2].title }}</h2>
@@ -83,7 +83,7 @@ const successes = [
           <p>{{ history[3].description }}</p>
         </div>
         <div class="timeline">
-          <div style="width: 5pt; height: 20pt;background-color: var(--header-button-color)" />
+          <div style="width: 5pt; height: 10pt;background-color: var(--header-button-color)" />
           <div style="width: 30pt; height: 30pt; border-radius: 50%;background-color: var(--header-button-color)" />
         </div>
         <div />
@@ -91,23 +91,23 @@ const successes = [
     </div>
     <div class="separator" />
     <div id="successes">
-      <h2>SUCCESSES SO FAR</h2>
-      <p2>
+      <h2 tabindex="0">SUCCESSES SO FAR</h2>
+      <p>
         Since our inception, we have provided critical support to over 250 women, completed 20+ projects, and garnered
         the support of more than 11,000 donors. Our resources have been accessed by over 1.8K individuals, making a
         tangible impact in our community.
-      </p2>
+      </p>
       <div id="successes-list">
         <div v-for="success in successes" class="successes-item">
           <i class="material-icons" style="font-size: 200%">{{ success.icon }}</i>
           <h3>{{ success.number }}</h3>
-          <p2>{{ success.name }}</p2>
+          <p>{{ success.name }}</p>
         </div>
       </div>
     </div>
     <div class="separator" />
     <div id="opening-hours-location">
-      <h2 class="large-font">OPENING HOURS AND LOCATION</h2>
+      <h2 class="large-font" tabindex="0">OPENING HOURS AND LOCATION</h2>
       <div id="opening-hours">
         <h3 class="medium-font">Opening Hours</h3>
         <ul class="large-list">
@@ -131,14 +131,13 @@ const successes = [
     <div id="bottom">
       <img
         id="bottom-image"
-        :src="'/HYP/image/projects/1.jpg'"
-        alt="image of project 1"
+        :src="'/HYP/contents/projects/2.jpg'"
+        alt="image of project 2"
+        tabindex="0"
       >
       <div id="bottom-text">
         <p>Our journey is fueled by the passion and commitment of individuals and organizations dedicated to gender
           equality. We continue to advocate for women's rights and provide essential services to those in need. </p>
-          <p></p>
-          <p></p>
         <p>Join us in our mission to create a supportive and inclusive environment for all women. Together, we can make
           a lasting impact and empower future generations. </p>
       </div>
@@ -151,24 +150,24 @@ const successes = [
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  overflow-y: auto;
-  overflow-x: hidden;
   font-family: Futura;
-  font-size: 15pt;
-
+  font-size: 25pt;
 }
 
 #about {
   width: 80vw;
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-start;
   justify-content: center;
   gap: 50px;
   padding: 50px;
+  font-size: 50%;
 }
 
 #about-text {
   width: 30vw;
+  min-width: 300px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -177,6 +176,7 @@ const successes = [
 
 #about-image {
   width: 40vw;
+  min-width: 400px;
   aspect-ratio: 1;
   overflow: hidden;
   object-fit: cover;
@@ -195,16 +195,16 @@ const successes = [
   align-items: center;
   justify-content: center;
   padding: 50px;
-  font-size: 80%;
+  font-size: 50%;
 }
 
 #history-grid {
-  width: 75vw;
+  width: 80vw;
   display: grid;
-  grid-template-columns: 5fr 1fr 5fr;
+  grid-template-columns: 4fr 1fr 4fr;
   grid-template-rows: repeat(4, 1fr);
   gap: 0 10px;
-  padding: 50px;
+  font-size: 80%;
 }
 
 .history-item-left {
@@ -237,12 +237,13 @@ const successes = [
   align-items: center;
   justify-content: center;
   padding: 50px;
+  font-size: 50%;
 }
 
 #successes-list {
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   gap: 20px;
   margin-top: 40px;
@@ -254,6 +255,7 @@ const successes = [
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
 #opening-hours-location {
@@ -262,7 +264,8 @@ const successes = [
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  padding: 50px; 
+  padding: 50px;
+  font-size: 50%;
 }
 
 #opening-hours, #location {
@@ -273,22 +276,27 @@ const successes = [
 #bottom {
   width: 80vw;
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-end;
   justify-content: center;
   gap: 50px;
   padding: 50px;
+  font-size: 50%;
 }
 
 #bottom-text {
-  width: 50vw;
+  width: 40vw;
+  min-width: 400px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+  font-size: 100%;
 }
 
 #bottom-image {
   width: 30vw;
+  min-width: 400px;
   aspect-ratio: 1;
   overflow: hidden;
   object-fit: cover;
