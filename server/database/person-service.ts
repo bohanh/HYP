@@ -1,4 +1,4 @@
-import {PrismaClient, Testimonial} from "@prisma/client";
+import {PrismaClient} from "@prisma/client";
 import {Person} from "~/model/Person"
 import {Socials} from "~/model/Socials";
 import {Experience} from "~/model/Experience";
@@ -58,7 +58,7 @@ export class PersonService {
         const services: number[] = (await this.prisma.testimonial.findMany({
             where: {
                 personId: {equals: id},
-                role: {equals: 'Leader'}
+                role: {equals: 'Responsible of the Service'}
             },
             select: {serviceId: true}
         })).map(dict => dict['serviceId']);
@@ -84,7 +84,7 @@ export class PersonService {
         return retPeople;
     }
 
-    async getTestimonialPeople(): Promise<{[key: number]: string}> {
+    async getTestimonialPeople(): Promise<{ [key: number]: string }> {
         const people = (await this.prisma.testimonialPerson.findMany());
         return people.reduce((acc, items) => {
             acc[items.id] = items.name;

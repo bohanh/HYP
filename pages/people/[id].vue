@@ -126,7 +126,7 @@ function crumb(bread: string): string {
           </NuxtLink>
         </div>
         <div v-for="service in chefServices" class="project-container">
-          <NuxtLink class="project-card" :to="'/projects/' + service.id" tabindex="0">
+          <NuxtLink class="project-card" :to="'/services/' + service.id" tabindex="0">
             <h2>{{ service.name }}</h2>
             <p>{{ service.description }}</p>
             <img
