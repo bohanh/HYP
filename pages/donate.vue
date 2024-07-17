@@ -220,7 +220,7 @@ button {
   margin-top: 20px;
 }
 
-button:hover {
+button:hover, button:focus {
   background-color: #7A1DC2;
 }
 </style>

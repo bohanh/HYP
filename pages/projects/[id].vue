@@ -220,7 +220,7 @@ function shuffle(): any[] {
   color: #fff;
   border-radius: 5px;
   text-decoration: none;
-  transition: background-color 0.3s, color 0.3s;
+  transition: background-color 0.2s, color 0.2s;
   border: 2px solid #8e44ad;
 }
 
@@ -250,7 +250,7 @@ function shuffle(): any[] {
 .project-card {
   width: 30%;
   min-width: 400px;
-  aspect-ratio: 4/5;
+  aspect-ratio: 1;
   margin: 20px;
   padding: 20px;
   display: flex;
@@ -260,6 +260,7 @@ function shuffle(): any[] {
   background-color: white;
   border-radius: 20px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transition: 0.2s;
   text-align: center;
   cursor: pointer;
   gap: 10px;
@@ -267,9 +268,10 @@ function shuffle(): any[] {
   color: black;
 }
 
-.project-card:hover {
+.project-card:hover, .project-card:focus {
   transform: translateY(-5px);
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
+  transition: 0.2s;
 }
 
 .violet-text {

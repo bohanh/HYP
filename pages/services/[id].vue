@@ -21,7 +21,7 @@ let {data: data_testimonials} = await useFetch("/api/testimonials");
 const people: Person[] = assignPeople(JSON.parse(data_people.value!.people));
 const projects: Project[] = assignProjects(JSON.parse(data_projects.value!.projects));
 const services: Service[] = assignServices(JSON.parse(data_services.value!.services));
-const testimonials: {[key: number]: string} = JSON.parse(data_testimonials.value!.people);
+const testimonials: { [key: number]: string } = JSON.parse(data_testimonials.value!.people);
 let service: Service;
 for (let s of services) {
   if (s.id.toString() === id) {
@@ -103,12 +103,12 @@ function getPersonName(id: number) {
         {{ section }}
       </div>
     </div>
-   <div id="words" style="text-align: center;">
-  <p style="width: 80%; margin: 0 auto;">{{ service.words }}</p>
-</div>
-
+    <div id="words" style="text-align: center;">
+      <p style="width: 80%; margin: 0 auto;">{{ service.words }}</p>
+    </div>
     <div id="testimonials-container">
-      <p style="color: indigo; font-size: 200%;font-weight: bold;font-variant: all-petite-caps" tabindex="0">TESTIMONIALS</p>
+      <p style="color: indigo; font-size: 200%;font-weight: bold;font-variant: all-petite-caps" tabindex="0">
+        TESTIMONIALS</p>
       <div id="testimonials">
         <div class="testimonial" v-for="testimonial of service.testimonials">
           <p>{{ testimonial.words }}</p>
@@ -203,7 +203,6 @@ function getPersonName(id: number) {
 }
 
 
-
 #testimonials-container {
   max-width: 80%;
   display: flex;
@@ -236,6 +235,7 @@ function getPersonName(id: number) {
   align-items: center;
   padding-inline: 30px;
   padding-block: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 .testimonial-person {

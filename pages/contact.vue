@@ -102,12 +102,6 @@ h1 {
   font-family: 'Futura', sans-serif;
 }
 
-.label {
-  display: block;
-  margin-bottom: 5px;
-  font-family: 'Futura', sans-serif;
-}
-
 .input-box {
   border: 1px solid #ccc;
   border-radius: 20px;
@@ -141,7 +135,7 @@ button {
   font-family: 'Futura', sans-serif;
 }
 
-button:hover {
+button:hover, button:focus {
   background-color: #7A1DC2; /* Viola più scuro al passaggio del mouse */
 }
 

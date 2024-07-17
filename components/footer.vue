@@ -99,11 +99,11 @@ const socialLinks = ref({
   font-size: 100%;
   color: black;
   text-decoration: none;
-  transition: color 0.3s;
+  transition: color 0.2s;
   cursor: pointer;
 }
 
-.landmark:hover {
+.landmark:hover, .landmark:focus {
   color: white;
 }
 

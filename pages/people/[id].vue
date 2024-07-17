@@ -266,7 +266,7 @@ function crumb(bread: string): string {
 }
 
 .project-card {
-  margin: 20px;
+  margin: 25px;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -275,11 +275,18 @@ function crumb(bread: string): string {
   background-color: white;
   border-radius: 20px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transition: 0.2s;
   text-align: center;
   cursor: pointer;
   gap: 10px;
   text-decoration: none;
   color: black;
+}
+
+.project-card:hover, .project-card:focus {
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+  transition: 0.2s;
 }
 
 .project-img {

@@ -29,7 +29,6 @@ const people: Person[] = assignPeople(JSON.parse(data_people.value!.people));
           <span class="person-name">{{ person.name }}</span>
           <span class="person-description">{{ person.description.substring(0, 120) + "..." }}</span>
         </NuxtLink>
-        <!--          <router-link :to="'/cv/' + person.id" class="see-cv">See CV</router-link>-->
       </div>
     </div>
   </div>
@@ -74,8 +73,15 @@ const people: Person[] = assignPeople(JSON.parse(data_people.value!.people));
   width: 23%;
   min-width: 300px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: 0.2s;
   border-radius: 20px;
   text-decoration: none;
+}
+
+.person-card-container:hover, .person-card-container:focus {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+  transition: 0.2s;
 }
 
 .person-card {
@@ -120,26 +126,6 @@ const people: Person[] = assignPeople(JSON.parse(data_people.value!.people));
   font-weight: normal;
   text-decoration: none;
   padding-inline: 5%;
-}
-
-.see-cv {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: calc(100% - 20px);
-  background-color: #ffffff;
-  color: #8e44ad;
-  padding: 6px 0;
-  border: 2px solid #8e44ad;
-  text-decoration: none;
-  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-  cursor: pointer;
-}
-
-.see-cv:hover {
-  background-color: #8e44ad;
-  color: #ffffff;
-  border-color: #8e44ad;
 }
 
 </style>

@@ -33,7 +33,7 @@ const toggleDisplay = () => {
       />
     </NuxtLink>
     <div id="landmarks">
-      <NuxtLink id="donation" to="/donate" class="donate-button", tabindex="0">
+      <NuxtLink id="donation" to="/donate" class="donate-button" tabindex="0">
         DONATE
       </NuxtLink>
     </div>
@@ -81,7 +81,7 @@ const toggleDisplay = () => {
   cursor: pointer;
 }
 
-.landmark:focus, .landmark:hover {
+.landmark:hover, .landmark:focus {
   color: white;
   transition: 0.2s;
 }
@@ -96,7 +96,7 @@ const toggleDisplay = () => {
   cursor: pointer;
 }
 
-.donate-button:focus, .donate-button:hover {
+.donate-button:hover, .donate-button:focus {
   background-color: white;
   color: var(--header-button-color);
   transition: 0.2s;

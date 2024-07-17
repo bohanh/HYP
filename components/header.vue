@@ -63,12 +63,14 @@ const isLandmarkActive = (name: string) => {
 #logo {
   height: 40px;
   margin: 10px;
-  transition: filter 0.3s;
+  transition: filter 0.2s;
 }
 
 #logo-link:hover #logo,
+#logo-link:focus #logo,
 #logo-link.active #logo {
   filter: brightness(0) invert(1);
+  transition: 0.2s;
 }
 
 #landmarks {
@@ -85,11 +87,11 @@ const isLandmarkActive = (name: string) => {
   font-size: 100%;
   color: black;
   text-decoration: none;
-  transition: color 0.3s;
+  transition: color 0.2s;
   cursor: pointer;
 }
 
-.landmark:hover {
+.landmark:hover, .landmark:focus {
   color: white;
 }
 
@@ -104,11 +106,11 @@ const isLandmarkActive = (name: string) => {
   border-radius: 10px;
   text-decoration: none;
   padding: 10px;
-  transition: background-color 0.3s, color 0.3s;
+  transition: background-color 0.2s, color 0.2s;
   cursor: pointer;
 }
 
-.donate-button:hover {
+.donate-button:hover, .donate-button:focus {
   background-color: white;
   color: rgba(221 160 221);
    

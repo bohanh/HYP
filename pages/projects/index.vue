@@ -75,7 +75,7 @@ const projects: Project[] = assignProjects(JSON.parse(data_projects.value!.proje
   background-color: white;
   border-radius: 20px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.2s, box-shadow 0.2s;
   text-align: center;
   cursor: pointer;
   gap: 10px;
@@ -83,7 +83,7 @@ const projects: Project[] = assignProjects(JSON.parse(data_projects.value!.proje
   color: black;
 }
 
-.project-card:hover {
+.project-card:hover, .project-card:focus {
   transform: translateY(-5px);
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
 }

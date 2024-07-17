@@ -174,7 +174,7 @@ const successes = [
 }
 
 #about-image {
-  flex: 1 1 10%; /* Allow the image to flex and grow while maintaining a minimum width */
+  flex: 1 1 250px; /* Allow the image to flex and grow while maintaining a minimum width */
   aspect-ratio: 1;
   overflow: hidden;
   object-fit: cover;
@@ -292,7 +292,7 @@ const successes = [
 }
 
 #bottom-image {
-  flex: 70px; /* Allow the image to flex and grow while maintaining a minimum width */
+  flex: 1 1 250px; /* Allow the image to flex and grow while maintaining a minimum width */
   aspect-ratio: 1;
   overflow: hidden;
   object-fit: cover;
@@ -320,9 +320,5 @@ h2 {
 
 p {
   font-size: 125%;
-}
-
-p2 {
-  font-size: 100%;
 }
 </style>

@@ -79,13 +79,13 @@ const services: Service[] = assignServices(JSON.parse(data_services.value!.servi
   background-color: white;
   border-radius: 30px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.2s, box-shadow 0.2s;
   text-align: center;
   cursor: pointer;
   text-decoration: none;
 }
 
-.service-card:hover {
+.service-card:hover, .service-card:focus {
   transform: translateY(-5px);
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
 }

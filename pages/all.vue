@@ -97,7 +97,7 @@ const services: Service[] = assignServices(JSON.parse(data_services.value!.servi
   background-color: white;
   border-radius: 20px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.2s, box-shadow 0.2s;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -105,7 +105,7 @@ const services: Service[] = assignServices(JSON.parse(data_services.value!.servi
   gap: 10px;
 }
 
-.project-card:hover, .service-card:hover {
+.project-card:hover, .service-card:hover, .project-card:focus, .service-card:focus {
   transform: translateY(-5px);
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
 }
@@ -139,12 +139,11 @@ p {
   color: white;
   border-radius: 5px;
   text-decoration: none;
-  transition: background-color 0.3s, color 0.3s;
+  transition: background-color 0.2s, color 0.2s;
   border: 2px solid var(--header-color);
-  text-decoration: none;
 }
 
-.read-more:hover {
+.read-more:hover, .read-more:focus {
   background-color: rgba(218 112 214);
   border: 2px solid rgba(218 112 214);;
 }

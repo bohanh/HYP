@@ -101,7 +101,7 @@ const socialLinks = ref({
   cursor: pointer;
 }
 
-.landmark:focus, .landmark:hover {
+.landmark:hover, .landmark:focus {
   color: white;
   transition: 0.2s;
 }
@@ -112,11 +112,6 @@ const socialLinks = ref({
   justify-content: space-between;
   gap: 20px;
   cursor: pointer;
-}
-
-#logo {
-  height: 40px;
-  margin: 10px;
 }
 
 .logo-socials-container {
