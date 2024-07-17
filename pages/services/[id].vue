@@ -148,7 +148,7 @@ function getPersonName(id: number) {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: Futura;
+  font-family: "Futura", sans-serif;
   font-size: 15pt;
 }
 

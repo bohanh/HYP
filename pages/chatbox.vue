@@ -32,7 +32,7 @@
   align-items: center;
   justify-content: space-between;
   border: black 2px solid;
-  font-family: Futura;
+  font-family: "Futura", sans-serif;
 }
 
 .chat-header {

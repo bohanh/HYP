@@ -142,14 +142,14 @@ function validateExpiryDate(newValue: string) {
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   max-width: 600px;
-  margin: 20px auto; /* Spacing from header and footer */
-  font-family: Futura, sans-serif; /* Use the same font as in the header */
+  margin: 20px auto;
+  font-family: "Futura", sans-serif;
 }
 
 h1 {
   text-align: center;
   margin-bottom: 20px;
-  font-family: Futura, sans-serif; /* Use the same font as in the header */
+  font-family: "Futura", sans-serif;
 }
 
 .form {

@@ -36,7 +36,7 @@ const people: Person[] = assignPeople(JSON.parse(data_people.value!.people));
   align-items: center;
   text-align: center;
   padding-block: 50px;
-  font-family: Futura;
+  font-family: "Futura", sans-serif;
   color: black;
 }
 

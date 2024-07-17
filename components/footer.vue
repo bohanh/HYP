@@ -73,7 +73,7 @@ const socialLinks = ref({
   padding: 20px;
   font-size: 15pt;
   background-color: var(--header-color);
-  font-family: Futura;
+  font-family: "Futura", sans-serif;
 }
 
 #footer {

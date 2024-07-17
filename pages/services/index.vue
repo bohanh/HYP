@@ -48,7 +48,7 @@ const services: Service[] = assignServices(JSON.parse(data_services.value!.servi
   align-items: center;
   text-align: center;
   padding-block: 50px;
-  font-family: Futura, sans-serif;
+  font-family: "Futura", sans-serif;
 }
 
 .header {

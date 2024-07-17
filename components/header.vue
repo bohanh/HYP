@@ -53,7 +53,7 @@ const isLandmarkActive = (name: string) => {
   box-sizing: border-box;
   padding: 5px;
   background-color: var(--header-color);
-  font-family: Futura;
+  font-family: "Futura", sans-serif;
   position: fixed;
   top: 0;
   left: 0;
