@@ -100,8 +100,8 @@ function shuffle(): any[] {
     </div>
     <div id="project" :style="bgImageStyle">
       <div id="project-texts">
-        <h2 style="color: var(--header-button-color)">{{ project.name }}</h2>
-        <p style="font-size: 80%">{{ project.description }}</p>
+        <h1 style="color: var(--header-button-color)">{{ project.name }}</h1>
+        <h2 style="font-size: 80%; text-align: right">{{ project.description }}</h2>
       </div>
     </div>
     <div id="leader">
@@ -121,9 +121,9 @@ function shuffle(): any[] {
       <div id="projects">
         <NuxtLink v-for="project in shuffle()" :key="project.id" class="project-card" :to="'/projects/' + project.id"
                   tabindex="0">
-          <h2 class="violet-text">
+          <h3 class="violet-text">
             {{ project.name }}
-          </h2>
+          </h3>
           <p>{{ project.description }}</p>
           <img
               class="project-thumb"

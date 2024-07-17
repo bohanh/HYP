@@ -55,11 +55,11 @@ const successes = [
           <div style="width: 5pt; height: 160pt; background-color: var(--header-button-color)" />
         </div>
         <div class="history-item-right">
-          <h2>{{ history[0].title }}</h2>
+          <h3>{{ history[0].title }}</h3>
           <p>{{ history[0].description }}</p>
         </div>
         <div class="history-item-left">
-          <h2>{{ history[1].title }}</h2>
+          <h3>{{ history[1].title }}</h3>
           <p>{{ history[1].description }}</p>
         </div>
         <div class="timeline">
@@ -75,11 +75,11 @@ const successes = [
           <div style="width: 5pt; height: 160pt; background-color: var(--header-button-color)" />
         </div>
         <div class="history-item-right">
-          <h2>{{ history[2].title }}</h2>
+          <h3>{{ history[2].title }}</h3>
           <p>{{ history[2].description }}</p>
         </div>
         <div class="history-item-left">
-          <h2>{{ history[3].title }}</h2>
+          <h3>{{ history[3].title }}</h3>
           <p>{{ history[3].description }}</p>
         </div>
         <div class="timeline">

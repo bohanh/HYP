@@ -12,7 +12,7 @@ const services: Service[] = assignServices(JSON.parse(data_services.value!.servi
 
 <template>
   <div class="container">
-    <div class="header">SERVICES</div>
+    <h1 class="header">SERVICES</h1>
     <div class="title">
       This section outlines our various services aimed at addressing gender-based violence, trafficking and empowering
       marginalized groups.

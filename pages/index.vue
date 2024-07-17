@@ -42,7 +42,7 @@ const missions = [
     <div v-if="!!latestProject" id="latest-project" :style="bgImageStyle">
       <div id="latest-project-texts">
         <h2 style="color: rgba(221 160 221); margin: 0;">{{ latestProject.name }}</h2>
-        <p style="font-size: 80%">{{ latestProject.description }}</p>
+        <h3 style="font-size: 80%">{{ latestProject.description }}</h3>
         <NuxtLink id="latest-project-button" :to="'/projects/'+latestProject.id" tabindex="0">Learn more</NuxtLink>
       </div>
     </div>
@@ -71,11 +71,11 @@ const missions = [
           <div style="width: 5pt; height: 250pt; background-color: var(--header-button-color)"/>
         </div>
         <div class="history-item-right">
-          <h2>{{ history[0].title }}</h2>
+          <h3>{{ history[0].title }}</h3>
           <p>{{ history[0].description }}</p>
         </div>
         <div class="history-item-left">
-          <h2>{{ history[1].title }}</h2>
+          <h3>{{ history[1].title }}</h3>
           <p>{{ history[1].description }}</p>
         </div>
         <div class="timeline">
@@ -91,11 +91,11 @@ const missions = [
           <div style="width: 5pt; height: 250pt; background-color: var(--header-button-color)"/>
         </div>
         <div class="history-item-right">
-          <h2>{{ history[2].title }}</h2>
+          <h3>{{ history[2].title }}</h3>
           <p>{{ history[2].description }}</p>
         </div>
         <div class="history-item-left">
-          <h2>{{ history[3].title }}</h2>
+          <h3>{{ history[3].title }}</h3>
           <p>{{ history[3].description }}</p>
         </div>
         <div class="timeline">

@@ -94,21 +94,22 @@ function getPersonName(id: number) {
         :alt="'photo of the service ' + service.name"
     >
     <div id="title">
-      <p style="color: plum ; font-size: 250%;font-weight: bold;font-variant: all-petite-caps">
-        {{ service.name }}</p>
+      <h1 style="color: plum;font-size: 250%;font-weight: bold;">
+        {{ service.name.toUpperCase()}}</h1>
       <h2 tabindex="0">{{ service.description }}</h2>
     </div>
     <div id="parts">
       <div class="part" v-for="section of service.sections">
-        {{ section }}
+        <h3 style="font-weight: bold">{{ section.split(":")[0]}}</h3>
+        <p style="margin: 0">{{ section.split(": ")[1] }}</p>
       </div>
     </div>
     <div id="words" style="text-align: center;">
       <p style="width: 80%; margin: 0 auto;">{{ service.words }}</p>
     </div>
     <div id="testimonials-container">
-      <p style="color: indigo; font-size: 200%;font-weight: bold;font-variant: all-petite-caps" tabindex="0">
-        TESTIMONIALS</p>
+      <h2 style="color: indigo; font-size: 200%;font-weight: bold;font-variant: all-petite-caps" tabindex="0">
+        TESTIMONIALS</h2>
       <div id="testimonials">
         <div class="testimonial" v-for="testimonial of service.testimonials">
           <p>{{ testimonial.words }}</p>
@@ -185,12 +186,23 @@ function getPersonName(id: number) {
 
 #parts {
   width: 80%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 50px;
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   margin-block: 50px;
+}
+
+.part {
+  min-width: 200px;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-inline: 25px;
+  margin-bottom: 25px;
 }
 
 #words {

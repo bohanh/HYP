@@ -11,7 +11,7 @@ const projects: Project[] = assignProjects(JSON.parse(data_projects.value!.proje
 </script>
 <template>
   <div class="container">
-    <div class="header">PROJECTS</div>
+    <h1 class="header">PROJECTS</h1>
     <div class="title">
       This section outlines our various projects aimed at addressing gender-based violence, trafficking and empowering marginalized groups.
     </div>

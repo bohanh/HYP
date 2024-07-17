@@ -12,7 +12,7 @@ const people: Person[] = assignPeople(JSON.parse(data_people.value!.people));
 
 <template>
   <div class="container">
-    <div class="header">THE TEAM</div>
+    <h1 class="header">THE TEAM</h1>
     <div class="title">
       Our dedicated team is here for you.
       Here you can see their work.
@@ -26,7 +26,7 @@ const people: Person[] = assignPeople(JSON.parse(data_people.value!.people));
               :src="'/HYP/contents/people/' + person.id + '.jpg'"
               :alt="'Photo of ' + person.name"
           >
-          <span class="person-name">{{ person.name }}</span>
+          <h2 class="person-name">{{ person.name }}</h2>
           <span class="person-description">{{ person.description.substring(0, 120) + "..." }}</span>
         </NuxtLink>
       </div>
@@ -88,7 +88,7 @@ const people: Person[] = assignPeople(JSON.parse(data_people.value!.people));
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   aspect-ratio: 2/3;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -99,8 +99,8 @@ const people: Person[] = assignPeople(JSON.parse(data_people.value!.people));
   background-color: transparent;
   font-family: "Futura", sans-serif;
   border: none;
-  padding: 0;
   gap: 10px;
+  padding-bottom: 20px;
 }
 
 .person-thumb {
@@ -111,11 +111,12 @@ const people: Person[] = assignPeople(JSON.parse(data_people.value!.people));
 
 .person-name {
   color: black;
-  font-size: 120%;
+  font-size: 125%;
   font-weight: bold;
   text-decoration: none;
   padding-inline: 5%;
   text-overflow: ellipsis;
+  margin: 0;
 }
 
 .person-description {

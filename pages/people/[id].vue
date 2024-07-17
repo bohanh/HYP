@@ -79,7 +79,7 @@ function crumb(bread: string): string {
           :alt="'photo of ' + person.name"
       >
       <div id="person-info">
-        <h2>{{ person.name }}</h2>
+        <h1>{{ person.name }}</h1>
         <div id="person-socials">
           <NuxtLink v-for="key in Object.keys(person.socials)" :to="person.socials.getSocial(key)" external
                     target="_blank" tabindex="0">
@@ -96,9 +96,9 @@ function crumb(bread: string): string {
     <div id="experiences">
       <div v-for="experience in person.experiences" class="experience">
         <div class="experience-title">
-          <span style="font-size: 150%; font-weight: bold; margin-right: 10px" tabindex="0">
+          <h3 style="font-size: 150%; font-weight: bold; margin-right: 10px" tabindex="0">
             {{ experience.title }}
-          </span>
+          </h3>
           <span style="font-style: italic; color: gray">
             {{ experience.time }}
           </span>
@@ -112,11 +112,11 @@ function crumb(bread: string): string {
       </div>
     </div>
     <div v-if="chefProjects.length + chefServices.length > 0" class="more">
-      <h3 style="margin: 0">MISSIONS/SERVICES IN CHARGE</h3>
+      <h2 style="margin: 0">MISSIONS/SERVICES IN CHARGE</h2>
       <div id="projects">
         <div v-for="project in chefProjects" class="project-container">
           <NuxtLink class="project-card" :to="'/projects/' + project.id" tabindex="0">
-            <h2>{{ project.name }}</h2>
+            <h3>{{ project.name }}</h3>
             <p>{{ project.description }}</p>
             <img
                 class="project-img"

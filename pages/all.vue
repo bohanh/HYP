@@ -21,9 +21,9 @@ const services: Service[] = assignServices(JSON.parse(data_services.value!.servi
       <div v-if="projects.length === 0" class="project-card">No projects found</div>
       <div v-else class="project-cards">
         <div v-for="project in projects" :key="project.id" class="project-card">
-          <h2 class="violet-text">
+          <h3 class="violet-text">
             {{ project.name }}
-          </h2>
+          </h3>
           <p>{{ project.description }}</p>
           <img
               class="project-thumb"
@@ -40,9 +40,9 @@ const services: Service[] = assignServices(JSON.parse(data_services.value!.servi
       <div v-if="services.length === 0" class="service-card">No services found</div>
       <div v-else class="service-cards">
         <div v-for="service in services" :key="service.id" class="service-card">
-          <h2 class="violet-text">
+          <h3 class="violet-text">
             {{ service.name }}
-          </h2>
+          </h3>
           <p>{{ service.description }}</p>
           <img
               class="service-thumb"
@@ -65,13 +65,13 @@ const services: Service[] = assignServices(JSON.parse(data_services.value!.servi
   text-align: center;
   font-family: 'Futura', sans-serif;
   background-color: #f9f9f9;
-  padding-block: 50px;
 }
 
 .section-title {
   font-size: 2rem;
   color: black;
-  margin-bottom: 20px;
+  margin-top: 50px;
+  margin-bottom: 25px;
 }
 
 .project-cards, .service-cards {
@@ -81,12 +81,6 @@ const services: Service[] = assignServices(JSON.parse(data_services.value!.servi
   overflow-x: scroll;
   overflow-y: hidden;
   padding: 25px;
-  scrollbar-width: none; /* For Firefox */
-  -ms-overflow-style: none; /* For Internet Explorer and Edge */
-}
-
-.project-cards::-webkit-scrollbar, .service-cards::-webkit-scrollbar { /* For WebKit browsers */
-  display: none;
 }
 
 .project-card, .service-card {
