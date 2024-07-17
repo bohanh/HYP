@@ -13,9 +13,9 @@ if (crumb0 !== crumbs.value[crumbs.value.length - 1]) {
   crumbs.value.push(crumb0);
 }
 
-let { data: data_people } = await useFetch("/api/people");
-let { data: data_projects } = await useFetch("/api/projects");
-let { data: data_services } = await useFetch("/api/services");
+let {data: data_people} = await useFetch("/api/people");
+let {data: data_projects} = await useFetch("/api/projects");
+let {data: data_services} = await useFetch("/api/services");
 
 const people: Person[] = assignPeople(JSON.parse(data_people.value!.people));
 const projects: Project[] = assignProjects(JSON.parse(data_projects.value!.projects));
@@ -75,19 +75,20 @@ function crumb(bread: string): string {
     <div id="person">
       <img
           id="person-photo"
-          :src="'/HYP/image/people/' + useRoute().params.id + '.jpg'"
+          :src="'/HYP/contents/people/' + useRoute().params.id + '.jpg'"
           :alt="'photo of ' + person.name"
       >
       <div id="person-info">
         <h2>{{ person.name }}</h2>
         <div id="person-socials">
-          <NuxtLink v-for="key in Object.keys(person.socials)" :to="person.socials.getSocial(key)" external target="_blank" tabindex="0">
+          <NuxtLink v-for="key in Object.keys(person.socials)" :to="person.socials.getSocial(key)" external
+                    target="_blank" tabindex="0">
             <img
                 class="person-socials-icon"
-                :src="'/HYP/image/socials/colored/' + key + '.svg'"
+                :src="'/HYP/contents/socials/colored/' + key + '.svg'"
                 :alt="'link to ' + key + ' of ' + person.name"
             >
-          </NuxtLink  >
+          </NuxtLink>
         </div>
         <p>{{ person.description }}</p>
       </div>
@@ -95,43 +96,46 @@ function crumb(bread: string): string {
     <div id="experiences">
       <div v-for="experience in person.experiences" class="experience">
         <div class="experience-title">
-          <span style="font-size: 150%; font-weight: bold">
-            {{experience.title}}
+          <span style="font-size: 150%; font-weight: bold; margin-right: 10px" tabindex="0">
+            {{ experience.title }}
           </span>
           <span style="font-style: italic; color: gray">
-            {{experience.time}}
+            {{ experience.time }}
           </span>
         </div>
         <span style="font-weight: bold">
-          {{experience.location}}
+          {{ experience.location }}
         </span>
         <span>
-          {{experience.description}}
+          {{ experience.description }}
         </span>
       </div>
     </div>
-    <div id="projects">
-      <div v-for="project in projects" class="project-container">
-        <NuxtLink class="project-card" :to="'/projects/' + project.id" tabindex="0">
-          <h2>{{ project.name }}</h2>
-          <p>{{ project.description }}</p>
-          <img
-              class="project-img"
-              :src="'/HYP/image/projects/' + project.id + '.jpg'"
-              :alt="'photo of ' + project.name"
-          >
-        </NuxtLink>
-      </div>
-      <div v-for="service in chefServices" class="project-container">
-        <NuxtLink class="project-card" :to="'/projects/' + service.id" tabindex="0">
-          <h2>{{ service.name }}</h2>
-          <p>{{ service.description }}</p>
-          <img
-              class="project-img"
-              :src="'/HYP/image/services/' + service.id + '.jpg'"
-              :alt="'photo of ' + service.name"
-          >
-        </NuxtLink>
+    <div v-if="chefProjects.length + chefServices.length > 0" class="more">
+      <h3 style="margin: 0">MISSIONS/SERVICES IN CHARGE</h3>
+      <div id="projects">
+        <div v-for="project in chefProjects" class="project-container">
+          <NuxtLink class="project-card" :to="'/projects/' + project.id" tabindex="0">
+            <h2>{{ project.name }}</h2>
+            <p>{{ project.description }}</p>
+            <img
+                class="project-img"
+                :src="'/HYP/contents/projects/' + project.id + '.jpg'"
+                :alt="'photo of ' + project.name"
+            >
+          </NuxtLink>
+        </div>
+        <div v-for="service in chefServices" class="project-container">
+          <NuxtLink class="project-card" :to="'/projects/' + service.id" tabindex="0">
+            <h2>{{ service.name }}</h2>
+            <p>{{ service.description }}</p>
+            <img
+                class="project-img"
+                :src="'/HYP/contents/services/' + service.id + '.jpg'"
+                :alt="'photo of ' + service.name"
+            >
+          </NuxtLink>
+        </div>
       </div>
     </div>
   </div>
@@ -146,7 +150,6 @@ function crumb(bread: string): string {
   justify-content: flex-start;
   font-family: Futura;
   font-size: 15pt;
-  overflow-x: hidden;
 }
 
 .breadcrumbs {
@@ -169,24 +172,28 @@ function crumb(bread: string): string {
 #person {
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-end;
   justify-content: flex-start;
-  gap: 50px;
 }
 
 #person-photo {
-  width: 50%;
+  width: 40%;
+  min-width: 400px;
   aspect-ratio: 1;
   object-fit: cover;
+  margin-left: 70px;
+  margin-top: 20px;
 }
 
 #person-info {
-  width: 60%;
-  height: 100%;
+  width: 40%;
+  min-width: 300px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-end;
+  margin-left: 50px;
 }
 
 #person-socials {
@@ -230,14 +237,24 @@ function crumb(bread: string): string {
   margin-bottom: 10px;
 }
 
+.more {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--accent-color);
+  padding-top: 50px;
+}
+
 #projects {
   width: 80%;
   min-height: 500px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  margin-block: 50px;
-  gap: 50px;
+  justify-content: flex-start;
+  margin-block: 25px;
+  padding-block: 25px;
+  gap: 10px;
   overflow-x: scroll;
   overflow-y: hidden;
 }
@@ -245,7 +262,7 @@ function crumb(bread: string): string {
 .project-container {
   width: 30%;
   min-width: 400px;
-  aspect-ratio: 1;
+  aspect-ratio: 4/5;
 }
 
 .project-card {

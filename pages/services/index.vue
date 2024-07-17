@@ -41,7 +41,7 @@ const services: Service[] = assignServices(JSON.parse(data_services.value!.servi
 
 <style scoped>
 .container {
-  width: 100vw;
+  width: 80vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -55,14 +55,14 @@ const services: Service[] = assignServices(JSON.parse(data_services.value!.servi
   font-size: 2rem;
   margin-bottom: 10px;
   font-weight: bold;
-  color: #2c3e50;
+  color: indigo;
 }
 
 .title {
   font-size: 1.5rem;
   width: 80%;
   margin-bottom: 50px;
-  color: #34495e;
+  color: black;
 }
 
 .service-cards {
@@ -75,7 +75,7 @@ const services: Service[] = assignServices(JSON.parse(data_services.value!.servi
 .service-card {
   margin: 20px;
   padding: 20px;
-  width: 75%;
+  width: 80%;
   background-color: white;
   border-radius: 30px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
@@ -94,12 +94,12 @@ const services: Service[] = assignServices(JSON.parse(data_services.value!.servi
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  padding: 20px;
+  padding: 30px;
 }
 
 .service-thumb {
   width: 600px;
-  max-width: 100%;
+  max-width: 50%;
   aspect-ratio: 3/2;
   object-fit: cover;
   margin-right: 20px;
@@ -121,7 +121,7 @@ const services: Service[] = assignServices(JSON.parse(data_services.value!.servi
 
 .service-name {
   font-size: 180%;
-  color: black;
+  color: indigo;
   text-decoration: none;
 }
 

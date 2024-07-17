@@ -17,7 +17,7 @@ const people: Person[] = assignPeople(JSON.parse(data_people.value!.people));
       <NuxtLink v-for="person in people" :key=person.id class="person-card" :to="'/people/' + person.id">
         <img
             class="person-thumb"
-            :src="'/HYP/image/people/' + person.id + '.jpg'"
+            :src="'/HYP/contents/people/' + person.id + '.jpg'"
             :alt="'Photo of ' + person.name"
         >
         <h2>{{ person.name }}</h2>
@@ -37,19 +37,21 @@ const people: Person[] = assignPeople(JSON.parse(data_people.value!.people));
   text-align: center;
   padding-block: 50px;
   font-family: Futura;
+  color: black;
 }
 
 .header {
   font-size: 100%;
   margin-block: 10px;
   font-weight: bold;
-  color: darkblue;
+  
 }
 
 .title {
   font-size: 200%;
   width: 80%;
   margin-bottom: 50px;
+  color: black;
 }
 
 .person-cards {

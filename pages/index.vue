@@ -41,7 +41,7 @@ const missions = [
   <div class="page-container">
     <div v-if="!!latestProject" id="latest-project" :style="bgImageStyle">
       <div id="latest-project-texts">
-        <h2 style="color: var(--header-button-color); margin: 0;">{{ latestProject.name }}</h2>
+        <h2 style="color: rgba(221 160 221); margin: 0;">{{ latestProject.name }}</h2>
         <p style="font-size: 80%">{{ latestProject.description }}</p>
         <NuxtLink id="latest-project-button" :to="'/projects/'+latestProject.id" tabindex="0">Learn more</NuxtLink>
       </div>
@@ -120,13 +120,15 @@ const missions = [
 
 #latest-project {
   width: 100%;
-  aspect-ratio: 5/2; /* Adjust the aspect ratio to reduce the height */
+  color: white;
+  aspect-ratio: 5/2;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
   background-size: cover;
   padding-left: 10%;
+  
 }
 
 #latest-project-texts {
@@ -140,10 +142,10 @@ const missions = [
 }
 
 #latest-project-button {
-  font-size: 60%;
+  font-size: 70%;
   font-weight: bold;
   color: white;
-  background-color: var(--header-button-color);
+  background-color: rgba(221 160 221);
   border: none;
   border-radius: 25px;
   text-decoration: none;
@@ -182,8 +184,8 @@ const missions = [
 .separator {
   width: 100vw;
   height: 2px;
-  border: var(--header-button-color) 1px solid;
-  background-color: var(--header-button-color);
+  border: indigo 1px solid;
+  background-color: indigo;
 }
 
 #history {
@@ -226,4 +228,6 @@ const missions = [
   align-items: center;
   justify-content: flex-start;
 }
+
+
 </style>

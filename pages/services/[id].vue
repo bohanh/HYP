@@ -94,7 +94,7 @@ function getPersonName(id: number) {
         :alt="'photo of the service ' + service.name"
     >
     <div id="title">
-      <p style="color: var(--header-button-color); font-size: 150%;font-weight: bold;font-variant: all-petite-caps">
+      <p style="color: plum ; font-size: 250%;font-weight: bold;font-variant: all-petite-caps">
         {{ service.name }}</p>
       <h2 tabindex="0">{{ service.description }}</h2>
     </div>
@@ -103,16 +103,12 @@ function getPersonName(id: number) {
         {{ section }}
       </div>
     </div>
-    <div id="words">
-      <img
-          id="words-image"
-          :src="'/HYP/contents/services/' + useRoute().params.id + '+.jpg'"
-          :alt="'photo of the service ' + service.name"
-      />
-      <p style="width: 60%; margin-right: 50px">{{ service.words }}</p>
-    </div>
+   <div id="words" style="text-align: center;">
+  <p style="width: 80%; margin: 0 auto;">{{ service.words }}</p>
+</div>
+
     <div id="testimonials-container">
-      <p style="color: var(--header-button-color); font-size: 150%;font-weight: bold;font-variant: all-petite-caps" tabindex="0">TESTIMONIALS</p>
+      <p style="color: indigo; font-size: 200%;font-weight: bold;font-variant: all-petite-caps" tabindex="0">TESTIMONIALS</p>
       <div id="testimonials">
         <div class="testimonial" v-for="testimonial of service.testimonials">
           <p>{{ testimonial.words }}</p>
@@ -145,6 +141,7 @@ function getPersonName(id: number) {
 </template>
 
 <style scoped>
+
 .service-container {
   width: 100vw;
   display: flex;
@@ -174,7 +171,7 @@ function getPersonName(id: number) {
 
 #hero {
   width: 100%;
-  aspect-ratio: 2;
+  aspect-ratio: 3;
   object-fit: cover;
 }
 
@@ -205,12 +202,7 @@ function getPersonName(id: number) {
   margin-block: 50px;
 }
 
-#words-image {
-  min-width: 40%;
-  max-width: 40%;
-  aspect-ratio: 1;
-  object-fit: cover;
-}
+
 
 #testimonials-container {
   max-width: 80%;

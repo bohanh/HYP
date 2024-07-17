@@ -19,19 +19,18 @@ const people: Person[] = assignPeople(JSON.parse(data_people.value!.people));
     </div>
     <div v-if="people.length === 0" class="person-card">No people found</div>
     <div v-else class="person-cards">
-      <NuxtLink v-for="person in people" :key="person.id" class="person-card-container" :to="'/people/' + person.id"
-                tabindex="0">
-        <div class="person-card">
+      <div v-for="person in people" class="person-card-container" >
+        <NuxtLink class="person-card" :to="'/people/' + person.id" tabindex="0">
           <img
               class="person-thumb"
-              :src="'/HYP/image/people/' + person.id + '.jpg'"
+              :src="'/HYP/contents/people/' + person.id + '.jpg'"
               :alt="'Photo of ' + person.name"
           >
           <span class="person-name">{{ person.name }}</span>
           <span class="person-description">{{ person.description.substring(0, 120) + "..." }}</span>
-        </div>
+        </NuxtLink>
         <!--          <router-link :to="'/cv/' + person.id" class="see-cv">See CV</router-link>-->
-      </NuxtLink>
+      </div>
     </div>
   </div>
 </template>
@@ -52,14 +51,14 @@ const people: Person[] = assignPeople(JSON.parse(data_people.value!.people));
   font-size: 2rem;
   margin-bottom: 10px;
   font-weight: bold;
-  color: #2c3e50;
+  color: indigo;
 }
 
 .title {
   font-size: 1.5rem;
   width: 80%;
   margin-bottom: 50px;
-  color: #34495e;
+  color: black;
 }
 
 .person-cards {
@@ -77,7 +76,6 @@ const people: Person[] = assignPeople(JSON.parse(data_people.value!.people));
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
   text-decoration: none;
-
 }
 
 .person-card {

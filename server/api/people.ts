@@ -1,7 +1,7 @@
 import {Person} from "~/model/Person";
 import {PersonService} from "~/server/database/person-service";
 
-const personService = new PersonService();
+const personService: PersonService = new PersonService();
 
 export default defineEventHandler(async (event) => {
     const people: Person[] = await personService.getPeople();

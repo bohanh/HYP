@@ -14,9 +14,9 @@ if (crumb0 !== crumbs.value[crumbs.value.length - 1]) {
   crumbs.value.push(crumb0);
 }
 
-let { data: data_people } = await useFetch("/api/people");
-let { data: data_projects } = await useFetch("/api/projects");
-let { data: data_services } = await useFetch("/api/services");
+let {data: data_people} = await useFetch("/api/people");
+let {data: data_projects} = await useFetch("/api/projects");
+let {data: data_services} = await useFetch("/api/services");
 
 const people: Person[] = assignPeople(JSON.parse(data_people.value!.people));
 const projects: Project[] = assignProjects(JSON.parse(data_projects.value!.projects));
@@ -34,7 +34,7 @@ for (let p of people) {
   }
 }
 
-const bgImageStyle = `background-image: url('/HYP/image/projects/${id}.jpg');')`;
+const bgImageStyle = `background-image: url('/HYP/contents/projects/${id}.jpg');')`;
 
 function crumb(bread: string): string {
   let breads: string [] = bread.split(' ');
@@ -84,7 +84,6 @@ function shuffle(): any[] {
   }
   return project3.slice(0, 3);
 }
-
 </script>
 
 <template>
@@ -109,25 +108,26 @@ function shuffle(): any[] {
       <div id="leader-left">
         <img
             id="leader-image"
-            :src="'/HYP/image/people/' + project.id + '.jpg'"
+            :src="'/HYP/contents/people/' + project.leader + '.jpg'"
             :alt="'photo of the leader of project ' + project.name + ', ' + leader.name"
         >
-        <h2>{{ leader.name }}</h2>
+        <h2 style="text-align: center">{{ leader.name }}</h2>
         <NuxtLink :to="'/people/' + project.leader" class="read-more" tabindex="0">Read more</NuxtLink>
       </div>
-      <p style="width: 70%">{{ project.longDes }}</p>
+      <p style="width: 70%; min-width: 400px">{{ project.longDes }}</p>
     </div>
     <div id="more">
       <h2 style="color: var(--header-button-color); text-decoration: none">MORE PROJECTS</h2>
       <div id="projects">
-        <NuxtLink v-for="project in shuffle()" :key="project.id" class="project-card" :to="'/projects/' + project.id" tabindex="0">
+        <NuxtLink v-for="project in shuffle()" :key="project.id" class="project-card" :to="'/projects/' + project.id"
+                  tabindex="0">
           <h2 class="violet-text">
             {{ project.name }}
           </h2>
           <p>{{ project.description }}</p>
           <img
               class="project-thumb"
-              :src="'/HYP/image/projects/' + project.id + '.jpg'"
+              :src="'/HYP/contents/projects/' + project.id + '.jpg'"
               :alt="'Photo of ' + project.name"
           />
         </NuxtLink>
@@ -189,13 +189,16 @@ function shuffle(): any[] {
 #leader {
   width: 80%;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+  gap: 50px;
   margin-block: 50px;
 }
 
 #leader-left {
   width: 20%;
+  min-width: 150px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -222,33 +225,44 @@ function shuffle(): any[] {
 }
 
 #more {
-  width: 100%;
-  padding-top: 25px;
-  padding-bottom: 50px;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   background-color: var(--accent-color);
+  padding-top: 40px;
 }
 
 #projects {
-  width: 80%;
+  width: 80vw;
+  min-width: 500px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  margin: 25px;
+  padding: 25px;
+  gap: 10px;
+  overflow-x: scroll;
+  overflow-y: hidden;
 }
 
 .project-card {
+  width: 30%;
+  min-width: 400px;
+  aspect-ratio: 4/5;
   margin: 20px;
   padding: 20px;
-  width: calc(33.333% - 40px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background-color: white;
   border-radius: 20px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
   text-align: center;
   cursor: pointer;
+  gap: 10px;
   text-decoration: none;
   color: black;
 }

@@ -40,8 +40,8 @@ const successes = [
       </div>
       <img
         id="about-image"
-        :src="'/HYP/contents/projects/3.jpg'"
-        alt="Photo of project 3"
+        :src="'/HYP/contents/logo.svg'"
+        alt="Photo of the logo"
       >
     </div>
     <div class="separator" />
@@ -131,8 +131,8 @@ const successes = [
     <div id="bottom">
       <img
         id="bottom-image"
-        :src="'/HYP/contents/projects/2.jpg'"
-        alt="image of project 2"
+        :src="'/HYP/contents/projects/6.JPG'"
+        alt="image of project 1"
         tabindex="0"
       >
       <div id="bottom-text">
@@ -166,8 +166,7 @@ const successes = [
 }
 
 #about-text {
-  width: 30vw;
-  min-width: 300px;
+  flex: 1 1 300px; /* Allow the text to flex and grow while maintaining a minimum width */
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -175,8 +174,7 @@ const successes = [
 }
 
 #about-image {
-  width: 40vw;
-  min-width: 400px;
+  flex: 1 1 10%; /* Allow the image to flex and grow while maintaining a minimum width */
   aspect-ratio: 1;
   overflow: hidden;
   object-fit: cover;
@@ -185,8 +183,8 @@ const successes = [
 .separator {
   width: 100vw;
   height: 2px;
-  border: var(--header-button-color) 1px solid;
-  background-color: var(--header-button-color);
+  border: indigo 1px solid;
+  background-color: indigo;
 }
 
 #history {
@@ -285,8 +283,7 @@ const successes = [
 }
 
 #bottom-text {
-  width: 40vw;
-  min-width: 400px;
+  flex: 1 1 400px; /* Allow the text to flex and grow while maintaining a minimum width */
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -295,8 +292,7 @@ const successes = [
 }
 
 #bottom-image {
-  width: 30vw;
-  min-width: 400px;
+  flex: 70px; /* Allow the image to flex and grow while maintaining a minimum width */
   aspect-ratio: 1;
   overflow: hidden;
   object-fit: cover;

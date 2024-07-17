@@ -27,7 +27,7 @@ const services: Service[] = assignServices(JSON.parse(data_services.value!.servi
           <p>{{ project.description }}</p>
           <img
               class="project-thumb"
-              :src="'/HYP/image/projects/' + project.id + '.jpg'"
+              :src="'/HYP/contents/projects/' + project.id + '.jpg'"
               :alt="'Photo of ' + project.name"
           />
           <NuxtLink :to="'/projects/' + project.id" class="read-more" tabindex="0">Read more</NuxtLink>
@@ -46,7 +46,7 @@ const services: Service[] = assignServices(JSON.parse(data_services.value!.servi
           <p>{{ service.description }}</p>
           <img
               class="service-thumb"
-              :src="'/HYP/image/services/' + service.id + '.jpg'"
+              :src="'/HYP/contents/services/' + service.id + '.jpg'"
               :alt="'Photo of ' + service.name"
           />
           <NuxtLink :to="'/services/' + service.id" class="read-more" tabindex="0">Read more</NuxtLink>
@@ -70,7 +70,7 @@ const services: Service[] = assignServices(JSON.parse(data_services.value!.servi
 
 .section-title {
   font-size: 2rem;
-  color: #2c3e50;
+  color: black;
   margin-bottom: 20px;
 }
 
@@ -119,7 +119,7 @@ const services: Service[] = assignServices(JSON.parse(data_services.value!.servi
 
 .violet-text {
   font-size: 180%;
-  color: var(--header-button-color);
+  color:rgba(218 112 214) ;
 }
 
 h2 {
@@ -145,8 +145,8 @@ p {
 }
 
 .read-more:hover {
-  background-color: var(--header-button-color);
-  border: 2px solid var(--header-button-color);;
+  background-color: rgba(218 112 214);
+  border: 2px solid rgba(218 112 214);;
 }
 
 </style>

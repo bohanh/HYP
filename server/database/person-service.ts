@@ -1,4 +1,4 @@
-import {PrismaClient} from "@prisma/client";
+import {PrismaClient, Testimonial} from "@prisma/client";
 import {Person} from "~/model/Person"
 import {Socials} from "~/model/Socials";
 import {Experience} from "~/model/Experience";
@@ -82,6 +82,14 @@ export class PersonService {
             retPeople.push(await this.getPerson(id));
         }
         return retPeople;
+    }
+
+    async getTestimonialPeople(): Promise<{[key: number]: string}> {
+        const people = (await this.prisma.testimonialPerson.findMany());
+        return people.reduce((acc, items) => {
+            acc[items.id] = items.name;
+            return acc;
+        }, {} as { [key: number]: string });
     }
 
     assignPeople(person: {

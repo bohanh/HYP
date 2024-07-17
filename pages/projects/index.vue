@@ -13,7 +13,7 @@ const projects: Project[] = assignProjects(JSON.parse(data_projects.value!.proje
   <div class="container">
     <div class="header">PROJECTS</div>
     <div class="title">
-      This section outlines our various projects aimed at addressing gender-based violence, trafficking, and empowering marginalized groups.
+      This section outlines our various projects aimed at addressing gender-based violence, trafficking and empowering marginalized groups.
     </div>
     <div v-if="projects.length === 0" class="project-card">No project found</div>
     <div v-else class="project-cards">
@@ -22,7 +22,7 @@ const projects: Project[] = assignProjects(JSON.parse(data_projects.value!.proje
         <p>{{ project.description }}</p>
         <img
           class="project-thumb"
-          :src="'/HYP/image/projects/' + project.id + '.jpg'"
+          :src="'/HYP/contents/projects/' + project.id + '.jpg'"
           :alt="'Photo of ' + project.name"
         />
       </NuxtLink>
@@ -47,28 +47,29 @@ const projects: Project[] = assignProjects(JSON.parse(data_projects.value!.proje
   font-size: 2rem;
   margin-bottom: 10px;
   font-weight: bold;
-  color: #2c3e50;
+  color: indigo;
 }
 
 .title {
   font-size: 1.5rem;
   width: 80%;
   margin-bottom: 50px;
-  color: #34495e;
+  color: black;
 }
 
 .project-cards {
-  width: 80%;
+  width: 90%;
   display: flex;
   flex-wrap: wrap;
-  align-items: stretch;
+  align-items: center;
   justify-content: center;
 }
 
 .project-card {
   margin: 20px;
   padding: 20px;
-  width: calc(33.333% - 40px);
+  width: 30%;
+  min-width: 400px;
   display: flex;
   flex-direction: column;
   background-color: white;
@@ -96,7 +97,7 @@ const projects: Project[] = assignProjects(JSON.parse(data_projects.value!.proje
 
 .violet-text {
   font-size: 200%;
-  color: var(--header-color);
+  color: indigo;
   margin: 0 0 10px;
 }
 

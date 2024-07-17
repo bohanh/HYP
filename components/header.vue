@@ -100,7 +100,7 @@ const isLandmarkActive = (name: string) => {
 .donate-button {
   font-size: 100%;
   color: white;
-  background-color: var(--header-button-color);
+  background-color: rgba(221 160 221);
   border-radius: 10px;
   text-decoration: none;
   padding: 10px;
@@ -110,6 +110,7 @@ const isLandmarkActive = (name: string) => {
 
 .donate-button:hover {
   background-color: white;
-  color: var(--header-button-color);
+  color: rgba(221 160 221);
+   
 }
 </style>
