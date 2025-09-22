@@ -1,75 +1,19 @@
-# Nuxt 3 Minimal Starter
+# Hypermedia Web Application
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+This repository contains the code, the design report, and the technical report for the Hypermedia Web Application exam. The project focuses on developing a website for a non-profit center that supports women in distress and those affected by violence and family maltreatment.
 
-## Setup
+## Purpose
 
-Make sure to install the dependencies:
+The Design Report details the essential elements and considerations involved in the website's development. It provides comprehensive information about the center's team members, as well as detailed descriptions of all its projects, services, and activities. The report highlights the primary design decisions, including models, schemas, and use case scenarios, as well as presenting the conceptual and logical structure of the website's database.
 
-```bash
-# npm
-npm install
+The **Technical Report** explains the architecture of the website, providing a deeper understanding of the system's structure and its components.
 
-# pnpm
-pnpm install
+## Contents
 
-# yarn
-yarn install
+- **Code**: The source code for the developed website.
+- **Design Report**: A detailed document outlining the design decisions and database structure.
+- **Technical Report**: An in-depth explanation of the website's architecture.
 
-# bun
-bun install
-```
+## License
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+This repository is for academic purposes and is shared in compliance with the course requirements.
